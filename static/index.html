@@ -78,6 +78,15 @@ $("#renameapp").click(function(){
   });
 });
 
+$("#sendmsg").click(function(){
+  var apikey="12123234";
+  //write validation code here
+  $.post("/socketbox/app/secret/",{apikey : apikey},function(result){
+  console.log(result);  
+  //write response handle code here
+  });
+});
+
 });
 </script>
 <h1>New User SignUp</h1>
@@ -111,5 +120,6 @@ App Name : <input type="text" name="appname" id="appname" /><br>
 New App Name : <input type="text" name="newappname" id="newappname" /><br>
 <button type="button" name="renameapp" id="renameapp">RENAME APP</button>
 <br>
+<button type="button" name="sendmsg" id="sendmsg">SEND MESSAGE</button>
 </body>
 </html>
