@@ -14,7 +14,7 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
-df get_app_secret(request):
+def get_app_secret(request):
 	if request.method=='POST' :
 		if 'apikey' in request.POST :
 			apikey=request.POST['apikey']
