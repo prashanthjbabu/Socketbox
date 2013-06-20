@@ -25,10 +25,10 @@ df get_app_secret(request):
 				'status' : 'invalidapikey',
 				}
 			else :
-				myapikey=myapp[0].apikey
+				secret=myapp[0].secret
 				return_json_object = {
 				'status' : 'success',
-				'apikey' : myapikey,
+				'secret' : secret,
 				}
 			return_json_string = simplejson.dumps(return_json_object)
 			return HttpResponse(return_json_string)
