@@ -141,7 +141,7 @@ def show_apps(request):
 				user=users.objects.filter(email=email)
 				user_id=user[0].id
 				myapps=apps.objects.filter(userid=user_id)
-			    return HttpResponse(serializers.serialize("json", myapps))
+				return HttpResponse(serializers.serialize("json", myapps))
 			else :
 				return_json_object = {
 				'status' : 'incorrectpassword',
