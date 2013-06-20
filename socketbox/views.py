@@ -273,7 +273,7 @@ def create_app(request):
 
 def sock_test(request):
 	event = "hello"
-	apikey="BU4IBO0JTE"
+	apikey="BU4IBO0JTwdE"
 	secret="XDZK7RMAC3"
 	channel = "prash"
 	data = {
