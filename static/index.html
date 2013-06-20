@@ -9,7 +9,7 @@ var socket = new SocketBox('BU4IBO0JTE');
 	socket.bind('hello', function(data) {
 		console.log(data);
     var filename="beep";
-    document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="' + filename + '.mp3" type="audio/mpeg" /><source src="' + filename + '.mp3" type="audio/mp3" /><embed hidden="true" autostart="true" loop="false" src="' + filename +'.mp3" /></audio>';
+    document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="/static/beep.mp3" type="audio/mpeg" /><source src="/static/beep.mp3" type="audio/mp3" /><embed hidden="true" autostart="true" loop="false" src="/static/beep.mp3" /></audio>';
 
 	});
 </script>
