@@ -12,6 +12,7 @@ urlpatterns = patterns('socketbox.views',
 	url(r'^show/apps/$','show_apps'),
 	url(r'^delete/app/$','delete_app'),
 	url(r'^rename/app/$','rename_app'),
+	url(r'^app/secret/$','get_app_secret'),
 
     # Examples:
     # url(r'^$', 'sockserv.views.home', name='home'),

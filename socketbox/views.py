@@ -14,6 +14,27 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+df get_app_secret(request):
+	if request.method=='POST' :
+		if 'apikey' in request.POST :
+			apikey=request.POST['apikey']
+			myapp=apps.objects.filter(apikey=apikey)
+
+			if len(myapp) == 0 :
+				return_json_object = {
+				'status' : 'invalidapikey',
+				}
+			else :
+				myapikey=myapp[0].apikey
+				return_json_object = {
+				'status' : 'success',
+				'apikey' : myapikey,
+				}
+			return_json_string = simplejson.dumps(return_json_object)
+			return HttpResponse(return_json_string)
+
+
+@csrf_exempt
 def add_user(request):
 	if request.method == 'POST' :
 		if 'name' in request.POST and 'email' in request.POST and 'password' in request.POST :
