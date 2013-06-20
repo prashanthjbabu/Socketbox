@@ -10,7 +10,7 @@
 
 	window.SocketBox = function (apikey) {
 		
-		var host = 'http://socketbox.insigniadevs.com:4000';
+		var host = 'http://socketbox.insigniadevs.com:8000';
 
 		this.apikey = apikey;
 		this.socket = io.connect(host);

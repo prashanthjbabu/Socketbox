@@ -288,7 +288,7 @@ def sock_test(request):
 		'secret' : secret,
 	}
 
-	host = 'http://127.0.0.1:4000';
+	host = 'http://socketbox.insigniadevs.com:8000';
 	try:
 		result = urllib2.urlopen(host + '/post/', urllib.urlencode(socket_data))
 		content = result.read()
