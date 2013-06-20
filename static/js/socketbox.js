@@ -56,7 +56,7 @@
 		subscribe: function(channel_name) {
 			this.channel = channel_name;
 			this.channel=this.apikey+"-"+this.channel;
-			//console.log("CHANNEL="+this.channel);
+			console.log("CHANNEL="+this.channel);
 		},
 
 		trigger: function(event_name, data) {
