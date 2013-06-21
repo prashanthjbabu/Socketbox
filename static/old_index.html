@@ -1,0 +1,125 @@
+<html>
+<head><title>SOCKETBOX CLIENT AND TEMP UI FOR TESTING</title></head>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/static/js/socketbox.js"></script>
+<script>
+var socket = new SocketBox('BU4IBO0JTE');
+	socket.subscribe('prash');
+	socket.bind('hello', function(data) {
+		console.log(data);
+	});
+</script>
+<script>
+$(document).ready(function(){
+$("#useradd").click(function(){
+  var name=document.getElementById("name").value;
+  var email =document.getElementById("email").value;
+  var password =document.getElementById("password").value;
+  //write validation code here
+  $.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
+	console.log(result);	
+  //write response handle code here
+  });
+});
+
+$("#userlogin").click(function(){
+  var email =document.getElementById("username").value;
+  var password =document.getElementById("pass").value;
+  //write validation code here
+  $.post("/socketbox/user/login/",{email : email,password : password },function(result){
+  console.log(result);  
+  //write response handle code here
+  });
+  $.post("/socketbox/show/apps/",{email : email,password : password },function(result){
+  console.log(result);  
+  result=JSON.parse(result);
+  console.log(result.length)
+  console.log(result[0].fields.appname)
+  //write response handle code here
+  });
+});
+
+$("#createapp").click(function(){
+  var email =document.getElementById("myemail").value;
+  var password =document.getElementById("mypass").value;
+  var appname=document.getElementById("appname").value;
+  alert("email="+email+"password="+password+"appname="+appname);
+  //write validation code here
+  $.post("/socketbox/create/app/",{email : email,password : password , appname : appname},function(result){
+  console.log(result);  
+  //write response handle code here
+  });
+});
+
+$("#deleteapp").click(function(){
+  var email =document.getElementById("myemail").value;
+  var password =document.getElementById("mypass").value;
+  var appname=document.getElementById("appname").value;
+  alert("email="+email+"password="+password+"appname="+appname);
+  //write validation code here
+  $.post("/socketbox/delete/app/",{email : email,password : password , appname : appname},function(result){
+  console.log(result);  
+  //write response handle code here
+  });
+});
+
+$("#renameapp").click(function(){
+  var email =document.getElementById("myemail").value;
+  var password =document.getElementById("mypass").value;
+  var oldappname=document.getElementById("appname").value;
+  var newappname=document.getElementById("newappname").value;
+
+  alert("email="+email+"password="+password+"appname="+oldappname);
+  //write validation code here
+  $.post("/socketbox/rename/app/",{email : email,password : password , oldappname : oldappname,newappname : newappname},function(result){
+  console.log(result);  
+  //write response handle code here
+  });
+});
+
+$("#sendmsg").click(function(){
+  var apikey="BU4IBO0JTE";
+  //write validation code here
+  $.post("/socketbox/app/secret/",{apikey : apikey},function(result){
+  console.log(result);  
+  //write response handle code here
+  });
+});
+
+});
+</script>
+<h1>New User SignUp</h1>
+<form action="">
+{% csrf_token %}
+Name : <input type="text" name="name" id="name" /><br>
+Email : <input type="text" name="email" id="email" /><br>
+Password : <input type="password" name="password" id="password" /><br>
+<button type="button" name="useradd" id="useradd">ADD USER</button>
+</form>
+
+<h1>Login </h1>
+<form action="">
+{% csrf_token %}
+Email : <input type="text" name="email" id="username" /><br>
+Password : <input type="password" name="password" id="pass" /><br>
+<button type="button" name="useradd" id="userlogin">LOGIN</button>
+</form>
+
+<h1>Create a New App</h1>
+<form action="">
+{% csrf_token %}
+Email : <input type="text" name="email" id="myemail" /><br>
+Password : <input type="password" name="password" id="mypass" /><br>
+App Name : <input type="text" name="appname" id="appname" /><br>
+<button type="button" name="createapp" id="createapp">CREATE APP</button>
+</form>
+<br>
+<button type="button" name="deleteapp" id="deleteapp">DELETE APP</button>
+<br>
+New App Name : <input type="text" name="newappname" id="newappname" /><br>
+<button type="button" name="renameapp" id="renameapp">RENAME APP</button>
+<br>
+<button type="button" name="sendmsg" id="sendmsg">SEND MESSAGE</button>
+</body>
+</html>
