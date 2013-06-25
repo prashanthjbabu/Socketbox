@@ -8,3 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def index(request):
 	return render_to_response('index.html', context_instance=RequestContext(request))
+
+@csrf_exempt
+def features(request):
+	return render_to_response('features.html', context_instance=RequestContext(request))
