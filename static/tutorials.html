@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include 'header.html' %}   
+    {% include 'scripts.html' %}   
+  </head>
+  <body>
+    {% include 'nav.html' %}   
+
+    <div class="container">
+      {% include 'hero.html' %}   
+      <div class="row">
+        <div class="span8">
+          <h2>Tutorials!</h2>
+          <p class ="lead" align="justify">This page has a bunch of tutorials with step by step procedures and code snippets to setup socketbox for your application.</p>
+          <h3>Algorithm : </h3>
+          <p class="lead" aling="justify">Step 1 : Register with SocketBox in the registration window on the right and get your login and password .</p>
+          <p class="lead" aling="justify">Step 2 : Login to SocketBox with your username and password and enter into the Dashboard .</p>
+          <p class="lead" aling="justify">Step 3 : Create a New Application and Get your API key and secret key for your application .</p>
+          <p class="lead" aling="justify">Step 4 : Use these keys for making and receiving push notificatiosn and the server and client end respectively .</p>
+          <h3>Client End </h3>
+          <p class ="lead" align="justify">Client end stuff.</p>
+          <h3>Server End </h3>
+          <p class ="lead" align="justify">Server End stuff</p>
+        </div>
+        <div class="span4">
+          <form class="form-signin">
+            <h2 class="form-signin-heading">Register Now!</h2>
+            <input type="text" class="input-block-level" placeholder="Name">
+            <input type="text" class="input-block-level" placeholder="Email address">
+            <input type="password" class="input-block-level" placeholder="Password">
+            <input type="password" class="input-block-level" placeholder="Confirm Password">
+            <!--<label class="checkbox">
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>-->
+            <button class="btn btn-large btn-primary" type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

@@ -12,3 +12,7 @@ def index(request):
 @csrf_exempt
 def features(request):
 	return render_to_response('features.html', context_instance=RequestContext(request))
+
+@csrf_exempt
+def tutorials(request):
+	return render_to_response('tutorials.html', context_instance=RequestContext(request))
