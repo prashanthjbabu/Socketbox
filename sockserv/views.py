@@ -16,3 +16,11 @@ def features(request):
 @csrf_exempt
 def tutorials(request):
 	return render_to_response('tutorials.html', context_instance=RequestContext(request))
+
+@csrf_exempt
+def contact(request):
+	return render_to_response('contact.html', context_instance=RequestContext(request))
+
+@csrf_exempt
+def about(request):
+	return render_to_response('about.html', context_instance=RequestContext(request))

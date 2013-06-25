@@ -10,6 +10,9 @@ urlpatterns = patterns('',
 	url(r'^$', 'sockserv.views.index', {}, name='home_url_name'),
     url(r'^features/$', 'sockserv.views.features', {}, name='home_url_name'),
     url(r'^tutorials/$', 'sockserv.views.tutorials', {}, name='home_url_name'),
+    url(r'^contact/$', 'sockserv.views.contact', {}, name='home_url_name'),
+    url(r'^about/$', 'sockserv.views.about', {}, name='home_url_name'),
+
     # Examples:
     # url(r'^$', 'sockserv.views.home', name='home'),
     # url(r'^sockserv/', include('sockserv.foo.urls')),

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include 'header.html' %}   
+    {% include 'scripts.html' %}   
+  </head>
+  <body>
+    {% include 'nav.html' %}   
+
+    <div class="container">
+      {% include 'hero.html' %}   
+      <div class="row">
+        <div class="span8">
+          <h2>Get in Touch!</h2>
+          <p class ="lead" align="justify">We would love to hear from you . Suggestions , Feedback , Advice or anyting you want to tell us just put it all down here .</p>
+          <form class="well span8">
+            <div class="row">
+              <div class="span3">
+                <label>First Name</label>
+                <input type="text" class="span3" placeholder="Your First Name">
+                <label>Last Name</label>
+                <input type="text" class="span3" placeholder="Your Last Name">
+                <label>Email Address</label>
+                <input type="text" class="span3" placeholder="Your email address">
+                <label>Subject
+                <select id="subject" name="subject" class="span3">
+                  <option value="na" selected="">Choose One:</option>
+                  <option value="service">General Customer Service</option>
+                  <option value="suggestions">Suggestions</option>
+                  <option value="product">Product Support</option>
+                </select>
+                </label>
+              </div>
+              <div class="span5">
+                <label>Message</label>
+                <textarea name="message" id="message" class="input-xlarge span5" rows="10"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">Send</button>
+            </div>
+          </form> 
+        </div>
+        <div class="span4">
+          <form class="form-signin">
+            <h2 class="form-signin-heading">Register Now!</h2>
+            <input type="text" class="input-block-level" placeholder="Name">
+            <input type="text" class="input-block-level" placeholder="Email address">
+            <input type="password" class="input-block-level" placeholder="Password">
+            <input type="password" class="input-block-level" placeholder="Confirm Password">
+            <!--<label class="checkbox">
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>-->
+            <button class="btn btn-large btn-primary" type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
