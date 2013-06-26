@@ -50,7 +50,72 @@
           </pre>
 
           <h3>Server End </h3>
-          <p class ="lead" align="justify">Server End stuff</p>
+          <p class ="lead" align="justify">The server end basically requires you to make a POST request to the socketbox server (server.socketbox.in) and provide the required data as part of the POST request. The data required by the POST request are :</p>
+          <ul>
+            <li>API Key(apikey)</li>
+            <li>Secret Key(secret)</li>
+            <li>Event Name(event)</li>
+            <li>Channel Name(channel)</li>
+            <li>Data to be sent(data)</li>
+          </ul>
+          <p class="lead" align="justify"><b>Here are some code snippets for various programming languages:</b></p>
+
+
+          <pre data-lang="rails" data-group-id="publish"><code>require 'pusher'
+
+Pusher.app_id = 'APP_ID'
+Pusher.key = 'APP_KEY'
+Pusher.secret = 'APP_SECRET'    
+
+class HelloWorldController &lt; ApplicationController
+  def hello_world
+    Pusher['my-channel'].trigger('my-event', {:message =&gt; 'hello world'})
+  end
+end
+</code></pre>
+<pre data-lang="rb" data-group-id="publish"><code>require 'pusher'
+
+Pusher.app_id = 'APP_ID'
+Pusher.key = 'APP_KEY'
+Pusher.secret = 'APP_SECRET'
+
+Pusher['my-channel'].trigger('my-event', {:message =&gt; 'hello world'})
+</code></pre>
+<pre data-lang="php" data-group-id="publish"><code>require('Pusher.php');
+
+$pusher = new Pusher($key, $secret, $app_id);
+$pusher-&gt;trigger('my-channel', 'my-event', array('message' =&gt; 'hello world') );
+</code></pre>
+<pre data-lang="node" data-group-id="publish"><code>var Pusher = require('pusher');
+
+var pusher = new Pusher({
+  appId: 'APP_ID',
+  key: 'APP_KEY',
+  secret: 'APP_SECRET'
+});
+
+pusher.trigger('my-channel', 'my-event', {"message": "hello world"});
+</code></pre>
+<pre data-lang="cs-mvc" data-group-id="publish"><code>using PusherServer;
+using System.Web.Mvc;
+using System.Net;
+using Your.Config;
+
+public class HelloWorldController : Controller {
+  [HttpPost]
+  public ActionResult HelloWorld() {
+    var pusher = new Pusher(Config.AppId, Config.AppKey, Config.AppSecret);
+    var result = pusher.Trigger('my-channel', 'my-event', new { message = "hello world" } );
+    return new HttpStatusCodeResult((int)HttpStatusCode.OK);
+  }
+}  
+</code></pre>
+<pre data-lang="python" data-group-id="publish"><code>import pusher
+
+p = pusher.Pusher(app_id='APP_ID', key='APP_KEY', secret='APP_SECRET')
+p['my-channel'].trigger('my-event',{'message': 'hello world'})
+</code></pre>
+
         </div>
         <div class="span4">
           <form class="form-signin">
