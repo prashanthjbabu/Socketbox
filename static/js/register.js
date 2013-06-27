@@ -2,8 +2,11 @@ function validateregister()
 {
 	regservalert = function() {}
 	regservalert.warning = function(message) {
-            $('#register-server-alerts').html('<div class="alert"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+            $('#register-server-alerts').html('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
         }
+    regservalert.success = function(message) {
+            $('#register-server-alerts').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+        }    
 	$("#register-error-content").text("");
 	var name=document.getElementById("name").value;
 	var email=document.getElementById("emailid").value;
@@ -44,8 +47,7 @@ function validateregister()
 	if(result.status=="success")
 	{
 		console.log("user added successfully.. user id ="+result.user_id);
-		console.log("user added successfully.. user id ="+result.user_id);
-
+		regservalert.success("Congratulations! Account Created Succesfully . You may now Login with your credentials!");	
 	}
 	else if(result.status=="userexists")
 	{
@@ -53,7 +55,10 @@ function validateregister()
 		regservalert.warning("This user already exists , please try using another email id");	
 	}
 		else 
-		console.log("something went wrong");	
+		{
+			console.log("something went wrong");	
+			regservalert.warning("We're sorry , something went wrong . Please try again later!");
+		}
   	//write response handle code here
 
   }); 
