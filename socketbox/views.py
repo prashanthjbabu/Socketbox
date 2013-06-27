@@ -15,24 +15,24 @@ import json
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
-@csrf_exempt
-def activate_account(request,email,actcode):
-	if len(email) > 0 and len(actcode) > 0 :
-		user=users.objects.filter(email=email)
-		if len(user) == 0: #user doesnt exist already
-			return HttpResponse("Invalid Email")
-		else :
-			#user exists
-			user_actcode=user[0].activationcode
-			#compare act codes
-			if user_actcode == actcode :
-				#activate the account
-				user.update(activated=1)
-				return HttpResponse("Congratulations your account has been activated , you may now login to your SocketBox Account")
-			else :
-				return HttpResponse("Your Email ID is valid but your activation code is invalid "
-	else :
-		return HttpResponse("Invalid Activation URL")		
+# @csrf_exempt
+# def activate_account(request,email,actcode):
+# 	if len(email) > 0 and len(actcode) > 0 :
+# 		user=users.objects.filter(email=email)
+# 		if len(user) == 0: #user doesnt exist already
+# 			return HttpResponse("Invalid Email")
+# 		else :
+# 			#user exists
+# 			user_actcode=user[0].activationcode
+# 			#compare act codes
+# 			if user_actcode == actcode :
+# 				#activate the account
+# 				user.update(activated=1)
+# 				return HttpResponse("Congratulations your account has been activated , you may now login to your SocketBox Account")
+# 			else :
+# 				return HttpResponse("Your Email ID is valid but your activation code is invalid "
+# 	else :
+# 		return HttpResponse("Invalid Activation URL")		
 
 @csrf_exempt
 def get_app_secret(request):
