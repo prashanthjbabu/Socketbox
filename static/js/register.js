@@ -8,6 +8,7 @@ function validateregister()
 	if(name==null || name=="")
 	{
 		$("#register-error-content").text("Please enter a valid name");
+		$("#name").focus();
 		return;
 	}	
 }
