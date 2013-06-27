@@ -15,11 +15,11 @@ function validateregister()
 		return;
 	}
 
-    if (!emailfilter.test(email)) {
-    	console.log(emailfilter);
-    	console.log(email);
-	$("#register-error-content").text("Please enter a valid email");
-    $("#email").focus();
-    return;
- }	
+    if (!emailfilter.test(email)) 
+    {
+	   	console.log(email);
+		$("#register-error-content").text("Please enter a valid email");
+    	$("#email").focus();
+    	return;
+ 	}	
 }
