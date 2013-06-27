@@ -35,7 +35,7 @@ def get_app_secret(request):
 			return_json_string = simplejson.dumps(return_json_object)
 			return HttpResponse(return_json_string)
 
-def send_mail(email,name,link):
+def socketbox_send_mail(email,name,link):
 	content="Dear "+name+",<br>Welcome to SocketBox . Kindly Activate your SocketBox account by clicking on the following link "+link+"<br>With Regards,<br>The SocketBox Team"
 	send_mail('Activate Your SocketBox Account',content,'prashpesse@gmail.com',[email])
 
@@ -59,7 +59,7 @@ def add_user(request):
 				'status' : 'success',
 				'user_id' : user[0].id,
 				}
-				send_mail(email,name,link);
+				socketbox_send_mail(email,name,link);
 			else : #user already exists
 				return_json_object = {
 				'status' : 'userexists',
