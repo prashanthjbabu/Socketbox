@@ -25,7 +25,7 @@ function validateregister()
     	$("#email").focus();
     	return;
  	}	
-	if(!password.value.match(passfilter))   
+	if(!passfilter.test(password))   
 	{   
 		$("#register-error-content").text("Password must be atleast 7 characters");
 		return;  
