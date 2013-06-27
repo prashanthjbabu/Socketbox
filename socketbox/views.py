@@ -83,9 +83,6 @@ def add_user(request):
 				return_json_object = {
 				'status' : 'userexists',
 				}
-
-			
-
 		else :
 			return_json_object = {
 				'status' : 'fieldsmissing',
