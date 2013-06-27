@@ -111,7 +111,7 @@ def login_user(request):
 			return HttpResponse(return_text)
 
 def validate_user(email,password) :
-	user=users.objects.filter(email=email)
+	user=users.objects.filter(email=email,activated=1)
 	if len(user) == 0 :
 		return_json_object = {
 			'status' : 'userdoesnotexist',
@@ -132,7 +132,7 @@ def validate_user(email,password) :
 	return return_json_string
 
 def validate_user_inner(email,password) :
-	user=users.objects.filter(email=email)
+	user=users.objects.filter(email=email,activated=1)
 	if len(user) == 0 :
 		status="userdoesnotexist"
 	else :

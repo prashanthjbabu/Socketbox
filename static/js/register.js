@@ -55,7 +55,7 @@ function validateregister()
 	if(result.status=="success")
 	{
 		console.log("user added successfully.. user id ="+result.user_id);
-		regservalert.success("Congratulations! Account Created Succesfully . You may now Login with your credentials!");	
+		regservalert.success("Congratulations! Account Created Succesfully . Please activate your account by clicking on the activation link sent to your email!");	
 		clearall();
 	}
 	else if(result.status=="userexists")
