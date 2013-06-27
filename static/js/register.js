@@ -6,7 +6,16 @@ function validateregister()
         }
     regservalert.success = function(message) {
             $('#register-server-alerts').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
-        }    
+        }
+    regerrorcontent=function() {}
+    regerrorcontent.error=function(message) {
+    		$("#register-error-content").html('<div class="control-group error">
+              <div class="controls">
+                <span class="help-inline">'+message+'</span>
+              </div>
+            </div>'
+            )
+    	}    
 	$("#register-error-content").text("");
 	var name=document.getElementById("name").value;
 	var email=document.getElementById("emailid").value;
@@ -20,25 +29,29 @@ function validateregister()
  	var passfilter=  /^[A-Za-z]\w{7,14}$/;  
 	if(name==null || name=="")
 	{
-		$("#register-error-content").text("Please enter a valid name");
+		//$("#register-error-content").text("Please enter a valid name");
+		regerrorcontent.error("Please enter a valid name");
 		$("#name").focus();
 		return;
 	}
 
     if (!emailfilter.test(email)) 
     {
-		$("#register-error-content").text("Please enter a valid email");
+		//$("#register-error-content").text("Please enter a valid email");
+		regerrorcontent.error("Please enter a valid email");
     	$("#email").focus();
     	return;
  	}	
 	if(!passfilter.test(password))   
 	{   
-		$("#register-error-content").text("Password must be atleast 7 characters");
+		//$("#register-error-content").text("Password must be atleast 7 characters");
+		regerrorcontent.error("Password must be atleast 7 characters");
 		return;  
 	}
 	if(password!=cpassword)
 	{
-		$("#register-error-content").text("Passwords do not match");
+		//$("#register-error-content").text("Passwords do not match");
+		regerrorcontent.error("Passwords do not match");
 		return;	
 	} 
 	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
