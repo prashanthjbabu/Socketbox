@@ -20,7 +20,6 @@ function validateregister()
 
     if (!emailfilter.test(email)) 
     {
-	   	console.log(email);
 		$("#register-error-content").text("Please enter a valid email");
     	$("#email").focus();
     	return;
