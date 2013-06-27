@@ -35,7 +35,13 @@ function validateregister()
 		return;	
 	} 
 	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
-	console.log(result);	
+	console.log(result);
+	if(result.status=="success")
+		console.log("user added successfully.. user id ="+result.user_id);
+	else if(result.status=="userexists")
+		console.log("user already exists");
+	else 
+		console.log("something went wrong");	
   	//write response handle code here
 
   }); 
