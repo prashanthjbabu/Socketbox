@@ -61,7 +61,7 @@ function validateregister()
 	else if(result.status=="userexists")
 	{
 		console.log("user already exists");
-		regservalert.warning("This user already exists , please try using another email id");	
+		regservalert.warning("This username already exists , please try using another email id");	
 	}
 		else 
 		{
