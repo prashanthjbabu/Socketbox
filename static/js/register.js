@@ -67,7 +67,7 @@ function validateregister()
 function clearall()
 {
 	$("#name").val("");
-	$("#email").val("");
+	$("#emailid").val("");
 	$("#pass").val("");
 	$("#cpass").val("");
 }
