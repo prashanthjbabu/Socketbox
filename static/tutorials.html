@@ -90,21 +90,21 @@
           </pre>
           <h3>PHP! </h3>
             <pre class="prettyprint">
-              <?php
+              &lt;?php
                 # Our new data
-                $dat=array('name' => 'prashanth' , 'age' => 21);
-                $dat=json_encode($dat);
+                $dat=array('name' => 'mathew' , 'age' => 35);
+                $mydata=json_encode($dat);
                 $data = array(
-                    'event' => 'hello',
-                    'channel' => 'prash',
-                    'data' => $dat,
-                    'apikey' => 'BU4IBO0JTE',
-                    'secret' => 'XDZK7RMAC3',
+                    'event' => 'EVENT_NAME',
+                    'channel' => 'CHANNEL_NAME',
+                    'data' => $mydata,
+                    'apikey' => 'API_KEY',
+                    'secret' => 'SECRET_KEY',
                     
                 );
 
                 # Create a connection
-                $url = 'http://socketbox.insigniadevs.com:8000/post/';
+                $url = 'http://server.socketbox.in:8000/post/';
                 $ch = curl_init($url);
 
                 # Form data string
@@ -115,7 +115,7 @@
 
                 # Get the response
                 $response = curl_exec($ch);
-              ?>
+              ?&gt;
             </pre>  
         </div>
         <div class="span4">
