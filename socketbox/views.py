@@ -17,7 +17,8 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 
 @csrf_exempt
 def reset_account(request,email,resetcode):
-
+	user=users.objects.filter(email=email)
+	
 @csrf_exempt
 def activate_account(request,email,actcode):
 	if len(email) > 0 and len(actcode) > 0 :
