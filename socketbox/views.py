@@ -16,9 +16,13 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def forgot_password(request):
+	return render_to_response('forgotpassword.html', context_instance=RequestContext(request))
+
+@csrf_exempt
 def reset_account(request,email,resetcode):
 	user=users.objects.filter(email=email)
-	
+
 @csrf_exempt
 def activate_account(request,email,actcode):
 	if len(email) > 0 and len(actcode) > 0 :
