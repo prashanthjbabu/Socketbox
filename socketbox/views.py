@@ -30,7 +30,7 @@ def activate_account(request,email,actcode):
 				user.update(activated=1)
 				return HttpResponse("Congratulations your account has been activated , you may now login to your SocketBox Account")
 			else :
-				return HttpResponse("Your Email ID is valid but your activation code is invalid")
+				return HttpResponse("Your Email ID is valid but your activation code is invalid . DEBUG : user_actcode="+user_actcode+" actcode="+actcode+"email="+email)
 
 	else :
 		return HttpResponse("Invalid Activation URL")		
