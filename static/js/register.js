@@ -9,12 +9,7 @@ function validateregister()
         }
     regerrorcontent=function() {}
     regerrorcontent.error=function(message) {
-    		$("#register-error-content").html('<div class="control-group error">
-              <div class="controls">
-                <span class="help-inline">'+message+'</span>
-              </div>
-            </div>'
-            )
+    		$("#register-error-content").html('<div class="control-group error"><div class="controls"><span class="help-inline">'+message+'</span></div></div>')
     	}    
 	$("#register-error-content").text("");
 	var name=document.getElementById("name").value;
