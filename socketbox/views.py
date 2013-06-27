@@ -17,7 +17,7 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 
 @csrf_exempt
 def activate_account(request,email,actcode):
-	if len(email) > 0 AND len(actcode) > 0 :
+	if len(email) > 0 and len(actcode) > 0 :
 		user=users.objects.filter(email=email)
 		if len(user) == 0: #user doesnt exist already
 			return HttpResponse("Invalid Email")
