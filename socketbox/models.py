@@ -7,6 +7,7 @@ class users(models.Model):
     email = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     activationcode = models.CharField(max_length=10)
+    resetcode = models.CharField(max_length=10)
     activated = models.IntegerField(max_length=1)
     def __unicode__(self):
         return "%s %s %s %d" % (self.name, self.email, self.password ,self.activated)

@@ -52,7 +52,7 @@ def add_user(request):
 			user=users.objects.filter(email=email)
 
 			if len(user) == 0: #user doesnt exist already
-				new_user=users(name=name,email=email,password=password,activationcode=actcode,activated=1)
+				new_user=users(name=name,email=email,password=password,activationcode=actcode,activated=0)
 				new_user.save() # add the user
 				user=users.objects.filter(email=email)
 				return_json_object = {
