@@ -30,7 +30,7 @@ function validateregister()
 	if(name==null || name=="")
 	{
 		//$("#register-error-content").text("Please enter a valid name");
-		regerrorcontent.error("Please enter a valid name");
+		regerrorcontent.error("Please enter a valid name!");
 		$("#name").focus();
 		return;
 	}
@@ -38,20 +38,20 @@ function validateregister()
     if (!emailfilter.test(email)) 
     {
 		//$("#register-error-content").text("Please enter a valid email");
-		regerrorcontent.error("Please enter a valid email");
+		regerrorcontent.error("Please enter a valid email!");
     	$("#email").focus();
     	return;
  	}	
 	if(!passfilter.test(password))   
 	{   
 		//$("#register-error-content").text("Password must be atleast 7 characters");
-		regerrorcontent.error("Password must be atleast 7 characters");
+		regerrorcontent.error("Password must be atleast 7 characters!");
 		return;  
 	}
 	if(password!=cpassword)
 	{
 		//$("#register-error-content").text("Passwords do not match");
-		regerrorcontent.error("Passwords do not match");
+		regerrorcontent.error("Passwords do not match!");
 		return;	
 	} 
 	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
