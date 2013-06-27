@@ -61,6 +61,34 @@
             </ul>
           </p>  
           <p class="lead" align="justify"><b>Here are some code snippets for various programming languages:</b></p>
+          <h3>Django! </h3>
+          <pre class="prettyprint">
+            def sock_test(request):
+              event = "EVENT_NAME"
+              apikey="API_KEY"
+              secret="SECRET_KEY"
+              channel = "CHANNEL_NAME"
+              data = {
+                'name' : 'Mathew',
+                'age' : '34',
+              }
+              socket_data = {
+                'event' : event,
+                'channel' : channel,
+                'data' : simplejson.dumps(data),
+                'apikey' : apikey,
+                'secret' : secret,
+              }
+
+              host = 'http://server.socketbox.in:8000';
+              try:
+                result = urllib2.urlopen(host + '/post/', urllib.urlencode(socket_data))
+                content = result.read()
+              except Exception:
+                content = "FAIL"
+              return HttpResponse(content)          
+          </pre>
+
         </div>
         <div class="span4">
           <form class="form-signin">
