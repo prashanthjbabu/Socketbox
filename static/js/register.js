@@ -33,5 +33,10 @@ function validateregister()
 	{
 		$("#register-error-content").text("Passwords do not match");
 		return;	
-	}  
+	} 
+	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
+	console.log(result);	
+  	//write response handle code here
+
+  }); 
 }
