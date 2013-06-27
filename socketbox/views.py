@@ -16,11 +16,14 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def reset_account(request,email,resetcode):
+
+@csrf_exempt
 def activate_account(request,email,actcode):
 	if len(email) > 0 and len(actcode) > 0 :
 		user=users.objects.filter(email=email)
 		if len(user) == 0: #user doesnt exist already
-			return HttpResponse("Invalid Email")
+			return render_to_response('message.html',{'message' : "Sorry but this Email ID does not exist in our database "})
 		else :
 			#user exists
 			user_actcode=user[0].activationcode
@@ -28,11 +31,11 @@ def activate_account(request,email,actcode):
 			if user_actcode == actcode :
 				#activate the account
 				user.update(activated=1)
-				return HttpResponse("Congratulations your account has been activated , you may now login to your SocketBox Account")
+				return render_to_response('message.html',{'message': "Congratulations your account has been activated , you may now login to your SocketBox Account"})
 			else :
-				return HttpResponse("Your Email ID is valid but your activation code is invalid ")
+				return render_to_response('message.html',{'message' : "Your Email ID is valid but your activation code is invalid "})
 	else :
-		return HttpResponse("Invalid Activation URL")		
+		return render_to_response('message.html',{'message' : "Invalid Activation URL"})		
 
 @csrf_exempt
 def get_app_secret(request):
@@ -67,7 +70,7 @@ def add_user(request):
 			password=request.POST['password']
 			password=hashlib.md5(password).hexdigest()
 			actcode=random_generator(10)
-			link="http://socketbox.pesseacm.org/socketbox/activate/"+email+"/"+actcode+"/"
+			link="http://socketbox.pesseacm.org/socketbox/account/activate/"+email+"/"+actcode+"/"
 			user=users.objects.filter(email=email)
 
 			if len(user) == 0: #user doesnt exist already
