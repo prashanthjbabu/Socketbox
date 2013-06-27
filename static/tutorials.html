@@ -116,6 +116,25 @@
                 # Get the response
                 $response = curl_exec($ch);
               ?&gt;
+            </pre>
+          <h3>Node.js! </h3>
+            <pre class="prettyprint">
+              var request = require("request");
+              var data = "{\"name\" : \"Mathew\",\"age\" : \"35\"}";
+                request({
+                  uri: "http://server.socketbox.in:8000/post/",
+                  method: "POST",
+                  form: {
+                  'event' : "EVENT_NAME",
+                  'channel' : "CHANNEL_NAME",
+                  'data' : data,
+                  'apikey' : "API_KEY",
+                  'secret' : "SECRET_KEY",
+                  }
+                }, function(error, response, body) {
+                  console.log("body = "+body);
+                  console.log("response = "+response)
+                });
             </pre>  
         </div>
         <div class="span4">
