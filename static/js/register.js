@@ -5,7 +5,10 @@ function validateregister()
 	var email=document.getElementById("email").value;
 	var password=document.getElementById("password").value;
 	var cpassword=document.getElementById("cpassword").value;
+	console.log("name="+name);
 	console.log("email="+email);
+	console.log("pass="+pass);
+	console.log("cpass="+cpass);
 	var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 	if(name==null || name=="")
