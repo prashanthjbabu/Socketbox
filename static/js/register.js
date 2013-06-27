@@ -48,6 +48,7 @@ function validateregister()
 	{
 		console.log("user added successfully.. user id ="+result.user_id);
 		regservalert.success("Congratulations! Account Created Succesfully . You may now Login with your credentials!");	
+		clearall();
 	}
 	else if(result.status=="userexists")
 	{
@@ -62,4 +63,11 @@ function validateregister()
   	//write response handle code here
 
   }); 
+}
+function clearall()
+{
+	$("#name").value("");
+	$("#email").value("");
+	$("#pass").value("");
+	$("#cpass").value("");
 }
