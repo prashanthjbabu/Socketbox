@@ -8,6 +8,7 @@ import hashlib
 from django.views.decorators.csrf import csrf_exempt
 from socketbox.models import users,apps
 from django.core.mail import send_mail
+from django.template import RequestContext
 
 import string,random
 import json
