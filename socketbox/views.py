@@ -48,7 +48,7 @@ def add_user(request):
 			password=request.POST['password']
 			password=hashlib.md5(password).hexdigest()
 			actcode=random_generator(10)
-
+			link="http://socketbox.pesseacm.org/socketbox/activate/"+email+"/"+actcode+"/"
 			user=users.objects.filter(email=email)
 
 			if len(user) == 0: #user doesnt exist already
