@@ -36,7 +36,7 @@ def get_app_secret(request):
 			return HttpResponse(return_json_string)
 
 def socketbox_send_mail(email,name,link):
-	content="Dear "+name+",<br>Welcome to SocketBox . Kindly Activate your SocketBox account by clicking on the following link "+link+"<br>With Regards,<br>The SocketBox Team"
+	content="Dear "+name+",\nWelcome to SocketBox . Kindly Activate your SocketBox account by clicking on the following link "+link+"\nWith Regards,\nThe SocketBox Team"
 	send_mail('Activate Your SocketBox Account',content,'prashpesse@gmail.com',[email])
 
 @csrf_exempt
