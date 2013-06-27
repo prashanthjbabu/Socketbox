@@ -1,5 +1,9 @@
 function validateregister()
 {
+	regservalert = function() {}
+	regservalert.warning = function(message) {
+            $('#register-server-alerts').html('<div class="alert"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+        }
 	$("#register-error-content").text("");
 	var name=document.getElementById("name").value;
 	var email=document.getElementById("emailid").value;
@@ -38,10 +42,17 @@ function validateregister()
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
+	{
 		console.log("user added successfully.. user id ="+result.user_id);
+		console.log("user added successfully.. user id ="+result.user_id);
+
+	}
 	else if(result.status=="userexists")
+	{
 		console.log("user already exists");
-	else 
+		regservalert.warning("This user already exists , please try using another email id");	
+	}
+		else 
 		console.log("something went wrong");	
   	//write response handle code here
 
