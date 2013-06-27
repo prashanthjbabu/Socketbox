@@ -16,6 +16,7 @@ urlpatterns = patterns('socketbox.views',
 	url(r'^account/activate/(?P<email>\S+)/(?P<actcode>\S+)/$','activate_account'),
 	url(r'^account/reset/(?P<email>\S+)/(?P<resetcode>\S+)/$','reset_account'),
 	url(r'^forgot/password/$','forgot_password'),
+	url(r'^reset/password/$','reset_password'),
 
     # Examples:
     # url(r'^$', 'sockserv.views.home', name='home'),

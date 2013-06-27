@@ -17,6 +17,40 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def reset_password(request):
+	if request.method=='POST' :
+		if 'email' in request.POST :
+			email=request.POST['email']
+			user=users.objects.filter(email=email)
+
+			if len(user) == 0 :
+				return_json_object = {
+				'status' : 'userdoesnotexist',
+				}
+			else :
+				#userexists
+				resetcode=random_generator(10)
+				link="http://socketbox.pesseacm.org/socketbox/account/reset/"+email+"/"+resetcode+"/"
+				name=user[0].name
+				socketbox_send_forgot_mail(email,name,link);
+				user.update(resetcode=resetcode)
+				return_json_object = {
+				'status' : 'success',
+				'resetcode' : resetcode,
+				}
+		else :	
+				return_json_object = {
+					'status' : 'noemail',
+				}
+	else :	
+		return_json_object = {
+			'status' : 'not a post',
+		}
+
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)
+
+@csrf_exempt
 def forgot_password(request):
 	return render_to_response('forgotpassword.html', context_instance=RequestContext(request))
 
@@ -63,9 +97,13 @@ def get_app_secret(request):
 			return_json_string = simplejson.dumps(return_json_object)
 			return HttpResponse(return_json_string)
 
-def socketbox_send_mail(email,name,link):
+def socketbox_send_activate_mail(email,name,link):
 	content="Dear "+name+",\nWelcome to SocketBox .Kindly Activate your SocketBox account by clicking on the following link "+link+"\nWith Regards,\nThe SocketBox Team"
 	send_mail('Activate Your SocketBox Account',content,'prashpesse@gmail.com',[email])
+
+def socketbox_send_forgot_mail(email,name,link):
+	content="Dear "+name+",\nKindly click on the following link to reset your password "+link+"\nWith Regards,\nThe SocketBox Team"
+	send_mail('Reset Your SocketBox Account',content,'prashpesse@gmail.com',[email])
 
 @csrf_exempt
 def add_user(request):
@@ -87,7 +125,7 @@ def add_user(request):
 				'status' : 'success',
 				'user_id' : user[0].id,
 				}
-				socketbox_send_mail(email,name,link);
+				socketbox_send_activate_mail(email,name,link);
 			else : #user already exists
 				return_json_object = {
 				'status' : 'userexists',
