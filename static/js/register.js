@@ -2,9 +2,9 @@ function validateregister()
 {
 	$("#register-error-content").text("");
 	var name=document.getElementById("name").value;
-	var email=document.getElementById("email").value;
-	var password=document.getElementById("password").value;
-	var cpassword=document.getElementById("cpassword").value;
+	var email=document.getElementById("emailid").value;
+	var password=document.getElementById("pass").value;
+	var cpassword=document.getElementById("cpass").value;
 	console.log("name="+name);
 	console.log("email="+email);
 	console.log("pass="+password);
