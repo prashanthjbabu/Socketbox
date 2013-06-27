@@ -90,6 +90,35 @@
           </pre>
 
         </div>
+        <h3>PHP! </h3>
+        <pre class="prettyprint">
+          <?php
+            # Our new data
+            $dat=array('name' => 'prashanth' , 'age' => 21);
+            $dat=json_encode($dat);
+            $data = array(
+                'event' => 'hello',
+                'channel' => 'prash',
+                'data' => $dat,
+                'apikey' => 'BU4IBO0JTE',
+                'secret' => 'XDZK7RMAC3',
+                
+            );
+
+            # Create a connection
+            $url = 'http://socketbox.insigniadevs.com:8000/post/';
+            $ch = curl_init($url);
+
+            # Form data string
+            $postString = http_build_query($data, '', '&');
+            # Setting our options
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+
+            # Get the response
+            $response = curl_exec($ch);
+          ?>
+        </pre>
         <div class="span4">
           <form class="form-signin">
             <h2 class="form-signin-heading">Register Now!</h2>
