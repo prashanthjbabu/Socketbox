@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^tutorials/$', 'sockserv.views.tutorials', {}, name='home_url_name'),
     url(r'^contact/$', 'sockserv.views.contact', {}, name='home_url_name'),
     url(r'^about/$', 'sockserv.views.about', {}, name='home_url_name'),
-
+    url(r'^js/socketbox-1.0.js$', 'sockserv.views.js', {}, name='home_url_name'),
     # Examples:
     # url(r'^$', 'sockserv.views.home', name='home'),
     # url(r'^sockserv/', include('sockserv.foo.urls')),
