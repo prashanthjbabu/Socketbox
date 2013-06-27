@@ -66,8 +66,8 @@ function validateregister()
 }
 function clearall()
 {
-	$("#name").value("");
-	$("#email").value("");
-	$("#pass").value("");
-	$("#cpass").value("");
+	$("#name").val("");
+	$("#email").val("");
+	$("#pass").val("");
+	$("#cpass").val("");
 }
