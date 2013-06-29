@@ -30,11 +30,11 @@
                 </ul>
               </li> -->
             </ul>
-            <form class="navbar-form pull-right">
-             <!-- <input class="span2" type="text" id="navemail" placeholder="Email">
-              <input class="span2" type="password" id="navpass" placeholder="Password"> -->
-              <button type="button" class="btn btn-success" id="login" onclick="userlogin()">Login</button>
-            <!--  <button type="button" onclick="window.location.href='/socketbox/forgot/password/'" class="btn btn-link">Forgot Password?</button> -->             
+            <form class="navbar-form pull-right" method="POST" action="/socketbox/user/login/">
+              <input class="span2" type="text" id="navemail" placeholder="Email">
+              <input class="span2" type="password" id="navpass" placeholder="Password">
+              <button type="button" class="btn btn-success" id="login" >Login</button>
+              <button type="button" onclick="window.location.href='/socketbox/forgot/password/'" class="btn btn-link">Forgot Password?</button>              
             </form>
           </div>
           

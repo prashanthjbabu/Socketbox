@@ -192,29 +192,22 @@ def add_user(request):
 @csrf_exempt
 def login_user(request):
 	if request.method == "POST" :
-		if 'email' in request.POST and 'password' in request.POST :
-			email=request.POST['email']
-			password=request.POST['password']
+		if 'navemail' in request.POST and 'navpass' in request.POST :
+			email=request.POST['navemail']
+			password=request.POST['navpass']
 			password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text == "userdoesnotexist" :
-				return_json_object = {
- 				'status' : 'userdoesnotexist',
- 			}
+				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!"})
+ 			
  			elif return_text == "success" :
- 				return_json_object = {
- 				'status' : 'userdoesnotexist',
- 			}
+				return render_to_response('dashboard.html',{'email' : email })
+ 			
 	 		else :
-	 			return_json_object = {
- 				'status' : 'incorrectpassword',
- 			}
+				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!"})
+
  		else :
- 			return_json_object = {
- 				'status' : 'invalidpostrequest',
- 			}
- 		return_json_string = simplejson.dumps(return_json_object)
-		return return_json_string
+			return render_to_response('login.html',{'email' : email , 'message' : "Please Try Again!"})
 
 def login(request) :
 	return render_to_response('login.html', context_instance=RequestContext(request))
