@@ -201,7 +201,7 @@ def login_user(request):
 				return_json_object = {
  				'status' : 'userdoesnotexist',
  			}
- 			else if return_text == "success" :
+ 			elif return_text == "success" :
  				return_json_object = {
  				'status' : 'userdoesnotexist',
  			}
@@ -217,7 +217,7 @@ def login_user(request):
 		return return_json_string
 
 def login(request) :
-	
+
 # def validate_user(email,password) :
 # 	user=users.objects.filter(email=email,activated=1)
 # 	if len(user) == 0 :
