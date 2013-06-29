@@ -39,6 +39,8 @@ def new_password(request):
 					return_json_object = {
 						'status' : 'success',
 					}
+					user.update(resetcode="")
+
 				else :
 					return_json_object = {
 						'status' : 'invalidresetcode',
@@ -52,7 +54,7 @@ def new_password(request):
 		return_json_object = {
 			'status' : 'invalidpostrequest',
 		}
-		
+
 	return_json_string = simplejson.dumps(return_json_object)
 	return HttpResponse(return_json_string)	
 
