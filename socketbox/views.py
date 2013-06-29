@@ -196,29 +196,42 @@ def login_user(request):
 			email=request.POST['email']
 			password=request.POST['password']
 			password=hashlib.md5(password).hexdigest()
-			return_text=validate_user(email,password)
-			return HttpResponse(return_text)
+			return_text=validate_user_inner(email,password)
+			if return_text == "userdoesnotexist" :
+				return_json_object = {
+ 				'status' : 'userdoesnotexist',
+ 			}
+ 			else if return_text == "success" :
+ 				return_json_object = {
+ 				'status' : 'userdoesnotexist',
+ 			}
+	 		else :
+	 			return_json_object = {
+ 				'status' : 'incorrectpassword',
+ 			}
+ 			return_json_string = simplejson.dumps(return_json_object)
+			return return_json_string
 
-def validate_user(email,password) :
-	user=users.objects.filter(email=email,activated=1)
-	if len(user) == 0 :
-		return_json_object = {
-			'status' : 'userdoesnotexist',
-		}
-	else :
-		if user[0].password == password :
-			return_json_object = {
-				'status' : 'success',
-				'userid' : user[0].id,
-				'name' : user[0].name,
-			}
-		else :
-			return_json_object = {
-				'status' : 'incorrectpassword',
-			}
+# def validate_user(email,password) :
+# 	user=users.objects.filter(email=email,activated=1)
+# 	if len(user) == 0 :
+# 		return_json_object = {
+# 			'status' : 'userdoesnotexist',
+# 		}
+# 	else :
+# 		if user[0].password == password :
+# 			return_json_object = {
+# 				'status' : 'success',
+# 				'userid' : user[0].id,
+# 				'name' : user[0].name,
+# 			}
+# 		else :
+# 			return_json_object = {
+# 				'status' : 'incorrectpassword',
+# 			}
 	
-	return_json_string = simplejson.dumps(return_json_object)
-	return return_json_string
+# 	return_json_string = simplejson.dumps(return_json_object)
+# 	return return_json_string
 
 def validate_user_inner(email,password) :
 	user=users.objects.filter(email=email,activated=1)
