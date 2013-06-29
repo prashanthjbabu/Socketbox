@@ -6,8 +6,8 @@ function resetpasstoserv()
 	var resetcode=document.getElementById("resetcode").value;
 	console.log("resetcode="+resetcode);
 	console.log("email="+email);
-	var pass=document.getElementById("pass").value;
-	var cpass=document.getElementById("cpass").value;
+	var password=document.getElementById("pass").value;
+	var cpassword=document.getElementById("cpass").value;
 	var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
  	var passfilter=  /^[A-Za-z]\w{7,14}$/;  
  	resetpassservalert = function() {}
