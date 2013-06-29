@@ -39,7 +39,7 @@ def new_password(request):
 					return_json_object = {
 						'status' : 'success',
 					}
-					user.update(resetcode="")
+					user.update(resetcode=None)
 
 				else :
 					return_json_object = {
