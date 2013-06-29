@@ -1,6 +1,6 @@
 function validateregister()
 {
-	loading = function {}
+	loading = function() {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
 	}

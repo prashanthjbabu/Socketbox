@@ -1,6 +1,6 @@
 function resetpasstoserv()
 {
-	loading = function {}
+	loading = function() {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
 	}
@@ -74,7 +74,7 @@ function resetpasstoserv()
 
 function resetpass()
 {
-	loading = function {}
+	loading = function() {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
 	}
