@@ -17,8 +17,7 @@ function resetpass()
     	$("#email").focus();
     	return;
  	}	
- 	$.post("/socketbox/reset/password/",{email : email},function(result)
- 	{
+ 	$.post("/socketbox/reset/password/",{email : email},function(result){
 		console.log(result);
 		result=JSON.parse(result);
 		if(result.status=="success")
@@ -38,5 +37,5 @@ function resetpass()
 			console.log("communication error");
 			regservalert.warning("Error in communicating with server . Please try again later!");	
 		}
-	}
+	});
 }
