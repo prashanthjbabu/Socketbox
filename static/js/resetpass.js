@@ -1,3 +1,61 @@
+function resetpasstoserv()
+{
+	var resetcode = {{ resetcode }}
+	var email={{ email }}
+	var pass=document.getElementById("pass").value;
+	var cpass=document.getElementById("cpass").value;
+	var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+ 	var passfilter=  /^[A-Za-z]\w{7,14}$/;  
+ 	resetpassservalert = function() {}
+	resetpassservalert.error = function(message) {
+            $('#resetpass-server-alerts').html('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+        }
+    resetpassservalert.success = function(message) {
+            $('#resetpass-server-alerts').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+        }
+ 	if (!emailfilter.test(email)) 
+    {
+		//$("#register-error-content").text("Please enter a valid email");
+		resetpassservalert.error("Invalid Reset Link!");
+		return;
+ 	}	
+	if(!passfilter.test(password))   
+	{   
+		//$("#register-error-content").text("Password must be atleast 7 characters");
+		resetpassservalert.error("Password must be atleast 7 characters!");
+		$("#pass").focus();
+		return;  
+	}
+	if(password!=cpassword)
+	{
+		//$("#register-error-content").text("Passwords do not match");
+		resetpassservalert.error("Passwords do not match!");
+		$("#cpass").focus();
+		return;	
+	}
+	$.post("/socketbox/new/password/",{email : email,password : password , resetcode :  },function(result){
+	console.log(result);
+	result=JSON.parse(result);
+	if(result.status=="success")
+	{
+		console.log("password changed successfully");
+		resetpassservalert.success("Congratulations! You may now login with your new password!");	
+		$("#pass").val("");
+		$("#cpass").val("");
+	}
+	else if(result.status=="userdoesnotexist")
+	{
+		console.log("user does not exist");
+		resetpassservalert.error("Invalid User Account!");	
+	}
+	else 
+	{
+		console.log("something went wrong");	
+		resetpassservalert.warning("We're sorry , something went wrong . Please try again later!");
+	} 
+	});
+}
+
 function resetpass()
 {
 	forgotpassservalert = function() {}

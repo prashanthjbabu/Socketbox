@@ -63,7 +63,7 @@ function validateregister()
 		console.log("user already exists");
 		regservalert.warning("This username already exists , please try using another email id");	
 	}
-		else 
+	else 
 		{
 			console.log("something went wrong");	
 			regservalert.warning("We're sorry , something went wrong . Please try again later!");

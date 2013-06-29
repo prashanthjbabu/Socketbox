@@ -14,7 +14,10 @@ urlpatterns = patterns('socketbox.views',
 	url(r'^rename/app/$','rename_app'),
 	url(r'^app/secret/$','get_app_secret'),
 	url(r'^account/activate/(?P<email>\S+)/(?P<actcode>\S+)/$','activate_account'),
+	
 	url(r'^account/reset/(?P<email>\S+)/(?P<resetcode>\S+)/$','reset_account'),
+
+	url(r'^new/password/$','new_password'),
 	url(r'^forgot/password/$','forgot_password'),
 	url(r'^reset/password/$','reset_password'),
 

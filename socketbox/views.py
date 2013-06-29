@@ -17,6 +17,46 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def new_password(request):
+	if request.method=='POST' :
+		if 'email' in request.POST and 'pass' in request.POST and 'resetcode' in request.POST:
+			email=request.POST['email']
+			password=request.POST['pass']
+			password=hashlib.md5(password).hexdigest()
+			resetcode=request.POST['resetcode']
+			user=users.objects.filter(email=email)
+
+			if len(user) == 0 :
+				return_json_object = {
+				'status' : 'userdoesnotexist',
+				}
+			else :
+				#userexists
+				user_resetcode=user[0].resetcode
+				if user_resetcode == resetcode :
+					#reset the password
+					user.update(password=password)
+					return_json_object = {
+						'status' : 'success',
+					}
+				else :
+					return_json_object = {
+						'status' : 'invalidresetcode',
+					}
+		else :
+			return_json_object = {
+						'status' : 'invalidpostrequest',
+					}
+
+	else :
+		return_json_object = {
+			'status' : 'invalidpostrequest',
+		}
+		
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)	
+
+@csrf_exempt
 def reset_password(request):
 	if request.method=='POST' :
 		if 'email' in request.POST :
