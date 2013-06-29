@@ -42,6 +42,8 @@
        <form class="form-signin">
         <h2 class="form-signin-heading">Reset Password</h2>
 <!--        <input type="email" class="input-block-level" id="email" placeholder="Email address">-->
+            <input type="hidden" id="email" name="email" value="{{ email }}">
+            <input type="hidden" id="resetcode" name="resetcode" value="{{ resetcode }}">
             <p class ="lead" align="justify">{{ email }}</p>
             <input type="password" class="input-block-level" id="pass" placeholder="Password">
             <input type="password" class="input-block-level" id="cpass" placeholder="Confirm Password">

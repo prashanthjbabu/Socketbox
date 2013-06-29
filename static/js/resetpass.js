@@ -1,7 +1,9 @@
 function resetpasstoserv()
 {
-	var resetcode = "{{resetcode}}";
-	var email="{{email}}";
+	//var resetcode = "{{resetcode}}";
+	//var email="{{email}}";
+	var email=document.getElementById("email").value;
+	var resetcode=document.getElementById("resetcode").value;
 	console.log("resetcode="+resetcode);
 	console.log("email="+email);
 	var pass=document.getElementById("pass").value;
