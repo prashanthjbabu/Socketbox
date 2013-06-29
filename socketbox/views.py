@@ -212,7 +212,7 @@ def login_user(request):
  		else :
 			return render_to_response('login.html',{'message' : "Something screwed up!Please Try Again!"})
 	else :
-	return render_to_response('login.html', context_instance=RequestContext(request))	
+		return render_to_response('login.html', context_instance=RequestContext(request))	
 			
 @csrf_exempt
 def logout_user(request) :
