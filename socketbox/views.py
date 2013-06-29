@@ -199,7 +199,7 @@ def login_user(request):
 			password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text == "userdoesnotexist" :
-				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!PLease try again!"})
+				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!Please try again!"})
  			
  			elif return_text == "success" :
 				user=users.objects.filter(email=email,activated=1)
@@ -217,9 +217,6 @@ def logout_user(request) :
 	del request.session['user_id']
 	del request.session['user_name']
 	return HttpResponseRedirect('/')
-
-def login(request) :
-	return render_to_response('login.html', context_instance=RequestContext(request))
 
 def dashboard(request) :
 	return render_to_response('dashboard.html', context_instance=RequestContext(request))	

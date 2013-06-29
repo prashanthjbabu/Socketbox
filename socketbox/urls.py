@@ -23,7 +23,6 @@ urlpatterns = patterns('socketbox.views',
 	url(r'^forgot/password/$','forgot_password'),
 	url(r'^reset/password/$','reset_password'),
 
-	url(r'^login/$','login'),
 	url(r'^dashboard/$','dashboard'),	
     # Examples:
     # url(r'^$', 'sockserv.views.home', name='home'),
