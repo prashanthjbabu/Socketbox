@@ -1,12 +1,12 @@
-loading = function {}
+function resetpasstoserv()
+{
+	loading = function {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
 	}
 	loading.stop = function() {
 		$('#loading').html('')
 	}
-function resetpasstoserv()
-{
 	loading.start();
 	//var resetcode = "{{resetcode}}";
 	//var email="{{email}}";
@@ -74,6 +74,13 @@ function resetpasstoserv()
 
 function resetpass()
 {
+	loading = function {}
+	loading.start = function() {
+		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
+	}
+	loading.stop = function() {
+		$('#loading').html('')
+	}
 	loading.start();
 	forgotpassservalert = function() {}
 	forgotpassservalert.warning = function(message) {

@@ -1,12 +1,13 @@
-loading = function {}
+function validateregister()
+{
+	loading = function {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
 	}
 	loading.stop = function() {
 		$('#loading').html('')
 	}
-function validateregister()
-{
+
 	loading.start();
 	regservalert = function() {}
 	regservalert.warning = function(message) {
