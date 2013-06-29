@@ -1,4 +1,4 @@
-function login()
+function userlogin()
 {
 	var navemail=document.getElementById("navemail").value;
 	var navpass=document.getElementById("navpass").value;
