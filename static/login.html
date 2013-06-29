@@ -41,7 +41,7 @@
       {% include 'hero.html' %}   
        <form class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="input-block-level" id="navemail" placeholder="Email address">
+        <input type="email" class="input-block-level" id="navemail" value="{{email}}"placeholder="Email address">
         <input type="password" class="input-block-level" id="navpass" placeholder="Password">
         <button class="btn btn-large btn-primary" type="submit">Sign in</button>
         <button type="button" onclick="window.location.href='/socketbox/forgot/password/'" class="btn btn-link">Forgot Password?</button>   

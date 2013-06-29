@@ -201,6 +201,7 @@ def login_user(request):
 				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!PLease try again!"})
  			
  			elif return_text == "success" :
+				
 				return render_to_response('dashboard.html',{'email' : email })
  			
 	 		else :
