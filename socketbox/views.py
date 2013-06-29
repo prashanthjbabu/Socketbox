@@ -198,16 +198,16 @@ def login_user(request):
 			password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text == "userdoesnotexist" :
-				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!"})
+				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!PLease try again!"})
  			
  			elif return_text == "success" :
 				return render_to_response('dashboard.html',{'email' : email })
  			
 	 		else :
-				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!"})
+				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!Please Try Again"})
 
  		else :
-			return render_to_response('login.html',{'message' : "Please Try Again!"})
+			return render_to_response('login.html',{'message' : "Something screwed up!Please Try Again!"})
 
 def login(request) :
 	return render_to_response('login.html', context_instance=RequestContext(request))
