@@ -37,7 +37,7 @@ function resetpasstoserv()
 		$("#cpass").focus();
 		return;	
 	}
-	$.post("/socketbox/new/password/",{email : email,password : password , resetcode : resetcode },function(result){
+	$.post("/socketbox/new/password/",{email : email,pass : password , resetcode : resetcode },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
