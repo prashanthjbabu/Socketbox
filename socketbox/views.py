@@ -204,7 +204,7 @@ def login_user(request):
 				user=users.objects.filter(email=email,activated=1)
 				request.session['user_id'] = user[0].id
 				request.session['user_name'] = user[0].name
-	            return HttpResponseRedirect('/socketbox/dashboard')
+				return HttpResponseRedirect('/socketbox/dashboard')
  			else :
 				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!Please Try Again"})
 
