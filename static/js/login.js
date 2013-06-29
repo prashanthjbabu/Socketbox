@@ -11,7 +11,3 @@ function userlogin()
 	}
 
 }
-function userlogout()
-{
-	
-}

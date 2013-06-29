@@ -217,6 +217,7 @@ def logout_user(request) :
 	del request.session['user_id']
 	del request.session['user_name']
 	return HttpResponseRedirect('/')
+
 def login(request) :
 	return render_to_response('login.html', context_instance=RequestContext(request))
 
