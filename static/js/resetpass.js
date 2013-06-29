@@ -55,7 +55,7 @@ function resetpasstoserv()
 	else 
 	{
 		console.log("something went wrong");	
-		resetpassservalert.warning("We're sorry , something went wrong . Please try again later!");
+		resetpassservalert.error("We're sorry , something went wrong . Please try again later!");
 	} 
 	});
 }
