@@ -33,6 +33,7 @@
             {% if request.session.user_id %}
               <form class="navbar-form pull-right" method="POST" action="/socketbox/user/logout/">
                    <p class="navbar-text">Welcome {{request.session.user_name}}
+                      <button type="button" class="btn btn-warning" id="dashboard">DashBoard</button>
                       <button type="submit" class="btn btn-success" id="logout">Logout</button>
                    </p> 
               </form>
