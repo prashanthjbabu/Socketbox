@@ -216,6 +216,8 @@ def login_user(request):
  		return_json_string = simplejson.dumps(return_json_object)
 		return return_json_string
 
+def login(request) :
+	
 # def validate_user(email,password) :
 # 	user=users.objects.filter(email=email,activated=1)
 # 	if len(user) == 0 :
