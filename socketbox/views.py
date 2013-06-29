@@ -57,10 +57,11 @@ def forgot_password(request):
 @csrf_exempt
 def reset_account(request,email,resetcode):
 	if len(email) > 0 and len(resetcode) > 0 :
-		return render_to_response('message.html',{'message' : "Invalid "+email+" "+resetcode+" Reset Link , either email or resetcode is invalid!"})
+		return render_to_response('resetpass.html',{'email' : email , 'resetcode' : resetcode})	
 	else :
 		#reset URL is good
-		return render_to_response('resetpass.html',{'email' : email , 'resetcode' : resetcode})	
+		return render_to_response('message.html',{'message' : "Invalid Reset Link , either email or resetcode is invalid!"})
+
 @csrf_exempt
 def activate_account(request,email,actcode):
 	if len(email) > 0 and len(actcode) > 0 :
