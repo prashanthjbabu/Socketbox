@@ -221,7 +221,11 @@ def logout_user(request) :
 	return HttpResponseRedirect('/')
 
 def dashboard(request) :
-	return render_to_response('dashboard.html', context_instance=RequestContext(request))	
+	if request.session['user_id'] :
+		return render_to_response('dashboard.html', context_instance=RequestContext(request))	
+	else :
+		return render_to_response('login.html', context_instance=RequestContext(request))	
+	
 # def validate_user(email,password) :
 # 	user=users.objects.filter(email=email,activated=1)
 # 	if len(user) == 0 :
