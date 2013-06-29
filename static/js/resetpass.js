@@ -1,5 +1,13 @@
+loading = function {}
+	loading.start = function() {
+		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
+	}
+	loading.stop = function() {
+		$('#loading').html('')
+	}
 function resetpasstoserv()
 {
+	loading.start();
 	//var resetcode = "{{resetcode}}";
 	//var email="{{email}}";
 	var email=document.getElementById("email").value;
@@ -21,6 +29,7 @@ function resetpasstoserv()
     {
 		//$("#register-error-content").text("Please enter a valid email");
 		resetpassservalert.error("Invalid Reset Link!");
+		loading.stop();
 		return;
  	}	
 	if(!passfilter.test(password))   
@@ -28,6 +37,7 @@ function resetpasstoserv()
 		//$("#register-error-content").text("Password must be atleast 7 characters");
 		resetpassservalert.error("Password must be atleast 7 characters!");
 		$("#pass").focus();
+		loading.stop();
 		return;  
 	}
 	if(password!=cpassword)
@@ -35,6 +45,7 @@ function resetpasstoserv()
 		//$("#register-error-content").text("Passwords do not match");
 		resetpassservalert.error("Passwords do not match!");
 		$("#cpass").focus();
+		loading.stop();
 		return;	
 	}
 	$.post("/socketbox/new/password/",{email : email,pass : password , resetcode : resetcode },function(result){
@@ -57,11 +68,13 @@ function resetpasstoserv()
 		console.log("something went wrong");	
 		resetpassservalert.error("We're sorry , something went wrong . Please try again later!");
 	} 
+	loading.stop();
 	});
 }
 
 function resetpass()
 {
+	loading.start();
 	forgotpassservalert = function() {}
 	forgotpassservalert.warning = function(message) {
             $('#forgotpass-server-alerts').html('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')

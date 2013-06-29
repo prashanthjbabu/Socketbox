@@ -1,5 +1,13 @@
+loading = function {}
+	loading.start = function() {
+		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
+	}
+	loading.stop = function() {
+		$('#loading').html('')
+	}
 function validateregister()
 {
+	loading.start();
 	regservalert = function() {}
 	regservalert.warning = function(message) {
             $('#register-server-alerts').html('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
@@ -27,6 +35,7 @@ function validateregister()
 		//$("#register-error-content").text("Please enter a valid name");
 		regerrorcontent.error("Please enter a valid name!");
 		$("#name").focus();
+		loading.stop();
 		return;
 	}
 
@@ -35,18 +44,21 @@ function validateregister()
 		//$("#register-error-content").text("Please enter a valid email");
 		regerrorcontent.error("Please enter a valid email!");
     	$("#email").focus();
+    	loading.stop();
     	return;
  	}	
 	if(!passfilter.test(password))   
 	{   
 		//$("#register-error-content").text("Password must be atleast 7 characters");
 		regerrorcontent.error("Password must be atleast 7 characters!");
+		loading.stop();
 		return;  
 	}
 	if(password!=cpassword)
 	{
 		//$("#register-error-content").text("Passwords do not match");
 		regerrorcontent.error("Passwords do not match!");
+		loading.stop();
 		return;	
 	} 
 	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
@@ -69,7 +81,7 @@ function validateregister()
 			regservalert.warning("We're sorry , something went wrong . Please try again later!");
 		}
   	//write response handle code here
-
+  	loading.stop();
   }); 
 }
 function clearall()
