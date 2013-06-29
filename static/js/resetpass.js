@@ -120,5 +120,7 @@ function resetpass()
 			console.log("communication error");
 			forgotpassservalert.warning("Error in communicating with server . Please try again later!");	
 		}
+	loading.stop();
+
 	});
 }
