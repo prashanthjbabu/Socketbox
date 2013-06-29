@@ -206,8 +206,7 @@ def login_user(request):
 				request.session['user_name'] = user.name
 	            return HttpResponseRedirect('/socketbox/dashboard')
 				#return render_to_response('dashboard.html',{'email' : email })
- 			
-	 		else :
+ 			else :
 				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!Please Try Again"})
 
  		else :
