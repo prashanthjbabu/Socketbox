@@ -63,7 +63,7 @@ def activate_account(request,email,actcode):
 	if len(email) > 0 and len(actcode) > 0 :
 		user=users.objects.filter(email=email)
 		if len(user) == 0: #user doesnt exist already
-			return render_to_response('message.html',{'message' : "Sorry but this Email ID does not exist in our database "})
+			return render_to_response('message.html',{'message' : "Sorry but this Email ID does not exist in our database"})
 		else :
 			#user exists
 			user_actcode=user[0].activationcode
