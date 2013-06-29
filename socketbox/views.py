@@ -222,8 +222,10 @@ def logout_user(request) :
 
 def dashboard(request) :
 	if 'user_id' in request.session :
+		#session exists for user
 		return render_to_response('dashboard.html', context_instance=RequestContext(request))	
 	else :
+		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
 	
 # def validate_user(email,password) :
