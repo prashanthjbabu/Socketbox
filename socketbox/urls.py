@@ -8,6 +8,8 @@ urlpatterns = patterns('socketbox.views',
 	url(r'^send/$','sock_test'),
 	url(r'^user/add/$','add_user'),
 	url(r'^user/login/$','login_user'),
+	url(r'^user/logout/$','logout_user'),
+
 	url(r'^create/app/$','create_app'),
 	url(r'^show/apps/$','show_apps'),
 	url(r'^delete/app/$','delete_app'),

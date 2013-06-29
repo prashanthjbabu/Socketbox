@@ -11,3 +11,7 @@ function userlogin()
 	}
 
 }
+function userlogout()
+{
+	
+}

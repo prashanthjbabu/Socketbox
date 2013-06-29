@@ -201,8 +201,11 @@ def login_user(request):
 				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!PLease try again!"})
  			
  			elif return_text == "success" :
-				
-				return render_to_response('dashboard.html',{'email' : email })
+				user=users.objects.filter(email=email,activated=1)
+				request.session['user_id'] = user.id
+				request.session['user_name'] = user.name
+	            return HttpResponseRedirect('/socketbox/dashboard')
+				#return render_to_response('dashboard.html',{'email' : email })
  			
 	 		else :
 				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!Please Try Again"})
@@ -210,6 +213,10 @@ def login_user(request):
  		else :
 			return render_to_response('login.html',{'message' : "Something screwed up!Please Try Again!"})
 
+def logout_user(request) :
+	del request.session['user_id']
+	del request.session['user_name']
+	return HttpResponseRedirect('/')
 def login(request) :
 	return render_to_response('login.html', context_instance=RequestContext(request))
 
