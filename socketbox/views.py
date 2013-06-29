@@ -207,7 +207,7 @@ def login_user(request):
 				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!"})
 
  		else :
-			return render_to_response('login.html',{'email' : email , 'message' : "Please Try Again!"})
+			return render_to_response('login.html',{'message' : "Please Try Again!"})
 
 def login(request) :
 	return render_to_response('login.html', context_instance=RequestContext(request))
