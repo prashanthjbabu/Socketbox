@@ -221,6 +221,8 @@ def logout_user(request) :
 def login(request) :
 	return render_to_response('login.html', context_instance=RequestContext(request))
 
+def dashboard(request) :
+	return render_to_response('dashboard.html', context_instance=RequestContext(request))	
 # def validate_user(email,password) :
 # 	user=users.objects.filter(email=email,activated=1)
 # 	if len(user) == 0 :
