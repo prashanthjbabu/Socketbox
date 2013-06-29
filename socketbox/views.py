@@ -209,8 +209,12 @@ def login_user(request):
 	 			return_json_object = {
  				'status' : 'incorrectpassword',
  			}
- 			return_json_string = simplejson.dumps(return_json_object)
-			return return_json_string
+ 		else :
+ 			return_json_object = {
+ 				'status' : 'invalidpostrequest',
+ 			}
+ 		return_json_string = simplejson.dumps(return_json_object)
+		return return_json_string
 
 # def validate_user(email,password) :
 # 	user=users.objects.filter(email=email,activated=1)
