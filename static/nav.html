@@ -31,10 +31,13 @@
               </li> -->
             </ul>
             {% if request.session.user_id %}
-                <p class="navbar-text">Welcome {{request.session.user_name}} </p> 
-                <form class="navbar-form pull-right" method="POST" action="/socketbox/user/logout/">
-                <button type="submit" class="btn btn-success" id="logout">Logout</button>
-              </form>
+                <div class="nav pull-right">
+                  <p class="navbar-text">Welcome {{request.session.user_name}} 
+                    <form class="navbar-form pull-right" method="POST" action="/socketbox/user/logout/">
+                    <button type="submit" class="btn btn-success" id="logout">Logout</button>
+                    </form>
+                  </p> 
+                </div>
             {% else %}
                   <form class="navbar-form pull-right" method="POST" action="/socketbox/user/login/">
                   <input class="span2" type="text" name="navemail" id="navemail" placeholder="Email">
