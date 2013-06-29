@@ -24,7 +24,7 @@ function resetpass()
 		if(result.status=="success")
 		{
 			console.log("email sent");
-			forgotpassservalert.success("Please check your email for further instructions on how to reset your account!");	
+			forgotpassservalert.success("Please check your email for further instructions on how to reset your password!");	
 			$("#email").val("");
 		}
 		else if(result.status=="userdoesnotexist")
