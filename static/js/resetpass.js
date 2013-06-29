@@ -24,19 +24,19 @@ function resetpass()
 		if(result.status=="success")
 		{
 			console.log("email sent");
-			regservalert.success("Please check your email for further instructions on how to reset your account!");	
+			forgotpassservalert.success("Please check your email for further instructions on how to reset your account!");	
 			$("#email").val("");
 		}
 		else if(result.status=="userdoesnotexist")
 		{
 			console.log("does not exist");
-			regservalert.warning("This Email ID is not associated with a socketbox account");	
+			forgotpassservalert.warning("This Email ID is not associated with a socketbox account");	
 			$("#email").val("");
 		}
 		else
 		{
 			console.log("communication error");
-			regservalert.warning("Error in communicating with server . Please try again later!");	
+			forgotpassservalert.warning("Error in communicating with server . Please try again later!");	
 		}
 	});
 }
