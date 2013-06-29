@@ -1,7 +1,7 @@
 function resetpasstoserv()
 {
-	var resetcode = {{ resetcode }} ;
-	var email={{ email }} ;
+	var resetcode = "{{ resetcode }}" ;
+	var email="{{ email }}" ;
 	var pass=document.getElementById("pass").value;
 	var cpass=document.getElementById("cpass").value;
 	var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
