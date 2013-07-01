@@ -277,26 +277,43 @@ def check_unique_secret(secret) :
 	else :
 		return 0
 
+# @csrf_exempt
+# def show_apps(request):
+# 	if request.method == "POST" :
+# 		if 'email' in request.POST and 'password' in request.POST :
+# 			email=request.POST['email']
+# 			password=request.POST['password']
+# 			password=hashlib.md5(password).hexdigest()
+# 			return_text=validate_user_inner(email,password)
+# 			list_of_apps=[]
+# 			if return_text== "success" :
+# 				user=users.objects.filter(email=email)
+# 				user_id=user[0].id
+# 				myapps=apps.objects.filter(userid=user_id)
+# 				return HttpResponse(serializers.serialize("json", myapps))
+# 			else :
+# 				return_json_object = {
+# 				'status' : 'incorrectpassword',
+# 				}
+# 				return_json_string = simplejson.dumps(return_json_object)
+# 				return HttpResponse(return_json_string)
+
 @csrf_exempt
-def show_apps(request):
-	if request.method == "POST" :
-		if 'email' in request.POST and 'password' in request.POST :
-			email=request.POST['email']
-			password=request.POST['password']
-			password=hashlib.md5(password).hexdigest()
-			return_text=validate_user_inner(email,password)
-			list_of_apps=[]
-			if return_text== "success" :
-				user=users.objects.filter(email=email)
-				user_id=user[0].id
-				myapps=apps.objects.filter(userid=user_id)
-				return HttpResponse(serializers.serialize("json", myapps))
-			else :
-				return_json_object = {
-				'status' : 'incorrectpassword',
-				}
-				return_json_string = simplejson.dumps(return_json_object)
-				return HttpResponse(return_json_string)
+def show_app(request,appid) :
+	myapp=apps.objects.filter(id=appid)
+
+	if len(myapp) > 0 :
+		#app exists
+		user_id=myapp[0].userid
+
+		if request.session['user_id'] == user_id :
+			#correct userid
+			return render_to_response('appdetails.html',{ 'myapp' : myapp }, context_instance=RequestContext(request))	
+		else :
+			HttpResponseRedirect('/socketbox/dashboard')	
+	else :
+		HttpResponseRedirect('/socketbox/dashboard')	
+
 
 @csrf_exempt
 def rename_app(request):

@@ -11,7 +11,7 @@ urlpatterns = patterns('socketbox.views',
 	url(r'^user/logout/$','logout_user'),
 
 	url(r'^create/app/$','create_app'),
-	url(r'^show/apps/$','show_apps'),
+	url(r'^show/app/(?P<appid>\d+)/$','show_app'),
 	url(r'^delete/app/$','delete_app'),
 	url(r'^rename/app/$','rename_app'),
 	url(r'^app/secret/$','get_app_secret'),
