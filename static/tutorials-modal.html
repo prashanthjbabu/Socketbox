@@ -1,31 +1,6 @@
 <h2>Tutorials!</h2>
-          <p class ="lead" align="justify">This page has a bunch of tutorials with step by step procedures and code snippets to setup socketbox for your application.</p>
-          <h3>Here We Go! </h3>
-          <p class="lead" align="justify"><b>Step 1 :</b> Register with SocketBox in the registration window on the right and get your login and password .</p>
-          <p class="lead" align="justify"><b>Step 2 :</b> Login to SocketBox with your username and password and enter into the Dashboard .</p>
-          <p class="lead" align="justify"><b>Step 3 :</b> Create a New Application and Get your <b>API key</b> and <b>secret key</b> for your application .</p>
-          <p class="lead" align="justify"><b>Step 4 :</b> Use these keys for making and receiving push notificatiosn and the server and client end respectively .</p>
-          <h3>Client End </h3>
-          <p class ="lead" align="justify">SocketBox supports javascript in the client end . Once you have your API key and secret key , the following steps help setup the client : </p>
-          <p class="lead" align="justify"><b>Step 1 :</b> Include the socketbox.js library file in your client HTML page .</p>
-          <pre class="prettyprint">
-            &lt;script src="http://socketbox.in/js/socketbox-1.0.js"&gt;&lt;/script&gt;
-          </pre>
-          <p class="lead" align="justify"><b>Step 2 :</b> Open a connection to pusher. Use the API key you generated earlier over here .</p>
-          <pre class="prettyprint">
-            var socket = new SocketBox('API_KEY');
-          </pre>
-          <p class="lead" align="justify"><b>Step 3 :</b>Subscribe to a channel . In socketbox for every socket there is a channel . You may have multiple channels where different clients subscribe to different channels so that only particular messages reach particular clients .</p>
-          <pre class="prettyprint">
-          socket.subscribe('CHANNEL_NAME');
-          </pre>
-          <p class="lead" align="justify"><b>Step 4 :</b>Listen to a particular event in a channel . Each channel can have multiple events . So you may listen for only a particular event in a channel . Ensure both client and server have the same CHANNEL_NAME and EVENT_NAME to receive all messages.</p>
-          <pre class="prettyprint">
-              socket.bind('EVENT_NAME', function(data) {
-                      console.log(data);
-              });          
-          </pre>
-          <p class="lead" align="justify"><b>NOTE:</b>This is a callback function which returns data which is the data that is sent from the server in JSON format.</p>
+          <h3>Client End</h3>
+          <p class ="lead" align="justify">SocketBox supports javascript in the client end . Once you have your API key and secret key , the following code will help setup the client : </p>        
           <p class="lead" align="justify"><b>Complete Code :</b></p>
           <pre class="prettyprint">
             &lt;script src="http://socketbox.in/js/socketbox-1.0.js"&gt;&lt;/script&gt;
