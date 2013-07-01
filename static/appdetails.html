@@ -32,15 +32,14 @@
       </div>
     </div>
 
-    <div id="newapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="delapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
         <form class="form-signin">
-          <h2 class="form-signin-heading">Add A New App</h2>
-          <input type="text" size="5" class="input-block-level" name="appname" id="appname" placeholder="App Name">
-          <button class="btn btn-large btn-primary" type="button" onclick="createapp()">Create App</button>
+          <h2 class="form-signin-heading">Are you sure you want to delete {{myapp.appname}} ?</h2>
+          <button class="btn btn-large btn-primary" type="button" onclick="deleteapp()">Delete App</button>
           <div id="loading"></div>
           <div id="createapp-error-content"></div>
         </form>
