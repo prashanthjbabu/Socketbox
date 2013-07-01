@@ -307,7 +307,7 @@ def show_app(request,appid) :
 
 		if request.session['user_id'] == user_id :
 			#correct userid
-			return HttpResponse("app id is "+appid+"app name is "+myapp.appname);
+			return HttpResponse("app id is "+appid+"app name is "+myapp[0].appname);
 			#return render_to_response('appdetails.html',{ 'myapp' : myapp }, context_instance=RequestContext(request))	
 		else :
 			HttpResponseRedirect('/socketbox/dashboard')	
