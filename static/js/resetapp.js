@@ -16,7 +16,7 @@ function resetapp()
     resetappalert.success = function(message) {
             $('#resetapp-error-content').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
         }
-	var toresetappname=document.getElementById("toresetappname").evalue;
+	var toresetappname=document.getElementById("toresetappname").value;
 	if(toresetappname==null || toresetappname=="")
 	{
 		//$("#register-error-content").text("Please enter a valid name");
