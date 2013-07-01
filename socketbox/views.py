@@ -452,7 +452,7 @@ def create_app(request):
 					new_app=apps(userid=user_id,appname=app_name,secret=secret,apikey=apikey)
 					new_app.save() # add the user
 					return_json_object = {
-						'status' : 'appcreated',
+						'status' : 'success',
 						'secret' : secret,
 						'apikey' : apikey,
 						'appname' : app_name,
