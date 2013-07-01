@@ -28,8 +28,8 @@
             {% for app in myapps %}
             <tr>
               <td><button class="btn btn-link" type="button" onclick="window.location.href='/socketbox/show/app/{{app.id}}'"><h3>{{app.appname}}</h3></button></td>
-              <td><span class="text-success"><h3>{{app.apikey}}</h3></span></td>
-              <td><span class="text-error"><h3>{{app.secret}}</h3></span></td>    
+              <td><span class="text-success"><h5>{{app.apikey}}</h5></span></td>
+              <td><span class="text-error"><h5>{{app.secret}}</h5></span></td>    
             </tr>  
             {% endfor %}
           </table>
