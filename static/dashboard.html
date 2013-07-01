@@ -27,7 +27,7 @@
             </tr>
             {% for app in myapps %}
             <tr>
-              <td><button class="btn btn-link" type="button" onclick="window.location.href='/socketbox/show/app/{{app.id}}'">{{app.appname}}</button></td>
+              <td><button class="btn btn-link" type="button" onclick="window.location.href='/socketbox/show/app/{{app.id}}'"><h3>{{app.appname}}</h3></button></td>
               <td><span class="text-success">{{app.apikey}}</span></td>
               <td><span class="text-error">{{app.secret}}</span></td>    
             </tr>  
