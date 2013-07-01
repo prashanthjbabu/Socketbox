@@ -145,7 +145,27 @@ def app_reset(request) :
 					}
 				else :
 					#logic to reset app credentials	
-					new_api_key=0
+					while True :
+						apikey=random_generator(10)
+						if check_unique_apikey(apikey) == 1 :
+							break
+
+					
+					secret=random_generator(10)
+					#check if secret is unique
+					while True :
+						secret=random_generator(10)
+						if check_unique_secret(secret) == 1 :
+							break
+
+					myapp.update(apikey=apikey,secret=secret)
+					return_json_object = {
+						'status' : 'success',
+						'secret' : secret,
+						'apikey' : apikey,
+						'appname' : app_name,
+					}
+
 			else :
 				return_json_object = {
 						'status' : 'invalidlogin',
