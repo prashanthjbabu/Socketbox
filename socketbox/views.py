@@ -323,10 +323,10 @@ def show_app(request,appid) :
 @csrf_exempt
 def rename_app(request):
 	if request.method == "POST" :
-		if 'email' in request.POST and 'password' in request.POST and 'oldappname' in request.POST and 'newappname' in request.POST :
-			email=request.POST['email']
-			password=request.POST['password']
-			password=hashlib.md5(password).hexdigest()
+		if 'oldappname' in request.POST and 'newappname' in request.POST :
+			email=request.session['email']
+			password=request.session['password']
+			#password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text== "success" :
 
@@ -334,17 +334,23 @@ def rename_app(request):
 				user_id=user[0].id
 				old_app_name=request.POST['oldappname']
 				new_app_name=request.POST['newappname']
-				myapp=apps.objects.filter(userid=user_id).filter(appname=app_name)
+				myapp=apps.objects.filter(userid=user_id).filter(appname=old_app_name)
 				if len(myapp) == 0 :
 					#invaild appname .. thats weird :P
 					return_json_object = {
 						'status' : 'invalidappname',
 					}
 				else :
-					myapp.update(appname=new_app_name)
-					return_json_object = {
-						'status' : 'apprenamed',
-					}
+					existingapp=apps.objects.filter(userid=user_id).filter(new_app_name)
+					if len(existingapp) == 0 :
+						myapp.update(appname=new_app_name)
+						return_json_object = {
+							'status' : 'success',
+						}
+					else :
+						return_json_object = {
+							'status' : 'appnameexists',
+						}
 			else :
 				return_json_object = {
 						'status' : 'invalidlogin',
@@ -357,7 +363,7 @@ def rename_app(request):
 @csrf_exempt
 def delete_app(request):
 	if request.method == "POST" :
-		if 'appname' in request.POST :
+		if 'todeleteappname' in request.POST :
 			email=request.session['email']
 			password=request.session['password']
 			#password=hashlib.md5(password).hexdigest()
@@ -366,7 +372,7 @@ def delete_app(request):
 
 				user=users.objects.filter(email=email)
 				user_id=user[0].id
-				app_name=request.POST['appname']
+				app_name=request.POST['todeleteappname']
 
 				myapp=apps.objects.filter(userid=user_id).filter(appname=app_name)
 				if len(myapp) == 0 :
