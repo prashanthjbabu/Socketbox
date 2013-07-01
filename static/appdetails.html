@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include 'header.html' %}   
+    {% include 'scripts.html' %}   
+  </head>
+  <body>
+    {% include 'nav.html' %}   
+
+    <div class="container">
+      {% include 'hero.html' %}   
+      <div class="row">
+        <div class="span4">
+          <h3>App Statistics!</h3>
+          <p class ="lead" align="justify">This is the side panel.</p>
+        </div>
+        <div class="span4">
+          <h3>{{myapp.appname}}</h3>
+<!--          <p class ="lead" align="justify">This is the main area.</p> -->
+          
+        </div>
+        <div class="span4">
+          <h3>App Credentials</h3>
+          <h5>App Name : {{myapp.appname}}</h5>
+          <h5>API Key : {{myapp.apikey}}</h5>
+          <h5>Secret Key : {{myapp.secret}}</h5>
+<!--          <p class ="lead" align="justify">This is the main area.</p> -->
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="newapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin">
+          <h2 class="form-signin-heading">Add A New App</h2>
+          <input type="text" size="5" class="input-block-level" name="appname" id="appname" placeholder="App Name">
+          <button class="btn btn-large btn-primary" type="button" onclick="createapp()">Create App</button>
+          <div id="loading"></div>
+          <div id="createapp-error-content"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+       <!-- <button class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>  
+  </body>
+  <footer>
+    {% include 'footer.html' %}
+  </footer>
+</html>

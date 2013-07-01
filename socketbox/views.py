@@ -301,7 +301,6 @@ def check_unique_secret(secret) :
 @csrf_exempt
 def show_app(request,appid) :
 	myapp=apps.objects.filter(id=appid)
-
 	if len(myapp) > 0 :
 		#app exists
 		user_id=myapp[0].userid
