@@ -27,7 +27,9 @@
             </tr>
             {% for app in myapps %}
             <tr>
-              <td>{{app.appname}}</td>    
+              <td>{{app.appname}}</td>
+              <td>{{app.apikey}}</td>
+              <td>{{app.secret}}</td>    
             </tr>  
             {% endfor %}
           </table>
