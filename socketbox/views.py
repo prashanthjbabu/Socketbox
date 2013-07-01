@@ -163,7 +163,7 @@ def app_reset(request) :
 						'status' : 'success',
 						'secret' : secret,
 						'apikey' : apikey,
-						'appname' : app_name,
+						'appname' : toresetappname,
 					}
 
 			else :
