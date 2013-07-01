@@ -1,0 +1,139 @@
+<h2>Tutorials!</h2>
+          <p class ="lead" align="justify">This page has a bunch of tutorials with step by step procedures and code snippets to setup socketbox for your application.</p>
+          <h3>Here We Go! </h3>
+          <p class="lead" align="justify"><b>Step 1 :</b> Register with SocketBox in the registration window on the right and get your login and password .</p>
+          <p class="lead" align="justify"><b>Step 2 :</b> Login to SocketBox with your username and password and enter into the Dashboard .</p>
+          <p class="lead" align="justify"><b>Step 3 :</b> Create a New Application and Get your <b>API key</b> and <b>secret key</b> for your application .</p>
+          <p class="lead" align="justify"><b>Step 4 :</b> Use these keys for making and receiving push notificatiosn and the server and client end respectively .</p>
+          <h3>Client End </h3>
+          <p class ="lead" align="justify">SocketBox supports javascript in the client end . Once you have your API key and secret key , the following steps help setup the client : </p>
+          <p class="lead" align="justify"><b>Step 1 :</b> Include the socketbox.js library file in your client HTML page .</p>
+          <pre class="prettyprint">
+            &lt;script src="http://socketbox.in/js/socketbox-1.0.js"&gt;&lt;/script&gt;
+          </pre>
+          <p class="lead" align="justify"><b>Step 2 :</b> Open a connection to pusher. Use the API key you generated earlier over here .</p>
+          <pre class="prettyprint">
+            var socket = new SocketBox('API_KEY');
+          </pre>
+          <p class="lead" align="justify"><b>Step 3 :</b>Subscribe to a channel . In socketbox for every socket there is a channel . You may have multiple channels where different clients subscribe to different channels so that only particular messages reach particular clients .</p>
+          <pre class="prettyprint">
+          socket.subscribe('CHANNEL_NAME');
+          </pre>
+          <p class="lead" align="justify"><b>Step 4 :</b>Listen to a particular event in a channel . Each channel can have multiple events . So you may listen for only a particular event in a channel . Ensure both client and server have the same CHANNEL_NAME and EVENT_NAME to receive all messages.</p>
+          <pre class="prettyprint">
+              socket.bind('EVENT_NAME', function(data) {
+                      console.log(data);
+              });          
+          </pre>
+          <p class="lead" align="justify"><b>NOTE:</b>This is a callback function which returns data which is the data that is sent from the server in JSON format.</p>
+          <p class="lead" align="justify"><b>Complete Code :</b></p>
+          <pre class="prettyprint">
+            &lt;script src="http://socketbox.in/js/socketbox-1.0.js"&gt;&lt;/script&gt;
+            var socket = new SocketBox('API_KEY');
+            socket.subscribe('CHANNEL_NAME');
+            socket.bind('EVENT_NAME', function(data) {
+                      console.log(data);
+            });          
+          </pre>
+
+          <h3>Server End </h3>
+          <p class ="lead" align="justify">The server end basically requires you to make a POST request to the socketbox server (server.socketbox.in) and provide the required data as part of the POST request. The data required by the POST request are :</p>
+          <p class ="lead" align="justify">
+            <ul>
+              <li>API Key(apikey)</li>
+              <li>Secret Key(secret)</li>
+              <li>Event Name(event)</li>
+              <li>Channel Name(channel)</li>
+              <li>Data to be sent(data)</li>
+            </ul>
+          </p>  
+          <p class="lead" align="justify"><b>Here are some code snippets for various programming languages:</b></p>
+          <h3>Django! </h3>
+          <pre class="prettyprint">
+            def sock_test(request):
+              event = "EVENT_NAME"
+              apikey="API_KEY"
+              secret="SECRET_KEY"
+              channel = "CHANNEL_NAME"
+              data = {
+                'name' : 'Mathew',
+                'age' : '34',
+              }
+              socket_data = {
+                'event' : event,
+                'channel' : channel,
+                'data' : simplejson.dumps(data),
+                'apikey' : apikey,
+                'secret' : secret,
+              }
+
+              host = 'http://server.socketbox.in:8000';
+              try:
+                result = urllib2.urlopen(host + '/post/', urllib.urlencode(socket_data))
+                content = result.read()
+              except Exception:
+                content = "FAIL"
+              return HttpResponse(content)          
+          </pre>
+          <h3>PHP! </h3>
+            <pre class="prettyprint">
+              &lt;?php
+                # Our new data
+                $dat=array('name' => 'mathew' , 'age' => 35);
+                $mydata=json_encode($dat);
+                $data = array(
+                    'event' => 'EVENT_NAME',
+                    'channel' => 'CHANNEL_NAME',
+                    'data' => $mydata,
+                    'apikey' => 'API_KEY',
+                    'secret' => 'SECRET_KEY',
+                    
+                );
+
+                # Create a connection
+                $url = 'http://server.socketbox.in:8000/post/';
+                $ch = curl_init($url);
+
+                # Form data string
+                $postString = http_build_query($data, '', '&');
+                # Setting our options
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+
+                # Get the response
+                $response = curl_exec($ch);
+              ?&gt;
+            </pre>
+          <h3>Node.js! </h3>
+            <pre class="prettyprint">
+              var request = require("request");
+              var data = "{\"name\" : \"Mathew\",\"age\" : \"35\"}";
+                request({
+                  uri: "http://server.socketbox.in:8000/post/",
+                  method: "POST",
+                  form: {
+                  'event' : "EVENT_NAME",
+                  'channel' : "CHANNEL_NAME",
+                  'data' : data,
+                  'apikey' : "API_KEY",
+                  'secret' : "SECRET_KEY",
+                  }
+                }, function(error, response, body) {
+                  console.log("body = "+body);
+                  console.log("response = "+response)
+                });
+            </pre>
+            <h3>For any other programming language! </h3>
+            <p class="lead" align="justify">Incase you plan to use any other programming language all you need to do is ensure that the following requirements are met :</p>
+            <ol>
+              <li>Create a POST request for the URL http://server.socketbox.in:8000/post/</li>
+              <li>The POST request should have the following parameters</li>
+              <ul>
+                <li>apikey</li>
+                <li>secret</li>
+                <li>event</li>
+                <li>channel</li>
+                <li>data</li>
+              </ul>
+            </ol>
+            <p class="lead" align="justify"><b>NOTE :</b> The parameter data is the data you would like to send across as a push notification . It is recommended to use the JSON format for data .</p>
