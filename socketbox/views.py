@@ -355,9 +355,18 @@ def rename_app(request):
 				return_json_object = {
 						'status' : 'invalidlogin',
 				}
+		else :
+			return_json_object = {
+				'status' : 'requesterror',
+			}
+	else :
+		return_json_object = {
+			'status' : 'requesterror',
+		}		
+				
 
-			return_json_string = simplejson.dumps(return_json_object)
-			return HttpResponse(return_json_string)
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)
 
 
 @csrf_exempt
