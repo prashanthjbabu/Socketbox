@@ -19,6 +19,8 @@
           <h1>{{myapp.appname}}</h1>
 <!--          <p class ="lead" align="justify">This is the main area.</p> -->
           
+          <button class="btn btn-primary" href="#delapp" data-toggle="modal" type="button">Rename App</button>
+          <button class="btn btn-danger" href="#delapp" data-toggle="modal" type="button">Delete App</button>
         </div>
         <div class="span4">
           <h3 class="text-info">App Credentials</h3>
@@ -26,7 +28,7 @@
           <h5>API Key : <span class="text-error">{{myapp.apikey}}</span></h5>
           <h5>Secret Key : <span class="text-warning">{{myapp.secret}}</span></h5>
 <!--          <p class ="lead" align="justify">This is the main area.</p> -->
-          <button class="btn btn-primary" type="button">Rename App</button>
+          
           <button class="btn btn-primary" type="button">Reset Credentials</button>
         </div>
       </div>
