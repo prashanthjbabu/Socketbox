@@ -20,7 +20,7 @@ function createapp()
 	if(appname==null || appname=="")
 	{
 		//$("#register-error-content").text("Please enter a valid name");
-		createappalert.warning"Please enter a valid app name!");
+		createappalert.warning("Please enter a valid app name!");
 		$("#appname").focus();
 		loading.stop();
 		return;
