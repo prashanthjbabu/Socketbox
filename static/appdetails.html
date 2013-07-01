@@ -19,7 +19,7 @@
           <h1>{{myapp.appname}}</h1>
 <!--          <p class ="lead" align="justify">This is the main area.</p> -->
           
-          <button class="btn btn-primary" href="#delapp" data-toggle="modal" type="button">Rename App</button>
+          <button class="btn btn-warning" href="#delapp" data-toggle="modal" type="button">Rename App</button>
           <button class="btn btn-danger" href="#delapp" data-toggle="modal" type="button">Delete App</button>
         </div>
         <div class="span4">
@@ -41,7 +41,7 @@
       <div class="modal-body">
         <form class="form-signin">
           <h2 class="form-signin-heading">Are you sure you want to delete {{myapp.appname}} ?</h2>
-          <button class="btn btn-large btn-primary" type="button" onclick="deleteapp()">Delete App</button>
+          <button class="btn btn-large btn-danger" type="button" onclick="deleteapp()">Delete App</button>
           <div id="loading"></div>
           <div id="createapp-error-content"></div>
         </form>
