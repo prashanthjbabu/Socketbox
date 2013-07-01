@@ -34,6 +34,7 @@ function createapp()
 		console.log("app created successfully");
 		createappalert.success("Congratulations! Your App has been created successfully!");	
 		$("#appname").val("");
+		window.location.href='/socketbox/dashboard/'
 	}
 	else if(result.status=="appnameexists")
 	{
