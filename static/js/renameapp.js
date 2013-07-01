@@ -27,7 +27,7 @@ function renameapp()
 		return;
 	}
 
-	$.post("/socketbox/rename/app/",{newappname : newappname,oldappname : oldappname },function(result){
+	$.post("/socketbox/rename/app/",{newappname : newappname , oldappname : oldappname },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
