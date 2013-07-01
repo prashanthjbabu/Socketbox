@@ -125,6 +125,45 @@ def activate_account(request,email,actcode):
 		return render_to_response('message.html',{'message' : "Invalid Activation URL"})		
 
 @csrf_exempt
+def app_reset(request) :
+	if request.method == 'POST' :
+		if 'toresetappname' in request.POST :
+			toresetappname=request.POST['toresetappname']
+			email=request.session['email']
+			password=request.session['password']
+			#password=hashlib.md5(password).hexdigest()
+			return_text=validate_user_inner(email,password)
+			if return_text== "success" :
+
+				user=users.objects.filter(email=email)
+				user_id=user[0].id
+				myapp=apps.objects.filter(userid=user_id).filter(appname=toresetappname)
+				if len(myapp) == 0 :
+					#invaild appname .. thats weird :P
+					return_json_object = {
+						'status' : 'invalidappname',
+					}
+				else :
+					#logic to reset app credentials	
+			else :
+				return_json_object = {
+						'status' : 'invalidlogin',
+				}
+		else :
+			return_json_object = {
+				'status' : 'requesterror',
+			}
+	else :
+		return_json_object = {
+			'status' : 'requesterror',
+		}		
+				
+
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)
+
+
+@csrf_exempt
 def get_app_secret(request):
 	if request.method=='POST' :
 		if 'apikey' in request.POST :
