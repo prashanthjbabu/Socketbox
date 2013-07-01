@@ -7,7 +7,6 @@ function deleteapp()
 	loading.stop = function() {
 		$('#loading').html('')
 	}
-
 	loading.start();
 	deleteappalert = function() {}
 	deleteappalert.warning = function(message) {
