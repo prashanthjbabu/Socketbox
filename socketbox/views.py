@@ -315,9 +315,9 @@ def show_app(request,appid) :
 			}
 			return render_to_response('appdetails.html',{ 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
-			HttpResponseRedirect('/socketbox/dashboard')	
+			return HttpResponseRedirect('/socketbox/dashboard')	
 	else :
-		HttpResponseRedirect('/socketbox/dashboard')	
+		return HttpResponseRedirect('/socketbox/dashboard')	
 
 
 @csrf_exempt
