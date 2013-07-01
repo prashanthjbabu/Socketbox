@@ -342,7 +342,7 @@ def rename_app(request):
 						'status' : 'invalidappname',
 					}
 				else :
-					existingapp=apps.objects.filter(userid=user_id).filter(new_app_name)
+					existingapp=apps.objects.filter(userid=user_id).filter(appname=new_app_name)
 					if len(existingapp) == 0 :
 						myapp.update(appname=new_app_name)
 						return_json_object = {
