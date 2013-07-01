@@ -145,6 +145,7 @@ def app_reset(request) :
 					}
 				else :
 					#logic to reset app credentials	
+					new_api_key=0
 			else :
 				return_json_object = {
 						'status' : 'invalidlogin',
