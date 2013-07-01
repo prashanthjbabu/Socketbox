@@ -322,6 +322,7 @@ def show_app(request,appid) :
 
 @csrf_exempt
 def rename_app(request):
+	print "inside rename app"
 	if request.method == "POST" :
 		if 'oldappname' in request.POST and 'newappname' in request.POST :
 			email=request.session['email']
