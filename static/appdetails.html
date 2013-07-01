@@ -30,7 +30,7 @@
           <h5>Secret Key : <span class="text-warning">{{myapp.secret}}</span></h5>
 <!--          <p class ="lead" align="justify">This is the main area.</p> -->
           
-          <button class="btn btn-primary" type="button">Reset Credentials</button>
+          <button class="btn btn-primary" href="#resetapp" data-toggle="modal" type="button">Reset Credentials</button>
         </div>
       </div>
     </div>
@@ -66,6 +66,25 @@
           <button class="btn btn-large btn-primary" type="button" onclick="renameapp()">Submit</button>
           <div id="loading"></div>
           <div id="renameapp-error-content"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+       <!-- <button class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+
+       <div id="resetapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin">
+          <h2 class="form-signin-heading">Reset App</h2>
+          <input type="hidden" id="toresetappname" name="toresetappname" value="{{myapp.appname}}">
+          <button class="btn btn-large btn-danger" type="button" onclick="resetapp()">Submit</button>
+          <div id="loading"></div>
+          <div id="resetapp-error-content"></div>
         </form>
       </div>
       <div class="modal-footer">
