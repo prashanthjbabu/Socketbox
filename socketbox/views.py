@@ -335,10 +335,10 @@ def rename_app(request):
 @csrf_exempt
 def delete_app(request):
 	if request.method == "POST" :
-		if 'email' in request.POST and 'password' in request.POST and 'appname' in request.POST :
-			email=request.POST['email']
-			password=request.POST['password']
-			password=hashlib.md5(password).hexdigest()
+		if 'appname' in request.POST :
+			email=request.session['email']
+			password=request.session['password']
+			#password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text== "success" :
 
@@ -355,7 +355,7 @@ def delete_app(request):
 				else :
 					myapp.delete()
 					return_json_object = {
-						'status' : 'appdeleted',
+						'status' : 'success',
 					}
 			else :
 				return_json_object = {

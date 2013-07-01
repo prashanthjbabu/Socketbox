@@ -27,7 +27,7 @@
             </tr>
             {% for app in myapps %}
             <tr>
-              <td>{{app.appname}}</td>
+              <td><button class="btn btn-large btn-primary" type="button" onclick="createapp()">{{app.appname}}</button></td>
               <td>{{app.apikey}}</td>
               <td>{{app.secret}}</td>    
             </tr>  
