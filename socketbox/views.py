@@ -225,7 +225,9 @@ def logout_user(request) :
 def dashboard(request) :
 	if 'user_id' in request.session :
 		#session exists for user
-		return render_to_response('dashboard.html', context_instance=RequestContext(request))	
+		userid=request.session['user_id']
+		myapps=apps.objects.filter(userid=userid)
+		return render_to_response('dashboard.html',{ 'myapps' : myapps }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
