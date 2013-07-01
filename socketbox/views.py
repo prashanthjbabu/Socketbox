@@ -204,6 +204,8 @@ def login_user(request):
  			elif return_text == "success" :
 				user=users.objects.filter(email=email,activated=1)
 				request.session['user_id'] = user[0].id
+				request.session['email'] = user[0].email
+				request.session['password'] = user[0].password				
 				request.session['user_name'] = user[0].name
 				return HttpResponseRedirect('/socketbox/dashboard')
  			else :
@@ -362,13 +364,67 @@ def delete_app(request):
 			return HttpResponse(return_json_string)
 
 
+# @csrf_exempt
+# def create_app(request):
+# 	if request.method == "POST" :
+# 		if 'email' in request.POST and 'password' in request.POST and 'appname' in request.POST :
+# 			email=request.POST['email']
+# 			password=request.POST['password']
+# 			password=hashlib.md5(password).hexdigest()
+# 			return_text=validate_user_inner(email,password)
+# 			if return_text== "success" :
+
+# 				user=users.objects.filter(email=email)
+# 				user_id=user[0].id
+# 				app_name=request.POST['appname']
+
+# 				myapp=apps.objects.filter(userid=user_id).filter(appname=app_name)
+# 				if len(myapp) == 0 :
+# 					#create the app no duplicates
+# 					#check if apikey is unique
+# 					while True :
+# 						apikey=random_generator(10)
+# 						if check_unique_apikey(apikey) == 1 :
+# 							break
+
+					
+# 					secret=random_generator(10)
+# 					#check if secret is unique
+# 					while True :
+# 						secret=random_generator(10)
+# 						if check_unique_secret(secret) == 1 :
+# 							break
+					
+# 					new_app=apps(userid=user_id,appname=app_name,secret=secret,apikey=apikey)
+# 					new_app.save() # add the user
+# 					return_json_object = {
+# 						'status' : 'appcreated',
+# 						'secret' : secret,
+# 						'apikey' : apikey,
+# 						'appname' : app_name,
+# 					}
+		
+# 				else :
+# 					#app name already exists
+# 					return_json_object = {
+# 						'status' : 'appnameexists',
+# 					}
+
+# 			else :
+# 				return_json_object = {
+# 						'status' : 'invalidlogin',
+# 				}
+
+# 			return_json_string = simplejson.dumps(return_json_object)
+# 			return HttpResponse(return_json_string)
+
 @csrf_exempt
 def create_app(request):
 	if request.method == "POST" :
-		if 'email' in request.POST and 'password' in request.POST and 'appname' in request.POST :
-			email=request.POST['email']
-			password=request.POST['password']
-			password=hashlib.md5(password).hexdigest()
+		if 'appname' in request.POST :
+			email=request.session['email']
+			password=request.session['password']
+			#password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text== "success" :
 
