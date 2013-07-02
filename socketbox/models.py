@@ -19,3 +19,10 @@ class apps(models.Model):
     secret = models.CharField(max_length=50)
     def __unicode__(self):
         return "%s %s %s %s" % (self.userid, self.appname, self.apikey,self.secret)
+
+class stats(models.Model):
+    appid = models.IntegerField(max_length=10)
+    time = models.DateTimeField(auto_now_add = True)
+    def __unicode__(self):
+        return "%s %s" % (self.appid, self.time)
+    
