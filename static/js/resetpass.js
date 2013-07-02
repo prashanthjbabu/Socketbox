@@ -48,6 +48,7 @@ function resetpasstoserv()
 		loading.stop();
 		return;	
 	}
+	password=$.md5(password);
 	$.post("/socketbox/new/password/",{email : email,pass : password , resetcode : resetcode },function(result){
 	console.log(result);
 	result=JSON.parse(result);

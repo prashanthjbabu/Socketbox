@@ -66,6 +66,7 @@ function validateregister()
 		loading.stop();
 		return;	
 	} 
+	password=$.md5(password);
 	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
 	console.log(result);
 	result=JSON.parse(result);

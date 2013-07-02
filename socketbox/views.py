@@ -23,7 +23,7 @@ def new_password(request):
 		if 'email' in request.POST and 'pass' in request.POST and 'resetcode' in request.POST:
 			email=request.POST['email']
 			password=request.POST['pass']
-			password=hashlib.md5(password).hexdigest()
+			#password=hashlib.md5(password).hexdigest()
 			resetcode=request.POST['resetcode']
 			user=users.objects.filter(email=email)
 
@@ -219,7 +219,7 @@ def add_user(request):
 			name=request.POST['name']
 			email=request.POST['email']
 			password=request.POST['password']
-			password=hashlib.md5(password).hexdigest()
+			#password=hashlib.md5(password).hexdigest()
 			actcode=random_generator(10)
 			link="http://socketbox.pesseacm.org/socketbox/account/activate/"+email+"/"+actcode+"/"
 			user=users.objects.filter(email=email)
@@ -256,7 +256,7 @@ def login_user(request):
 		if 'navemail' in request.POST and 'navpass' in request.POST :
 			email=request.POST['navemail']
 			password=request.POST['navpass']
-			password=hashlib.md5(password).hexdigest()
+			#password=hashlib.md5(password).hexdigest()
 			return_text=validate_user_inner(email,password)
 			if return_text == "userdoesnotexist" :
 				return render_to_response('login.html',{'email' : email , 'message' : "User Does Not Exist!Please try again!"})
