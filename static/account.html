@@ -18,10 +18,10 @@
           <h3>Account Settings!</h3>
             <form class="form-signin">
             <!--<h2 class="form-signin-heading">Register Now!</h2>-->
-            {% for details in mydetails %}
-            <input type="text" class="input-block-level" id="name" placeholder="Name" value="{{details.name}}">
-            <p class ="lead" align="justify">{{details.email}}</p>
             
+            {% for details in mydetails %}
+            <p class ="lead" align="justify">{{details.email}}</p>
+            <input type="text" class="input-block-level" id="name" placeholder="Name" value="{{details.name}}">
             <input type="password" class="input-block-level" id="pass" placeholder="Password">
             
             <input type="password" class="input-block-level" id="newpass" placeholder="New Password">
