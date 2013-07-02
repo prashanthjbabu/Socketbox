@@ -513,7 +513,9 @@ def delete_app(request):
 						'status' : 'invalidappname',
 					}
 				else :
+					appid=myapp[0].id
 					myapp.delete()
+					myappstats=stats.objects.filter(appid=appid).delete()
 					return_json_object = {
 						'status' : 'success',
 					}
