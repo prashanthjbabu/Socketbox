@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('socketbox.views',
+	url(r'^feedback/$','feedback'),
 	url(r'^send/$','sock_test'),
 	url(r'^user/add/$','add_user'),
 	url(r'^user/login/$','login_user'),

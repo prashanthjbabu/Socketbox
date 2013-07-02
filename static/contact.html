@@ -17,13 +17,13 @@
             <div class="row">
               <div class="span3">
                 <label>First Name</label>
-                <input type="text" nameclass="span3" placeholder="Your First Name">
+                <input type="text" nameclass="span3" name="name" id="name" placeholder="Your Name">
                 <!--<label>Last Name</label>
                 <input type="text" class="span3" placeholder="Your Last Name"> -->
                 <label>Email Address</label>
-                <input type="text" class="span3" placeholder="Your email address">
+                <input type="text" class="span3" name="email" id="email" placeholder="Your email address">
                 <label>Subject
-                <select id="subject" name="subject" class="span3">
+                <select id="subject" name="subject" id="subject" class="span3">
                   <option value="na" selected="">Choose One:</option>
                   <option value="service">General Customer Service</option>
                   <option value="suggestions">Suggestions</option>
@@ -36,10 +36,12 @@
                 <textarea name="message" id="message" class="input-xlarge span5" rows="10"></textarea>
                 <br>
                 <div align="right">
-                  <button type="submit" class="btn btn-primary pull-right">Send</button>
+                  <button type="button" onclick="feedbacksubmit()"class="btn btn-primary pull-right">Send</button>
                 </div>
               </div>
             </div>
+            <div id="loading"></div>
+            <div id="feedback-error-content"></div>
           </form> 
         </div>
         <div class="span4">

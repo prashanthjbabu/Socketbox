@@ -18,6 +18,32 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def feedback(request):
+	if request.method=='POST':
+		if 'name' in request.POST and 'email' in request.POST and 'subject' in request.POST and 'message' in request.POST :
+			name=request.POST['name']
+			email=request.POST['email']
+			subject=request.POST['subject']
+			message=request.POST['message']
+			tosend="Dear admin,\n You have a socketbox feedback message from "+name+" with email "+email+" having subject "+subject+"\n Message :\n"+message
+			socketbox_send_feedback_mail(tosend);
+			return_json_object = {
+				'status' : 'success',
+			}
+		else :
+			return_json_object = {
+				'status' : 'posterror',
+			}
+	else :
+		return_json_object = {
+			'status' : 'posterror',
+		}
+	
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)	
+					
+
+@csrf_exempt
 def new_password(request):
 	if request.method=='POST' :
 		if 'email' in request.POST and 'pass' in request.POST and 'resetcode' in request.POST:
@@ -211,6 +237,9 @@ def socketbox_send_activate_mail(email,name,link):
 def socketbox_send_forgot_mail(email,name,link):
 	content="Dear "+name+",\nKindly click on the following link to reset your password "+link+"\nWith Regards,\nThe SocketBox Team"
 	send_mail('Reset Your SocketBox Account',content,'prashpesse@gmail.com',[email])
+
+def socketbox_send_feedback_mail(data):
+	send_mail('Reset Your SocketBox Account',data,'prashpesse@gmail.com',['prashanthjbabu@gmail.com'])
 
 @csrf_exempt
 def add_user(request):
