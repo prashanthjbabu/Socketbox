@@ -1,5 +1,6 @@
 function feedbacksubmit()
 {
+	$('#feedback-error-content').html("");
 	loading = function() {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
@@ -70,4 +71,11 @@ function feedbacksubmit()
   	loading.stop();
   });
 
+}
+function clearfeedbackall()
+{
+	$("#name").val("");
+	$("#email").val("");
+	$("#subject").val("");
+	$("#message").val("");
 }

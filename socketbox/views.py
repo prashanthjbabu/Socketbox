@@ -25,7 +25,7 @@ def feedback(request):
 			email=request.POST['email']
 			subject=request.POST['subject']
 			message=request.POST['message']
-			tosend="Dear admin,\n You have a socketbox feedback message from "+name+" with email "+email+" having subject "+subject+"\n Message :\n"+message
+			tosend="Dear admin,\n You have a new socketbox feedback message .  \nFrom :  "+name+"\nEmail : "+email+"\n Subject : "+subject+"\n Message : \n"+message
 			socketbox_send_feedback_mail(tosend);
 			return_json_object = {
 				'status' : 'success',
@@ -239,7 +239,7 @@ def socketbox_send_forgot_mail(email,name,link):
 	send_mail('Reset Your SocketBox Account',content,'prashpesse@gmail.com',[email])
 
 def socketbox_send_feedback_mail(data):
-	send_mail('Reset Your SocketBox Account',data,'prashpesse@gmail.com',['prashanthjbabu@gmail.com'])
+	send_mail('New Socketbox Feedback Message',data,'prashpesse@gmail.com',['prashanthjbabu@gmail.com'])
 
 @csrf_exempt
 def add_user(request):
