@@ -12,7 +12,7 @@
       <div class="row">
         <div class="span6">
           <h3 class="text-info">Your apps! 
-            <a href="#newapp" class="btn btn-primary" data-toggle="modal"><i class="icon icon-plus-sign"></i>New App</a>
+            <a href="#newapp" class="btn btn-inverse" data-toggle="modal"><i class="icon icon-plus-sign"></i>New App</a>
           </h3>
 <!--          <p class ="lead" align="justify">This is the main area.</p> -->
           <table class="table table-bordered">
@@ -23,7 +23,7 @@
             </tr>
             {% for app in myapps %}
             <tr>
-              <td><button class="btn btn-error" type="button" onclick="window.location.href='/socketbox/show/app/{{app.id}}'"><h3>{{app.appname}}</h3></button></td>
+              <td><button class="btn btn-link" type="button" onclick="window.location.href='/socketbox/show/app/{{app.id}}'"><h3>{{app.appname}}</h3></button></td>
               <td><span class="text-success"><h4>{{app.apikey}}</h4></span></td>
               <td><span class="text-error"><h4>{{app.secret}}</h4></span></td>    
             </tr>  
