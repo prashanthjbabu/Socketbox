@@ -36,6 +36,7 @@ function editaccount()
 		loading.stop();
 		return;	
 	} 
+	password=$.md5(password);
 	newpassword=$.md5(newpassword);
 	$.post("/socketbox/account/edit/",{name : name, password : password , newpassword : newpassword },function(result){
 	console.log(result);
