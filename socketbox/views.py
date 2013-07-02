@@ -25,7 +25,7 @@ def feedback(request):
 			email=request.POST['email']
 			subject=request.POST['subject']
 			message=request.POST['message']
-			tosend="Dear admin,\n You have a new socketbox feedback message .  \nFrom :  "+name+"\nEmail : "+email+"\n Subject : "+subject+"\n Message : \n"+message
+			tosend="Dear admin,\n You have a new socketbox feedback message .  \nFrom :  "+name+"\nEmail : "+email+"\nSubject : "+subject+"\nMessage : \n"+message
 			socketbox_send_feedback_mail(tosend);
 			return_json_object = {
 				'status' : 'success',
