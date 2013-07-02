@@ -1,21 +1,21 @@
 {% if request.path == "/socketbox/dashboard/" %}
 
 <div class="hero-unit">
-        <h1>Dashboard!</h1>
+        <h1 class="text-info">Dashboard!</h1>
         <p>Manage all your socketbox apps and view their statistics here!</p>
       </div>
 
 {% elif request.path == "/socketbox/account/" %}
 
 <div class="hero-unit">
-        <h1>Account!</h1>
+        <h1 class="text-info">Account!</h1>
         <p>Manage your socketbox account settings and view your account history here!</p>
       </div>
 
 {% else %}
 
 <div class="hero-unit">
-        <h1>SocketBox!</h1>
+        <h1 class="text-info">SocketBox!</h1>
         <p>SocketBox is an easy to use web service with a simple API which offers push notifications to your web apps from your server . It simplifies the work of a developer to push out real time information to clients . It is highly scalable and flexible and it is supported to work on a wide range of environments .</p>
         <p><a href="/features/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div>
