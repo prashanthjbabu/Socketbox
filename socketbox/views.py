@@ -17,6 +17,7 @@ import json
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
+@csrf_exempt
 def update_app_stats(request):
 	if request.method=='POST':
 		if 'apikey' in request.POST and 'secret' in request.POST :
