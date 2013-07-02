@@ -20,7 +20,7 @@ function feedbacksubmit()
     var subject=document.getElementById("subject").value;
     var message=document.getElementById("message").value;
 
-    if(name="" || name==null)
+    if(name=="" || name==null)
     {
     	feedbackalert.warning("Please enter a valid name!");
 		$("#name").focus();
