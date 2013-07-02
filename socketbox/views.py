@@ -18,6 +18,37 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def edit_account(request) :
+	if request.method == "POST" :
+		if 'name' in request.POST and 'password' in request.POST and 'newpassword' in request.POST :
+			name=request.POST['name']
+			password=request.POST['password']
+			newpassword=request.POST['newpassword']
+			email=request.session['email']
+			myuser=users.objects.filter(email=email)
+			if myuser[0].password == password :
+				#auth success , proceed to update profile
+				myuser.update(password=newpassword,name=name)
+				return_json_object = {
+					'status' : 'success',
+				}
+			else :
+				return_json_object = {
+					'status' : 'incorrectpassword',
+				}
+		else :
+			return_json_object = {
+				'status' : 'invalidpostrequest',
+			}
+	else :
+		return_json_object = {
+			'status' : 'invalidpostrequest',
+		}	
+
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)	
+
+@csrf_exempt
 def account(request):
 	if 'user_id' in request.session :
 		#session exists for user
@@ -28,6 +59,7 @@ def account(request):
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
+
 @csrf_exempt
 def update_app_stats(request):
 	if request.method=='POST':
@@ -85,8 +117,7 @@ def feedback(request):
 	
 	return_json_string = simplejson.dumps(return_json_object)
 	return HttpResponse(return_json_string)	
-					
-
+	
 @csrf_exempt
 def new_password(request):
 	if request.method=='POST' :
@@ -128,6 +159,7 @@ def new_password(request):
 
 	return_json_string = simplejson.dumps(return_json_object)
 	return HttpResponse(return_json_string)	
+
 
 @csrf_exempt
 def reset_password(request):

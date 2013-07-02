@@ -25,6 +25,8 @@ urlpatterns = patterns('socketbox.views',
 	
 	url(r'^account/reset/(?P<email>\S+)/(?P<resetcode>\S+)/$','reset_account'),
 
+	url(r'^account/edit/$','edit_account'),
+
 	url(r'^new/password/$','new_password'),
 	url(r'^forgot/password/$','forgot_password'),
 	url(r'^reset/password/$','reset_password'),
