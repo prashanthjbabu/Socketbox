@@ -4,6 +4,8 @@ function toTitleCase(str)
 }
 function validateregister()
 {
+	$('#register-server-alerts').html('');
+	$('#register-error-content').html('');	
 	loading = function() {}
 	loading.start = function() {
 		$('#loading').html('<img src="/static/media/loading.gif" alt="Loading"/>');
