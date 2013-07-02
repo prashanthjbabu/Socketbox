@@ -18,10 +18,17 @@ function editaccount()
             $('#account-error-content').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
         }    
 	$("#account-error-content").text("");
+	var name=document.getElementById("name").value;
 	var password=document.getElementById("pass").value;
 	var newpassword=document.getElementById("newpass").value;
 	var newcpassword=document.getElementById("newcpass").value;
  	var passfilter=  /^[A-Za-z]\w{7,14}$/;  
+ 	if(name==null || name=="")
+ 	{
+ 		accountservalert.warning("Please enter a valid name!");
+		loading.stop();
+		return;
+ 	}
 	if(!passfilter.test(password) || !passfilter.test(newpassword))   
 	{   
 		//$("#account-error-content").text("Password must be atleast 7 characters");
