@@ -7,7 +7,7 @@ import urllib, urllib2
 from django.utils import simplejson
 import hashlib
 from django.views.decorators.csrf import csrf_exempt
-from socketbox.models import users,apps
+from socketbox.models import users,apps,stats
 from django.core.mail import send_mail
 from django.template import RequestContext
 
@@ -16,6 +16,35 @@ import json
 
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
+
+def update_app_stats(request):
+	if request.method=='POST':
+		if 'apikey' in request.POST and 'secret' in request.POST :
+			apikey=request.POST['apikey']
+			secret=request.POST['secret']
+			myapp=apps.objects.filter(apikey=apikey).filter(secret=secret)
+			if len(myapp) == 0 :
+				#app does not exist
+				return_json_object = {
+					'status' : 'appdoesnotexist',
+				}
+			else :
+				app_id=myapp[0].id
+				stat=stats(appid=app_id)
+				stat.save()	
+				return_json_object = {
+					'status' : 'success',
+				}
+		else :
+			return_json_object = {
+				'status' : 'posterror',
+			}
+	else :
+		return_json_object = {
+			'status' : 'posterror',
+		}
+
+
 
 @csrf_exempt
 def feedback(request):
