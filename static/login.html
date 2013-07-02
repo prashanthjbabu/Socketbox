@@ -43,7 +43,7 @@
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="email" class="input-block-level" name="navemail" id="navemail" value="{{email}}"placeholder="Email address">
         <input type="password" class="input-block-level" name="navpass" id="navpass" placeholder="Password">
-        <button class="btn btn-large btn-primary" type="submit" onclick="encryptnavpass()" onsubmit="encryptnavpass()">Sign in</button>
+        <button class="btn btn-large btn-primary" type="submit" onclick="encryptnavpass()">Sign in</button>
         <button type="button" onclick="window.location.href='/socketbox/forgot/password/'" class="btn btn-link">Forgot Password?</button>   
         {% if message %}
             <div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><span>{{message}}</span></div>
