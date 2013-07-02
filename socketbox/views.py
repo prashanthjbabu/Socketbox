@@ -45,6 +45,9 @@ def update_app_stats(request):
 			'status' : 'posterror',
 		}
 
+	return_json_string = simplejson.dumps(return_json_object)
+	return HttpResponse(return_json_string)	
+	
 
 
 @csrf_exempt
