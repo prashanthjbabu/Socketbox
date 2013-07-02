@@ -23,7 +23,7 @@ def account(request):
 		#session exists for user
 		userid=request.session['user_id']
 		myapps=apps.objects.filter(userid=userid)
-		mydetails=users.objects.filter(id=user_id)
+		mydetails=users.objects.filter(id=userid)
 		return render_to_response('account.html',{ 'myapps' : myapps , 'mydetails' : mydetails }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
