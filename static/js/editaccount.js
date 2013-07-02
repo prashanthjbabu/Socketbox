@@ -51,7 +51,7 @@ function editaccount()
 	if(result.status=="success")
 	{
 		console.log("account updated successfully");
-		accountservalert.success("Congratulations! Account Updated Succesfully!");	
+		accountservalert.success("Congratulations! Account Updated Succesfully!Changes will reflect when you login next!");	
 	}
 	else if(result.status=="incorrectpassword")
 	{
