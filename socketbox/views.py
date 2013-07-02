@@ -18,6 +18,17 @@ def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 @csrf_exempt
+def account(request):
+	if 'user_id' in request.session :
+		#session exists for user
+		userid=request.session['user_id']
+		myapps=apps.objects.filter(userid=userid)
+		mydetails=users.objects.filter(id=user_id)
+		return render_to_response('account.html',{ 'myapps' : myapps , 'mydetails' : mydetails }, context_instance=RequestContext(request))	
+	else :
+		#session does not exist for user redirect to login screen
+		return render_to_response('login.html', context_instance=RequestContext(request))	
+@csrf_exempt
 def update_app_stats(request):
 	if request.method=='POST':
 		if 'apikey' in request.POST and 'secret' in request.POST :
