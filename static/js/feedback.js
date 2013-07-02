@@ -32,7 +32,7 @@ function feedbacksubmit()
     if (!emailfilter.test(email)) 
     {
 		//$("#register-error-content").text("Please enter a valid email");
-		feedbackalert.error("Please enter a valid email!");
+		feedbackalert.warning("Please enter a valid email!");
     	$("#email").focus();
     	loading.stop();
     	return;
