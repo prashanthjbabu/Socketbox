@@ -16,11 +16,7 @@ function editaccount()
         }
     accountservalert.success = function(message) {
             $('#account-error-content').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
-        }
-    regerrorcontent=function() {}
-    regerrorcontent.error=function(message) {
-    		$("#account-error-content").html('<div class="control-group error"><div class="controls"><span class="help-inline">'+message+'</span></div></div>')
-    	}    
+        }    
 	$("#account-error-content").text("");
 	var password=document.getElementById("pass").value;
 	var newpassword=document.getElementById("newpass").value;
@@ -29,14 +25,14 @@ function editaccount()
 	if(!passfilter.test(password) || !passfilter.test(newpassword))   
 	{   
 		//$("#account-error-content").text("Password must be atleast 7 characters");
-		accountservalert.error("Password must be atleast 7 characters!");
+		accountservalert.warning("Password must be atleast 7 characters!");
 		loading.stop();
 		return;  
 	}
 	if(newpassword!=newcpassword)
 	{
 		//$("#account-error-content").text("Passwords do not match");
-		accountservalert.error("Passwords do not match!");
+		accountservalert.warning("Passwords do not match!");
 		loading.stop();
 		return;	
 	} 
