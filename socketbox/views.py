@@ -709,8 +709,8 @@ def create_app(request):
 
 def sock_test(request):
 	event = "hello"
-	apikey="UV0ZPEFS1I"
-	secret="C5VU6TTYOT"
+	apikey="2V65STYMT7"
+	secret="CQIHXCGXYR"
 	channel = "prash"
 	data = {
 		'name' : 'Prashanth',
