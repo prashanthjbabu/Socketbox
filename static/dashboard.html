@@ -38,16 +38,18 @@
           {% if activeappstatus == "valid" %}
           <table class="table table-bordered">
             <tr>
-              <td>Most Active App</td>
-              <td>{{activeapp}}</td>
+              <td class="text-error">Total Apps Count</td>
+              <td class="text-success">{{appscount}}</td>
             </tr>
             <tr>
-              <td>Total Message Count</td>
-              <td>{{msgcount}}</td>
+              <td class="text-error">Most Active App</td>
+              <td class="text-success">{{activeapp}}</td>
+            </tr>
+            <tr>
+              <td class="text-error">Total Message Count</td>
+              <td class="text-success">{{msgcount}}</td>
             </tr>
           </table>  
-          <p class ="lead" align="justify"><span class="text-error">Most Active App</span>  :<span class="text-success"> {{activeapp}}</span></p>
-          <p class ="lead" align="justify">Total number of messages transmitted are <span class="text-warning">{{msgcount}}</span></p>
           {% else %}
           <p class ="lead" align="justify">You have no apps to show stats for!</p>
           {% endif %}
@@ -55,7 +57,6 @@
           {% for app in applog %}
           <h5>{{app.name}}-{{app.count}}</h5>
           {% endfor %}
-          <h5>{{appscount}}</h5>
         </div>
       </div>
     </div>
