@@ -13,6 +13,11 @@ from django.template import RequestContext
 
 import string,random
 import json
+from django.utils import timezone
+
+class TimezoneMiddleware(object):
+    def process_request(self, request):
+        timezone.activate(request.user.get_profile().timezone)
 
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
