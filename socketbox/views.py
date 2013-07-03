@@ -406,6 +406,7 @@ def dashboard(request) :
 				'name' : app.appname,
 				'count' : myappmsgcount
 			}
+			applog.append(appdata)
 			if myappmsgcount > count :
 				count=myappmsgcount
 				popularappdata = {
@@ -413,7 +414,7 @@ def dashboard(request) :
 					'app' : app.appname,
 					'count' : myappmsgcount
 				}
-				applog.append(appdata)
+				
 
 		#popularappdata = simplejson.dumps(popularappdata)
 
