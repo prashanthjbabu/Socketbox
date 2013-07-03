@@ -18,27 +18,21 @@
           <button class="btn btn-danger" href="#delapp" data-toggle="modal" type="button">Delete App</button><br><br>
           <button class="btn btn-success" href="#tutorial" data-toggle="modal" type="button">View Sample Code</button><br><br>
         -->
-        <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-    
-              <!-- shows same menu as sidebar but for mobile devices -->
-            <button type="button" id="navbar-app-button" class="btn btn-navbar visible-phone" data-toggle="collapse" data-target=".nav-app-collapse">
-              cbustrack
-            </button>
-            <div class="nav-collapse nav-app-collapse collapse visible-phone mobile-menu">
-              <ul class="nav">
-                <li class=""><a href="/apps/37147">Stats</a></li>
-                <li class="active"><a href="/apps/37147/api_access">App Keys</a></li>
-                <li class=""><a href="/apps/37147/debug">Debug console</a></li>
-                <li class=""><a href="/apps/37147/event_creator">Event creator</a></li>
-                <li class=""><a href="/apps/37147/web_hooks">WebHooks</a></li>
-                <li class=""><a href="/apps/37147/collaborators">Collaborators</a></li>
-                <li class=""><a href="/apps/37147/settings">Settings</a></li>
-              </ul>
+          <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+              <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                <p>I'm in Section 1.</p>
+              </div>
+              <div class="tab-pane" id="tab2">
+                <p>Howdy, I'm in Section 2.</p>
+              </div>
             </div>
+          </div>
         </div>
-      </div>
-    </div>
 
         <div class="span7">
           <h3 class="text-info">App Statistics!</h3>
