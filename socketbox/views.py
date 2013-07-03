@@ -405,7 +405,7 @@ def dashboard(request) :
 			myappmsgcount=stats.objects.filter(appid=app.id).count()
 			myapplastupdate=stats.objects.filter(appid=app.id).order_by('-time')[:1]
 			apptimelog = {}
-			apptimelog['time']=myapplastupdate.time
+			apptimelog['time']=myapplastupdate[0].time
 			timelog.append(apptimelog)
 			totalmsgcount+=myappmsgcount
 			appdata = {
