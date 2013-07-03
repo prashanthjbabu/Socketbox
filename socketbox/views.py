@@ -392,7 +392,27 @@ def dashboard(request) :
 		#session exists for user
 		userid=request.session['user_id']
 		myapps=apps.objects.filter(userid=userid)
-		return render_to_response('dashboard.html',{ 'myapps' : myapps }, context_instance=RequestContext(request))	
+		numberofapps=len(myapps)
+		count=0
+		totalmsgcount=0
+		popularappdata = {
+					'status' : 'invalid',
+				}
+		for app in myapps :
+			myappmsgcount=stats.objects.filter(appid=app.id).count()
+			totalmsgcount+=myappmsgcount
+			if myappmsgcount > count :
+				count=myappmsgcount
+				popularappdata = {
+					'status' : 'valid'
+					'appid' : app.id,
+					'count' : myappmsgs
+				}
+
+		popularappdata = simplejson.dumps(popularappdata)
+
+		applogs=stats.objects.filter()
+		return render_to_response('dashboard.html',{ 'myapps' : myapps,'activeapp' : popularappdata, 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	

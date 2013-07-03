@@ -33,7 +33,14 @@
 
         <div class="span6">
           <h3 class="text-info">Account Statistics!</h3>
-          <p class ="lead" align="justify">Statistics Feature Coming Soon!</p>
+        <!--  <p class ="lead" align="justify">Statistics Feature Coming Soon!</p> -->
+          {% if popularappdata.status == "valid" %}
+          <p class ="lead" align="justify">Most Active App is {{popularappdata.appid}} with count {{popularappdata.count}}</p>
+          {% else %}
+          <p class ="lead" align="justify">You have no apps to show stats for!</p>
+          {% endif %}
+          <p class ="lead" align="justify">Total number of messages transmitted are {{msgcount}}</p>
+
         </div>
       </div>
     </div>
