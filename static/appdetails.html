@@ -11,13 +11,32 @@
       {% include 'hero.html' %}   
       <div class="row">
         <div class="span2">
-          <button class="btn btn-danger" type="button" onclick="window.location.href='/socketbox/dashboard/'">Back To Dashboard</button>
+         <!-- <button class="btn btn-danger" type="button" onclick="window.location.href='/socketbox/dashboard/'">Back To Dashboard</button>
           
           <h1>{{myapp.appname}}</h1>      
           <button class="btn btn-warning" href="#renameapp" data-toggle="modal" type="button">Rename App</button><br><br>
           <button class="btn btn-danger" href="#delapp" data-toggle="modal" type="button">Delete App</button><br><br>
           <button class="btn btn-success" href="#tutorial" data-toggle="modal" type="button">View Sample Code</button><br><br>
+        -->
+        <div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <a href="/" class="brand"><img alt="Logo_light" src="/assets/logo_light-3097a1d8f0c82c56728efc1f704d0ec1.png" /></a>
 
+    <!-- shows same menu as sidebar but for mobile devices -->
+      <button type="button" id="navbar-app-button" class="btn btn-navbar visible-phone" data-toggle="collapse" data-target=".nav-app-collapse">
+        cbustrack
+      </button>
+      <div class="nav-collapse nav-app-collapse collapse visible-phone mobile-menu">
+        <ul class="nav">
+          <li class=""><a href="/apps/37147">Stats</a></li>
+          <li class="active"><a href="/apps/37147/api_access">App Keys</a></li>
+          <li class=""><a href="/apps/37147/debug">Debug console</a></li>
+          <li class=""><a href="/apps/37147/event_creator">Event creator</a></li>
+          <li class=""><a href="/apps/37147/web_hooks">WebHooks</a></li>
+          <li class=""><a href="/apps/37147/collaborators">Collaborators</a></li>
+          <li class=""><a href="/apps/37147/settings">Settings</a></li>
+        </ul>
+      </div>
         </div>
 
         <div class="span7">
