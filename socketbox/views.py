@@ -412,7 +412,7 @@ def dashboard(request) :
 		popularappdata = simplejson.dumps(popularappdata)
 
 		applogs=stats.objects.filter()
-		return render_to_response('dashboard.html',{ 'myapps' : myapps,'activeapp' : popularappdata, 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
+		return render_to_response('dashboard.html',{ 'myapps' : myapps,'activeappstatus' : popularappdata.status, 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
