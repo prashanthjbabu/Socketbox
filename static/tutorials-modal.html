@@ -23,7 +23,7 @@
             </ul>
           </p>  
           <p class="lead" align="justify"><b>Here are some code snippets for various programming languages:</b></p>
-          <h3>Django! </h3>
+<!--          <h3>Django! </h3>
           <pre class="prettyprint">
             def sock_test(request):
               event = "EVENT_NAME"
@@ -112,3 +112,107 @@
               </ul>
             </ol>
             <p class="lead" align="justify"><b>NOTE :</b> The parameter data is the data you would like to send across as a push notification . It is recommended to use the JSON format for data .</p>
+-->
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab">Django</a></li>
+              <li><a href="#tab2" data-toggle="tab">PHP</a></li>
+              <li><a href="#tab3" data-toggle="tab">Node.js</a></li>
+              <li><a href="#tab4" data-toggle="tab">Other languages</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                  <pre class="prettyprint">
+              def sock_test(request):
+                event = "EVENT_NAME"
+                apikey="API_KEY"
+                secret="SECRET_KEY"
+                channel = "CHANNEL_NAME"
+                data = {
+                  'name' : 'Mathew',
+                  'age' : '34',
+                }
+                socket_data = {
+                  'event' : event,
+                  'channel' : channel,
+                  'data' : simplejson.dumps(data),
+                  'apikey' : apikey,
+                  'secret' : secret,
+                }
+
+                host = 'http://server.socketbox.in:8000';
+                try:
+                  result = urllib2.urlopen(host + '/post/', urllib.urlencode(socket_data))
+                  content = result.read()
+                except Exception:
+                  content = "FAIL"
+                return HttpResponse(content)          
+                </pre>
+              </div>
+              <div class="tab-pane" id="tab2">
+                  <pre class="prettyprint">
+                &lt;?php
+                  # Our new data
+                  $dat=array('name' => 'mathew' , 'age' => 35);
+                  $mydata=json_encode($dat);
+                  $data = array(
+                      'event' => 'EVENT_NAME',
+                      'channel' => 'CHANNEL_NAME',
+                      'data' => $mydata,
+                      'apikey' => 'API_KEY',
+                      'secret' => 'SECRET_KEY',
+                      
+                  );
+
+                  # Create a connection
+                  $url = 'http://server.socketbox.in:8000/post/';
+                  $ch = curl_init($url);
+
+                  # Form data string
+                  $postString = http_build_query($data, '', '&');
+                  # Setting our options
+                  curl_setopt($ch, CURLOPT_POST, 1);
+                  curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+
+                  # Get the response
+                  $response = curl_exec($ch);
+                ?&gt;
+              </pre>
+            </div>
+              <div class="tab-pane" id="tab3">
+                  <pre class="prettyprint">
+                var request = require("request");
+                var data = "{\"name\" : \"Mathew\",\"age\" : \"35\"}";
+                  request({
+                    uri: "http://server.socketbox.in:8000/post/",
+                    method: "POST",
+                    form: {
+                    'event' : "EVENT_NAME",
+                    'channel' : "CHANNEL_NAME",
+                    'data' : data,
+                    'apikey' : "API_KEY",
+                    'secret' : "SECRET_KEY",
+                    }
+                  }, function(error, response, body) {
+                    console.log("body = "+body);
+                    console.log("response = "+response)
+                  });
+                </pre>
+              </div>
+              <div class="tab-pane" id="tab4">
+                    <p class="lead" align="justify">Incase you plan to use any other programming language all you need to do is ensure that the following requirements are met :</p>
+                <ol>
+                  <li>Create a POST request for the URL http://server.socketbox.in:8000/post/</li>
+                  <li>The POST request should have the following parameters</li>
+                  <ul>
+                    <li>apikey</li>
+                    <li>secret</li>
+                    <li>event</li>
+                    <li>channel</li>
+                    <li>data</li>
+                  </ul>
+                </ol>
+                <p class="lead" align="justify"><b>NOTE :</b> The parameter data is the data you would like to send across as a push notification . It is recommended to use the JSON format for data .</p>
+              </div>
+            </div>
+          </div>

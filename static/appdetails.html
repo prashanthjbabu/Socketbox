@@ -20,15 +20,36 @@
         -->
           <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
-              <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+              <li class="active"><a href="#tab1" data-toggle="tab">App Statistics</a></li>
+              <li><a href="#tab2" data-toggle="tab">Rename App</a></li>
+              <li><a href="#tab3" data-toggle="tab">Delete App</a></li>
+              <li><a href="#tab4" data-toggle="tab">View Tutorials App</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab1">
-                <p>I'm in Section 1.</p>
+                <p class ="lead" align="justify">App Statistics to come here</p>
               </div>
               <div class="tab-pane" id="tab2">
-                <p>Howdy, I'm in Section 2.</p>
+                <form class="form-signin">
+                  <h2 class="form-signin-heading">Rename App</h2>
+                  <input type="text" size="5" class="input-block-level" name="newappname" id="newappname" placeholder="New App Name">
+                  <input type="hidden" id="oldappname" name="oldappname" value="{{myapp.appname}}">
+                  <button class="btn btn-large btn-primary" type="button" onclick="renameapp()">Submit</button>
+                  <div id="loading"></div>
+                  <div id="renameapp-error-content"></div>
+                </form>
+              </div>
+              <div class="tab-pane" id="tab3">
+                <form class="form-signin">
+                  <h2 class="form-signin-heading">Are you sure you want to delete {{myapp.appname}} ?</h2>
+                  <input type="hidden" id="todeleteappname" name="todeleteappname" value="{{myapp.appname}}">
+                  <button class="btn btn-large btn-danger" type="button" onclick="deleteapp()">Delete App</button>
+                  <div id="loading"></div>
+                  <div id="deleteapp-error-content"></div>
+                </form>
+              </div>
+              <div class="tab-pane" id="tab4">
+                {% include 'tutorials-modal.html' %}
               </div>
             </div>
           </div>
