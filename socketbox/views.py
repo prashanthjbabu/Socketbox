@@ -406,7 +406,7 @@ def dashboard(request) :
 				popularappdata = {
 					'status' : 'valid',
 					'appid' : app.id,
-					'count' : myappmsgs
+					'count' : myappmsgcount
 				}
 
 		popularappdata = simplejson.dumps(popularappdata)
