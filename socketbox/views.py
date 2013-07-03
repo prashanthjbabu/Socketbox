@@ -1,7 +1,5 @@
 
 # Create your views here.
-from django.utils.timezone import activate
-activate(settings.TIMEZONE)
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
