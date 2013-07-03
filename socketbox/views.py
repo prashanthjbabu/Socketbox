@@ -404,7 +404,7 @@ def dashboard(request) :
 			if myappmsgcount > count :
 				count=myappmsgcount
 				popularappdata = {
-					'status' : 'valid'
+					'status' : 'valid',
 					'appid' : app.id,
 					'count' : myappmsgs
 				}
