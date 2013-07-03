@@ -409,7 +409,7 @@ def dashboard(request) :
 					'count' : myappmsgcount
 				}
 
-		popularappdata = simplejson.dumps(popularappdata)
+		#popularappdata = simplejson.dumps(popularappdata)
 
 		applogs=stats.objects.filter()
 		return render_to_response('dashboard.html',{ 'myapps' : myapps,'activeappstatus' : popularappdata.status, 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
