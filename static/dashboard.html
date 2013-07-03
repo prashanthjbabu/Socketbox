@@ -33,6 +33,7 @@
 
         <div class="span6">
           <h3 class="text-info">Account Statistics!</h3>
+          <h1>{{popularappdata.status}}</h1>
         <!--  <p class ="lead" align="justify">Statistics Feature Coming Soon!</p> -->
           {% if popularappdata.status == "valid" %}
           <p class ="lead" align="justify">Most Active App is {{popularappdata.appid}} with count {{popularappdata.count}}</p>
