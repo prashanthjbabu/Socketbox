@@ -396,12 +396,17 @@ def dashboard(request) :
 		count=0
 		totalmsgcount=0
 		applog = []
+		timelog = []
 		appscount=myapps.count()
 		popularappdata = {
 					'status' : 'invalid',
 				}
 		for app in myapps :
 			myappmsgcount=stats.objects.filter(appid=app.id).count()
+			myapplastupdate=stats.objects.filter(appid=app.id).order_by('-time')[:1]
+			apptimelog = {}
+			apptimelog['time']=myapplastupdate
+			timelog.append(apptimelog)
 			totalmsgcount+=myappmsgcount
 			appdata = {
 				'name' : app.appname,
@@ -420,7 +425,9 @@ def dashboard(request) :
 		#popularappdata = simplejson.dumps(popularappdata)
 
 		applogs=stats.objects.filter()
-		return render_to_response('dashboard.html',{ 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
+		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
+		lastupdatetime=timelog[0]['time']
+		return render_to_response('dashboard.html',{'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
