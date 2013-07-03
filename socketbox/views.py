@@ -396,6 +396,7 @@ def dashboard(request) :
 		count=0
 		totalmsgcount=0
 		applog = []
+		appscount=myapps.count()
 		popularappdata = {
 					'status' : 'invalid',
 				}
