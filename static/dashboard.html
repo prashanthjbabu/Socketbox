@@ -36,12 +36,15 @@
                    
         <!--  <p class ="lead" align="justify">Statistics Feature Coming Soon!</p> -->
           {% if activeappstatus == "valid" %}
-          <p class ="lead" align="justify"><span class="text-info">Most Active App</span>  :<span class="text-success"> {{activeapp}}({{activeappcount}} messages)</span></p>
+          <p class ="lead" align="justify"><span class="text-error">Most Active App</span>  :<span class="text-success"> {{activeapp}}</span></p>
           {% else %}
           <p class ="lead" align="justify">You have no apps to show stats for!</p>
           {% endif %}
           <p class ="lead" align="justify">Total number of messages transmitted are <span class="text-warning">{{msgcount}}</span></p>
 
+          {% for app in applog %}
+          <h5>{{app.name}}-{{app.count}}</h5>
+          {% endfor %}
         </div>
       </div>
     </div>

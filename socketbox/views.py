@@ -395,12 +395,17 @@ def dashboard(request) :
 		numberofapps=len(myapps)
 		count=0
 		totalmsgcount=0
+		applog = []
 		popularappdata = {
 					'status' : 'invalid',
 				}
 		for app in myapps :
 			myappmsgcount=stats.objects.filter(appid=app.id).count()
 			totalmsgcount+=myappmsgcount
+			appdata = {
+				'name' : app.appname,
+				'count' : myappmsgcount
+			}
 			if myappmsgcount > count :
 				count=myappmsgcount
 				popularappdata = {
@@ -408,11 +413,12 @@ def dashboard(request) :
 					'app' : app.appname,
 					'count' : myappmsgcount
 				}
+				applog.append(appdata)
 
 		#popularappdata = simplejson.dumps(popularappdata)
 
 		applogs=stats.objects.filter()
-		return render_to_response('dashboard.html',{ 'myapps' : myapps,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
+		return render_to_response('dashboard.html',{ 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
