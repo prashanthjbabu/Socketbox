@@ -565,7 +565,7 @@ def show_app(request,appid) :
 			#month log	
 
 			monthlog= []
-			dateobj = datetime.datetime.now()
+			dateobj = datetime.now()
 			#delta = datetime.timedelta(1*365/12).isoformat()
 			#delta = datetime.timedelta(months=-1)
 			delta= relativedelta( months = +1 )
