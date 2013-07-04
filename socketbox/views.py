@@ -565,10 +565,11 @@ def show_app(request,appid) :
 			#month log	
 
 			monthlog= []
+			dateobj=datetime.datetime.now()
 			#dateobj = date.today()
 			#delta = datetime.timedelta(1*365/12).isoformat()
 			#delta = datetime.timedelta(months=-1)
-			delta= relativedelta( months = +1 )
+			delta= relativedelta( months= 1 )
 			for i in range(12) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,01,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,28,23,59)
