@@ -41,6 +41,11 @@
                 {% for hour in hourcounter %}
                   <p>{{hour.time}} - {{hour.count}}</p>
                 {% endfor %}
+
+                <p>MONTH COUNTER</p>
+                {% for month in monthcounter %}
+                  <p>{{month.time}} - {{month.count}}</p>
+                {% endfor %}
               </div>
               <div class="tab-pane" id="tab2">
                 <form class="form-signin">

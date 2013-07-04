@@ -559,8 +559,28 @@ def show_app(request,appid) :
 				hourlog.append(data)
 				dateobj = dateobj + delta	
 
+			#month log	
 
-			return render_to_response('appdetails.html',{ 'hourcounter' : hourlog , 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
+			monthlog= []
+			dateobj = datetime.datetime.now()
+			delta = datetime.timedelta(month=-1)
+			for i in range(24) :
+				low_thresh = datetime.datetime(dateobj.year,dateobj.month,00,00,00)
+				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,30,23,59)				
+				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
+				if(len(month_query) > 0):
+					month_count = month_query[0]['counter']
+				else:
+					month_count = 0
+				data = {
+					'time' : str(low_thresh),
+					'count' : hour_count,
+				}
+				monthlog.append(data)
+				dateobj = dateobj + delta	
+	
+
+			return render_to_response('appdetails.html',{ 'monthcounter' : monthlog , 'hourcounter' : hourlog , 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
 			return HttpResponseRedirect('/socketbox/dashboard')	
 	else :
