@@ -3,6 +3,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
+from django.db.models import Count
 import urllib, urllib2
 from django.utils import simplejson
 import hashlib
@@ -535,7 +536,7 @@ def show_app(request,appid) :
 				}
 				log.append(data)
 				dateobj = dateobj + delta
-				
+
 			return render_to_response('appdetails.html',{ 'daycounter' : log , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
 			return HttpResponseRedirect('/socketbox/dashboard')	
