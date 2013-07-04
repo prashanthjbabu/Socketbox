@@ -15,7 +15,7 @@ from django.core.mail import send_mail
 from django.template import RequestContext
 from datetime import date
 import string,random,datetime
-import json,calendar
+import json,calendar,pytz
 from django.utils import timezone
 
 #timezone.activate('Asia/Calcutta')
