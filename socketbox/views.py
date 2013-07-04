@@ -544,6 +544,7 @@ def show_app(request,appid) :
 			hourlog= []
 			dateobj = datetime.datetime.now()
 			delta = datetime.timedelta(hours=-1)
+
 			for i in range(24) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,59)				
@@ -563,7 +564,8 @@ def show_app(request,appid) :
 
 			monthlog= []
 			dateobj = datetime.datetime.now()
-			delta = datetime.timedelta(months=-1)
+			delta = datetime.timedelta(1*365/12)).isoformat()
+			#delta = datetime.timedelta(months=-1)
 			for i in range(12) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,00,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,30,23,59)				
@@ -577,7 +579,7 @@ def show_app(request,appid) :
 					'count' : hour_count,
 				}
 				monthlog.append(data)
-				dateobj = dateobj + delta	
+				dateobj = dateobj - delta	
 	
 
 			return render_to_response('appdetails.html',{ 'monthcounter' : monthlog , 'hourcounter' : hourlog , 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
