@@ -526,7 +526,7 @@ def show_app(request,appid) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,23,59)				
 				day_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
-				if(len(morning_query) > 0):
+				if(len(day_query) > 0):
 					day_count = day_query[0]['counter']
 				else:
 					day_count = 0
