@@ -37,7 +37,7 @@ ALLOWED_HOSTS = []
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
 #TIME_ZONE = 'America/Chicago'
-#TIME_ZONE = ''
+TIME_ZONE = '...'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
