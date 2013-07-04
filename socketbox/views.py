@@ -547,7 +547,7 @@ def show_app(request,appid) :
 			for i in range(24) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,59)				
-				hour_query = stats.objects.filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
+				hour_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
 				if(len(hour_query) > 0):
 					hour_count = hour_query[0]['counter']
 				else:
