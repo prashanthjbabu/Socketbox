@@ -571,14 +571,15 @@ def show_app(request,appid) :
 			delta= relativedelta( months = +1 )
 			for i in range(12) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,00,00,00)
-				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,30,23,59)				
-				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
+				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,30,23,59)
+				d=datetime.datetime(dateobj.year,dateobj.month)				
+				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__startswith=d).annotate(counter=Count('id'))
 				if(len(month_query) > 0):
 					month_count = month_query[0]['counter']
 				else:
 					month_count = 0
 				data = {
-					'time' : str(low_thresh),
+					'time' : str(d),
 					'count' : hour_count,
 				}
 				monthlog.append(data)
