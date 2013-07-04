@@ -564,7 +564,7 @@ def show_app(request,appid) :
 
 			monthlog= []
 			dateobj = datetime.datetime.now()
-			delta = datetime.timedelta(1*365/12)).isoformat()
+			delta = datetime.timedelta(1*365/12).isoformat()
 			#delta = datetime.timedelta(months=-1)
 			for i in range(12) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,00,00,00)
