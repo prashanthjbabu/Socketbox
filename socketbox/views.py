@@ -560,7 +560,7 @@ def show_app(request,appid) :
 				dateobj = dateobj + delta	
 
 
-			return render_to_response('appdetails.html',{ 'hourcounter' : hourlog 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
+			return render_to_response('appdetails.html',{ 'hourcounter' : hourlog , 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
 			return HttpResponseRedirect('/socketbox/dashboard')	
 	else :
