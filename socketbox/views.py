@@ -11,7 +11,7 @@ from socketbox.models import users,apps,stats
 from django.core.mail import send_mail
 from django.template import RequestContext
 
-import string,random
+import string,random,datetime
 import json
 from django.utils import timezone
 
@@ -518,7 +518,24 @@ def show_app(request,appid) :
 			'apikey' : myapp[0].apikey,
 			'secret' : myapp[0].secret,
 			}
-			return render_to_response('appdetails.html',{ 'myapp' : myapp_json }, context_instance=RequestContext(request))	
+			log= []
+			dateobj = datetime.datetime.now()
+			delta = datetime.timedelta(days=-1)
+			for i in range(5) :
+				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,00,00)
+				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,23,59)				
+				day_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
+				if(len(morning_query) > 0):
+					day_count = day_query[0]['counter']
+				else:
+					day_count = 0
+				data = {
+					'date' : str(upper_thresh.date()),
+					'count' : day_count,
+				}
+		log.append(data)
+		dateobj = dateobj + delta
+			return render_to_response('appdetails.html',{ 'daycounter' : log , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
 			return HttpResponseRedirect('/socketbox/dashboard')	
 	else :

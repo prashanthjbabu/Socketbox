@@ -31,6 +31,10 @@
             <div class="tab-content">
               <div class="tab-pane active" id="tab1">
                 <p class ="lead" align="justify">App Statistics to come here!</p>
+                <p>DEBUG</p>
+                {% for day in daycounter %}
+                  <p>{{day.date}} - {{day.count}}</p>
+                {% endfor %}
               </div>
               <div class="tab-pane" id="tab2">
                 <form class="form-signin">
