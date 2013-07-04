@@ -529,7 +529,7 @@ def show_app(request,appid) :
 			for i in range(30) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,23,59)				
-				day_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
+				day_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(appid=myapp[0].id).filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
 				if(len(day_query) > 0):
 					day_count = day_query[0]['counter']
 				else:
@@ -550,7 +550,7 @@ def show_app(request,appid) :
 			for i in range(24) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,59)				
-				hour_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
+				hour_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(appid=myapp[0].id).filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
 				if(len(hour_query) > 0):
 					hour_count = hour_query[0]['counter']
 				else:
@@ -575,7 +575,7 @@ def show_app(request,appid) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,01,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,maxday,23,59)
 				#d=datetime.datetime(dateobj.year,dateobj.month)				
-				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
+				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(appid=myapp[0].id).filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
 				if(len(month_query) > 0):
 					count=0
 					for month in month_query :
