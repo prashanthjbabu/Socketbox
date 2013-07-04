@@ -576,7 +576,11 @@ def show_app(request,appid) :
 				#d=datetime.datetime(dateobj.year,dateobj.month)				
 				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
 				if(len(month_query) > 0):
-					month_count = month_query[0]['counter']
+					count=0
+					for month in month_query :
+						count+=month.counter
+					#month_count = month_query[0]['counter']
+					month_count=count
 				else:
 					month_count = 0
 				data = {
