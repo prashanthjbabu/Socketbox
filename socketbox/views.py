@@ -519,10 +519,12 @@ def show_app(request,appid) :
 			'apikey' : myapp[0].apikey,
 			'secret' : myapp[0].secret,
 			}
-			log= []
+
+			#daylog
+			daylog= []
 			dateobj = datetime.datetime.now()
 			delta = datetime.timedelta(days=-1)
-			for i in range(5) :
+			for i in range(7) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,23,59)				
 				day_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
@@ -534,10 +536,31 @@ def show_app(request,appid) :
 					'date' : str(upper_thresh.date()),
 					'count' : day_count,
 				}
-				log.append(data)
+				daylog.append(data)
 				dateobj = dateobj + delta
 
-			return render_to_response('appdetails.html',{ 'daycounter' : log , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
+			#hourlog
+
+			hourlog= []
+			dateobj = datetime.datetime.now()
+			delta = datetime.timedelta(hours=-1)
+			for i in range(24) :
+				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,00)
+				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,dateobj.hour,59)				
+				hour_query = stats.objects.filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
+				if(len(hour_query) > 0):
+					hour_count = hour_query[0]['counter']
+				else:
+					hour_count = 0
+				data = {
+					'time' : str(upper_thresh),
+					'count' : hour_count,
+				}
+				hourlog.append(data)
+				dateobj = dateobj + delta	
+
+
+			return render_to_response('appdetails.html',{ 'hourcounter' : hourlog 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
 			return HttpResponseRedirect('/socketbox/dashboard')	
 	else :

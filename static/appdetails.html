@@ -32,8 +32,14 @@
               <div class="tab-pane active" id="tab1">
                 <p class ="lead" align="justify">App Statistics to come here!</p>
                 <p>DEBUG</p>
+                <p>DAY COUNTER</p>
                 {% for day in daycounter %}
                   <p>{{day.date}} - {{day.count}}</p>
+                {% endfor %}
+
+                 <p>HOUR COUNTER</p>
+                {% for hour in hourcounter %}
+                  <p>{{hour.time}} - {{hour.count}}</p>
                 {% endfor %}
               </div>
               <div class="tab-pane" id="tab2">
