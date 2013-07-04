@@ -1,5 +1,7 @@
 
 # Create your views here.
+from dateutil.relativedelta import relativedelta
+
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
@@ -564,8 +566,9 @@ def show_app(request,appid) :
 
 			monthlog= []
 			dateobj = datetime.datetime.now()
-			delta = datetime.timedelta(1*365/12).isoformat()
+			#delta = datetime.timedelta(1*365/12).isoformat()
 			#delta = datetime.timedelta(months=-1)
+			delta= relativedelta( months = +1 )
 			for i in range(12) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,00,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,30,23,59)				
