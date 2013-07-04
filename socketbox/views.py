@@ -18,7 +18,7 @@ import string,random,datetime
 import json,calendar
 from django.utils import timezone
 
-timezone.activate('Asia/Calcutta')
+#timezone.activate('Asia/Calcutta')
 
 
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
