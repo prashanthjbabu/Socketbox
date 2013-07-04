@@ -524,7 +524,7 @@ def show_app(request,appid) :
 			daylog= []
 			dateobj = datetime.datetime.now()
 			delta = datetime.timedelta(days=-1)
-			for i in range(7) :
+			for i in range(30) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,dateobj.day,23,59)				
 				day_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
@@ -564,7 +564,7 @@ def show_app(request,appid) :
 			monthlog= []
 			dateobj = datetime.datetime.now()
 			delta = datetime.timedelta(month=-1)
-			for i in range(24) :
+			for i in range(12) :
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,00,00,00)
 				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,30,23,59)				
 				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gt=low_thresh).filter(time__lt=upper_thresh).annotate(counter=Count('id'))
