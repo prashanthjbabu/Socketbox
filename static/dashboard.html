@@ -61,10 +61,10 @@
           <p class ="lead" align="justify">You have no apps to show stats for!</p>
           {% endif %}
           <p>TIME DEBUG</p>
-          <!--              {% load tz %}
-              {% localtime on %} -->
-              <p>{{currtime|localtime}}</p>
-             <!-- {% endlocaltime %} -->
+                        {% load tz %}
+              {% localtime on %} 
+              <p>{{currtime}}</p>
+              {% endlocaltime %}
 
 
           <p>DEBUG</p>
