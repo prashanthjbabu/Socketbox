@@ -581,7 +581,7 @@ def show_app(request,appid) :
 					month_count = 0
 				data = {
 					'time' : str(low_thresh),
-					'count' : hour_count,
+					'count' : month_count,
 				}
 				monthlog.append(data)
 				dateobj = dateobj - delta	
