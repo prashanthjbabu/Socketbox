@@ -533,8 +533,9 @@ def show_app(request,appid) :
 					'date' : str(upper_thresh.date()),
 					'count' : day_count,
 				}
-		log.append(data)
-		dateobj = dateobj + delta
+				log.append(data)
+				dateobj = dateobj + delta
+				
 			return render_to_response('appdetails.html',{ 'daycounter' : log , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
 			return HttpResponseRedirect('/socketbox/dashboard')	
