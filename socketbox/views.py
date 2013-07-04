@@ -18,7 +18,7 @@ import string,random,datetime
 import json,calendar
 from django.utils import timezone
 
-timezone.activate('Asia/Calcutta')
+#timezone.activate('Asia/Calcutta')
 
 
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
@@ -434,8 +434,9 @@ def dashboard(request) :
 		applogs=stats.objects.filter()
 		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 		lastupdatetime=timelog[0]['time']
+		currtime=datetime.datetime.now()
 		print "last update time is "+str(lastupdatetime)
-		return render_to_response('dashboard.html',{'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
+		return render_to_response('dashboard.html',{'currtime' : currtime 'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	

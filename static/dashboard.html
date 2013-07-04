@@ -60,7 +60,15 @@
           {% else %}
           <p class ="lead" align="justify">You have no apps to show stats for!</p>
           {% endif %}
+          <p>TIME DEBUG</p>
+          <!--              {% load tz %}
+              {% localtime on %} -->
+              <p>{{currtime}}</p>
+             <!-- {% endlocaltime %} -->
+
+
           <p>DEBUG</p>
+
           {% for app in applog %}
           <h5>{{app.name}}-{{app.count}}</h5>
           {% endfor %}
