@@ -553,7 +553,7 @@ def show_app(request,appid) :
 				else:
 					hour_count = 0
 				data = {
-					'time' : str(upper_thresh),
+					'time' : str(lower_thresh),
 					'count' : hour_count,
 				}
 				hourlog.append(data)
