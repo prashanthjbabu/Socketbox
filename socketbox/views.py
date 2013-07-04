@@ -578,7 +578,7 @@ def show_app(request,appid) :
 				if(len(month_query) > 0):
 					count=0
 					for month in month_query :
-						count+=month.counter
+						count+=month['counter']
 					#month_count = month_query[0]['counter']
 					month_count=count
 				else:
