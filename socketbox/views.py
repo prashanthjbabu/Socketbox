@@ -15,7 +15,7 @@ from django.core.mail import send_mail
 from django.template import RequestContext
 from datetime import date
 import string,random,datetime
-import json
+import json,calendar
 from django.utils import timezone
 
 timezone.activate('Asia/Calcutta')
@@ -571,8 +571,9 @@ def show_app(request,appid) :
 			#delta = datetime.timedelta(months=-1)
 			delta= relativedelta( months= 1 )
 			for i in range(12) :
+				maxday=calendar.monthrange(dateobj.year,dateobj.month)
 				low_thresh = datetime.datetime(dateobj.year,dateobj.month,01,00,00)
-				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,28,23,59)
+				upper_thresh = datetime.datetime(dateobj.year,dateobj.month,maxday,23,59)
 				#d=datetime.datetime(dateobj.year,dateobj.month)				
 				month_query = stats.objects.extra({'date' : "date(time)"}).values('date').filter(time__gte=low_thresh).filter(time__lte=upper_thresh).annotate(counter=Count('id'))
 				if(len(month_query) > 0):
