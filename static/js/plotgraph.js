@@ -68,7 +68,7 @@
                         showTooltip(item.pageX,
                         item.pageY,
                         color,
-                        "<strong>" + item.series.label + "</strong><br>" + item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong>");
+                        item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong>");
                     }
                 } else {
                     $("#tooltip").remove();
