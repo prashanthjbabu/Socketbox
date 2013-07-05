@@ -76,13 +76,18 @@
           <div id="mygraph" style="width:400px;height:300px"></div>
           <script type="text/javascript">
             dataset[0].label="Socketbox App Statistics";
-            var x={{appscount}};
-            alert(x);            
-            for(var ctr=0;ctr<=1;ctr++)
+            var ctr=0;            
+            {% for app in applog %}
+            //<h5>{{app.name}}-{{app.count}}</h5>
+            data.push([ctr,{{app.count}}]);
+            ticks.push([ctr++,"{{app.name}}"]);
+            {% endfor %}
+
+            /*for(var ctr=0;ctr<=1;ctr++)
               data.push([ctr,ctr+5]);
 
             ticks.push([0,"blah"])
-            ticks.push([1,"blahblah"])
+            ticks.push([1,"blahblah"])*/
             options.xaxis.axisLabel="Name Of Socketbox App";
             options.yaxis.axisLabel="Number Of Messages";
           </script>
