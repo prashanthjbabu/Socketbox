@@ -1,6 +1,6 @@
         //******* 2012 Average Temperature - BAR CHART
         //var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
-
+        var ticks = []
         console.log("PLOTGRAPHLOADED");
         var options = {
             series: {
