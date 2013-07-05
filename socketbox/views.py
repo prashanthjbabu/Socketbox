@@ -586,7 +586,7 @@ def show_app(request,appid) :
 				else:
 					month_count = 0
 				data = {
-					'time' : low_thresh,
+					'time' : low_thresh.date(),
 					'count' : month_count,
 				}
 				monthlog.append(data)
