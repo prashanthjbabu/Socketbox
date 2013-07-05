@@ -1,8 +1,11 @@
         //******* 2012 Average Temperature - BAR CHART
         //var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
         var data= []
+        var data2= []
         var ticks = []
         var dataset = [{ label: "GRAPH LABEL", data: data, color: "#5482FF" }];        
+        var dataset2 = [{ label: "GRAPH LABEL", data: data2, color: "#5482FF" }];        
+
         //console.log("PLOTGRAPHLOADED");
         var options = {
             series: {
@@ -92,7 +95,3 @@
                 opacity: 0.9
             }).appendTo("body").fadeIn(200);
         }
-        $(document).ready(function () {
-            $.plot($("#mygraph"), dataset, options);
-            $("#mygraph").UseTooltip();
-        });

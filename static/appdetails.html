@@ -57,14 +57,14 @@
                     dataset[0].label="Messages Sent On an Daily Basis";
                   options.xaxis.axisLabel="Time in Days";
                   options.yaxis.axisLabel="Number Of Messages";
-                  data= [ ];
-                  ticks= [ ];
+                  data2= [ ];
+                  ticks2= [ ];
                   var ctr=0;            
                   {% for day in daycounter %}
-                    data.push([ctr,{{day.count}}]);
-                    ticks.push([ctr++,"{{day.time}}"]);
+                    data2.push([ctr,{{day.count}}]);
+                    ticks2.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
-                    $.plot($("#daygraph"), dataset, options);
+                    $.plot($("#daygraph"), dataset2, options);
                     $("#daygraph").UseTooltip();
                   });
                 </script>
