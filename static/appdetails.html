@@ -33,9 +33,12 @@
                 <!--<p class ="lead" align="justify">App Statistics to come here!</p> -->
                 <h2>App Statistics!</h2>
                 <div id="mygraph" style="display:None;width:500px;height:300px"></div>
-                <div id="legraph" style="width:95%;height:300px"></div>
-                <div id="le2graph" style="width:95%;height:300px"></div>
-                <div id="le3graph" style="width:95%;height:300px"></div><br>
+                <p class ="lead" align="justify">Messages Sent On An Hourly Basis!</p>
+                <div id="hourgraph" style="width:95%;height:300px"></div>
+                <p class ="lead" align="justify">Messages Sent On A Daily Basis!</p>
+                <div id="daygraph" style="width:95%;height:300px"></div>
+                <p class ="lead" align="justify">Messages Sent On A Monthly Basis!</p>
+                <div id="monthgraph" style="width:95%;height:300px"></div><br>
                 <!--<div id="daygraph" style="width:500px;height:300px"></div>
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <script type="text/javascript">
@@ -54,8 +57,8 @@
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
                   {% endfor %}
-                    $.plot($("#legraph"), dataset, options);
-                    $("#legraph").UseTooltip();   
+                    $.plot($("#hourgraph"), dataset, options);
+                    $("#hourgraph").UseTooltip();   
 
                 }
                 //function showday()
@@ -72,8 +75,8 @@
                   {% endfor %}
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
-                    $.plot($("#le2graph"), dataset, options);
-                    $("#le2graph").UseTooltip();   
+                    $.plot($("#daygraph"), dataset, options);
+                    $("#daygraph").UseTooltip();   
 
                 }
                 //function showmonth()
@@ -90,8 +93,8 @@
                   {% endfor %}
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
-                    $.plot($("#le3graph"), dataset, options);
-                    $("#le3graph").UseTooltip();   
+                    $.plot($("#monthgraph"), dataset, options);
+                    $("#monthgraph").UseTooltip();   
 
                 }
                 </script>
