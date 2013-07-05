@@ -40,7 +40,7 @@
                   
                   $(function version1 () {
                     dataset[0].label="Messages Sent On an Hourly Basis";
-                  options.xaxis.axisLabel="Time";
+                  options.xaxis.axisLabel="Time in Hours";
                   options.yaxis.axisLabel="Number Of Messages";
                   var ctr=0;            
                   {% for hour in hourcounter %}
@@ -55,7 +55,7 @@
                   
                   $(function version2 () {
                     dataset[0].label="Messages Sent On an Daily Basis";
-                  options.xaxis.axisLabel="Time";
+                  options.xaxis.axisLabel="Time in Days";
                   options.yaxis.axisLabel="Number Of Messages";
                   data= [ ];
                   ticks= [ ];
