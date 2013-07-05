@@ -37,7 +37,9 @@
                 <!--<div id="daygraph" style="width:500px;height:300px"></div>
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <script type="text/javascript">
-                  dataset[0].label="Messages Sent On an Hourly Basis";
+                  
+                  $(document).ready(function () {
+                    dataset[0].label="Messages Sent On an Hourly Basis";
                   options.xaxis.axisLabel="Time";
                   options.yaxis.axisLabel="Number Of Messages";
                   var ctr=0;            
@@ -45,13 +47,14 @@
                     data.push([ctr,{{hour.count}}]);
                     ticks.push([ctr++,"{{hour.time}}"]);
                   {% endfor %}
-                  $(document).ready(function () {
                     $.plot($("#hourgraph"), dataset, options);
                     $("hourgraph").UseTooltip();
                   });
                 </script>
                 <script type="text/javascript">
-                  dataset[0].label="Messages Sent On an Daily Basis";
+                  
+                  $(document).ready(function () {
+                    dataset[0].label="Messages Sent On an Daily Basis";
                   options.xaxis.axisLabel="Time";
                   options.yaxis.axisLabel="Number Of Messages";
                   data= [ ];
@@ -61,7 +64,6 @@
                     data.push([ctr,{{day.count}}]);
                     ticks.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
-                  $(document).ready(function () {
                     $.plot($("#daygraph"), dataset, options);
                     $("daygraph").UseTooltip();
                   });
