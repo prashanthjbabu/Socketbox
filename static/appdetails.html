@@ -65,6 +65,7 @@
                     data.push([ctr,{{day.count}}]);
                     ticks.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
+                  dataset.data=data;
                     $.plot($("#legraph"), dataset, options);
                     $("#legraph").UseTooltip();   
 
@@ -79,6 +80,7 @@
                     data.push([ctr,{{month.count}}]);
                     ticks.push([ctr++,"{{month.time}}"]);
                   {% endfor %}
+                  dataset.data=data;
                     $.plot($("#legraph"), dataset, options);
                     $("#legraph").UseTooltip();   
 
