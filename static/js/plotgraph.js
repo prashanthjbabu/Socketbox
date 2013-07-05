@@ -1,14 +1,7 @@
         //******* 2012 Average Temperature - BAR CHART
         //var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
-        var data= []
-        for(var ctr=0;ctr<=1;ctr++)
-        data.push([ctr,ctr+5]);
-        var dataset = [{ label: "Socketbox App Statistics", data: data, color: "#5482FF" }];
-        //var ticks = [[0, "London"], [1, "New York"], [2, "New Delhi"], [3, "Taipei"],[4, "Beijing"], [5, "Sydney"]];
- 		var ticks = []
- 		ticks.push([0,"blah"])
- 		ticks.push([1,"blahblah"])
 
+        console.log("PLOTGRAPHLOADED");
         var options = {
             series: {
                 bars: {
@@ -48,12 +41,7 @@
                 backgroundColor: { colors: ["#ffffff", "#EDF5FF"] }
             }
         };
- 
-        $(document).ready(function () {
-            $.plot($("#mygraph"), dataset, options);
-            $("#mygraph").UseTooltip();
-        });
- 
+  
         function gd(year, month, day) {
             return new Date(year, month, day).getTime();
         }
