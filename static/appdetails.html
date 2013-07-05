@@ -38,9 +38,9 @@
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <script type="text/javascript">
                   
-                  $(function version1 () {
+                  $(document).ready(function () {
                     dataset[0].label="Messages Sent On an Hourly Basis";
-                  options.xaxis.axisLabel="Time in Hours";
+                  options.xaxis.axisLabel="Time";
                   options.yaxis.axisLabel="Number Of Messages";
                   var ctr=0;            
                   {% for hour in hourcounter %}
@@ -53,18 +53,18 @@
                 </script>
                 <script type="text/javascript">
                   
-                  $(function version2 () {
-                    dataset2[0].label="Messages Sent On an Daily Basis";
-                  options2.xaxis.axisLabel="Time in Days";
-                  options2.yaxis.axisLabel="Number Of Messages";
-                  data2= [ ];
-                  ticks2= [ ];
+                  $(document).ready(function () {
+                    dataset[0].label="Messages Sent On an Daily Basis";
+                  options.xaxis.axisLabel="Time";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  data= [ ];
+                  ticks= [ ];
                   var ctr=0;            
                   {% for day in daycounter %}
-                    data2.push([ctr,{{day.count}}]);
-                    ticks2.push([ctr++,"{{day.time}}"]);
+                    data.push([ctr,{{day.count}}]);
+                    ticks.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
-                    $.plot($("#daygraph"), dataset2, options2);
+                    $.plot($("#daygraph"), dataset, options);
                     $("#daygraph").UseTooltip();
                   });
                 </script>
