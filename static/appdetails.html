@@ -54,6 +54,8 @@
                   dataset[0].label="Messages Sent On an Daily Basis";
                   options.xaxis.axisLabel="Time";
                   options.yaxis.axisLabel="Number Of Messages";
+                  data= [ ];
+                  ticks= [ ];
                   var ctr=0;            
                   {% for day in daycounter %}
                     data.push([ctr,{{day.count}}]);
