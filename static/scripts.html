@@ -23,3 +23,12 @@
 <script type="text/javascript" src="/static/charting/js/visualize.jQuery.js"></script>
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+<script type="text/javascript">
+ $(function(){
+  $('#mytable')
+   .visualize()
+   .appendTo('#chart')
+   .trigger('visualizeRefresh');
+ });
+</script>
