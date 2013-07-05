@@ -61,7 +61,7 @@
           <p class ="lead" align="justify">You have no apps to show stats for!</p>
           {% endif %}
           <p>TIME DEBUG</p>
-                        {% load tz %}
+              {% load tz %}
               {% localtime on %} 
               <p>{{currtime}}</p>
               {% endlocaltime %}
@@ -72,6 +72,62 @@
           {% for app in applog %}
           <h5>{{app.name}}-{{app.count}}</h5>
           {% endfor %}
+
+          <table>
+ <caption>Visits from August 16 to August 21</caption>
+ <thead>
+ <tr>
+ <td></td>
+ <th scope="col">Monday</th>
+ <th scope="col">Tuesday</th>
+ <th scope="col">Wednesday</th>
+ <th scope="col">Thursday</th>
+ <th scope="col">Friday</th>
+ <th scope="col">Saturday</th>
+ <th scope="col">Sunday</th>
+ </tr>
+ </thead>
+ <tbody>
+
+ <tr>
+ <th scope="row">CatsWhoCode.com</th>
+ <td>12541</td>
+ <td>11204</td>
+ <td>11354</td>
+ <td>10058</td>
+ <td>9871</td>
+ <td>8254</td>
+ <td>5477</td>
+ </tr>
+ <tr>
+ <th scope="row">WpRecipes.com</th>
+ <td>9855</td>
+ <td>8870</td>
+ <td>8731</td>
+ <td>7488</td>
+ <td>8159</td>
+ <td>6547</td>
+ <td>4512</td>
+ </tr>
+ <tr>
+ <th scope="row">CatsWhoBlog.com</th>
+ <td>3241</td>
+ <td>2544</td>
+ <td>2597</td>
+ <td>3108</td>
+ <td>2114</td>
+ <td>2045</td>
+ <td>950</td>
+ </tr>
+ </tbody>
+</table> 
+<script type="text/javascript">
+ $(function(){
+ $('table').visualize();
+ });
+</script>
+
+
         </div>
       </div>
     </div>
