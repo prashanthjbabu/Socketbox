@@ -32,12 +32,60 @@
               <div class="tab-pane active" id="tab1">
                 <p class ="lead" align="justify">App Statistics to come here!</p>
                 <div id="mygraph" style="display:None;width:500px;height:300px"></div>
-                <div id="hourgraph" style="width:99%;height:300px"></div>
-                <div id="daygraph" style="width:99%;height:300px"></div>
+                <div id="legraph" style="width:99%;height:300px"></div>
                 <!--<div id="daygraph" style="width:500px;height:300px"></div>
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <script type="text/javascript">
-                  
+                <button class="btn btn-large btn-danger" type="button" onclick="showhour()">Hourly Stats</button>
+                <button class="btn btn-large btn-danger" type="button" onclick="showday()">Daily Stats</button>
+                <button class="btn btn-large btn-danger" type="button" onclick="showmonth()">Monthly Stats</button>
+                <script type="text/javascript">
+                function showhour()
+                {
+                 dataset[0].label="Messages Sent On an Hourly Basis";
+                  options.xaxis.axisLabel="Time";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  {% for hour in hourcounter %}
+                    data.push([ctr,{{hour.count}}]);
+                    ticks.push([ctr++,"{{hour.time}}"]);
+                  {% endfor %}
+                    $.plot($("#legraph"), dataset, options);
+                    $("#legraph").UseTooltip();   
+
+                }
+                function showday()
+                {
+                 dataset[0].label="Messages Sent On a Daily Basis";
+                  options.xaxis.axisLabel="Time";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  data =  [];
+                  ticks = [];
+                  {% for day in daycounter %}
+                    data.push([ctr,{{day.count}}]);
+                    ticks.push([ctr++,"{{day.time}}"]);
+                  {% endfor %}
+                    $.plot($("#legraph"), dataset, options);
+                    $("#legraph").UseTooltip();   
+
+                }
+                function showmonth()
+                {
+                 dataset[0].label="Messages Sent On a Monthly Basis";
+                  options.xaxis.axisLabel="Time";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  {% for month in monthcounter %}
+                    data.push([ctr,{{month.count}}]);
+                    ticks.push([ctr++,"{{month.time}}"]);
+                  {% endfor %}
+                    $.plot($("#legraph"), dataset, options);
+                    $("#legraph").UseTooltip();   
+
+                }
+                </script>
+                <script type="text/javascript">                  
                   $(document).ready(function () {
                     dataset[0].label="Messages Sent On an Hourly Basis";
                   options.xaxis.axisLabel="Time";
@@ -47,25 +95,8 @@
                     data.push([ctr,{{hour.count}}]);
                     ticks.push([ctr++,"{{hour.time}}"]);
                   {% endfor %}
-                    $.plot($("#hourgraph"), dataset, options);
-                    $("#hourgraph").UseTooltip();
-                  });
-                </script>
-                <script type="text/javascript">
-                  
-                  $(document).ready(function () {
-                    dataset[0].label="Messages Sent On an Daily Basis";
-                  options.xaxis.axisLabel="Time";
-                  options.yaxis.axisLabel="Number Of Messages";
-                  data= [ ];
-                  ticks= [ ];
-                  var ctr=0;            
-                  {% for day in daycounter %}
-                    data.push([ctr,{{day.count}}]);
-                    ticks.push([ctr++,"{{day.time}}"]);
-                  {% endfor %}
-                    $.plot($("#daygraph"), dataset, options);
-                    $("#daygraph").UseTooltip();
+                    $.plot($("#legraph"), dataset, options);
+                    $("#legraph").UseTooltip();
                   });
                 </script>
                 <p>DEBUG</p>
