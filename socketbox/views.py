@@ -557,7 +557,7 @@ def show_app(request,appid) :
 				else:
 					hour_count = 0
 				data = {
-					'time' : str(low_thresh),
+					'time' : low_thresh,
 					'count' : hour_count,
 				}
 				hourlog.append(data)
