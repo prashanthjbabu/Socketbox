@@ -54,9 +54,9 @@
                 <script type="text/javascript">
                   
                   $(function version2 () {
-                    dataset[0].label="Messages Sent On an Daily Basis";
-                  options.xaxis.axisLabel="Time in Days";
-                  options.yaxis.axisLabel="Number Of Messages";
+                    dataset2[0].label="Messages Sent On an Daily Basis";
+                  options2.xaxis.axisLabel="Time in Days";
+                  options2.yaxis.axisLabel="Number Of Messages";
                   data2= [ ];
                   ticks2= [ ];
                   var ctr=0;            
@@ -64,7 +64,7 @@
                     data2.push([ctr,{{day.count}}]);
                     ticks2.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
-                    $.plot($("#daygraph"), dataset2, options);
+                    $.plot($("#daygraph"), dataset2, options2);
                     $("#daygraph").UseTooltip();
                   });
                 </script>
