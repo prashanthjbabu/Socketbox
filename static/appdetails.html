@@ -97,21 +97,7 @@
 
                 }
                 </script>
-                <!--<script type="text/javascript">                  
-                  $(document).ready(function () {
-                    dataset[0].label="Messages Sent On an Hourly Basis";
-                  options.xaxis.axisLabel="Time";
-                  options.yaxis.axisLabel="Number Of Messages";
-                  var ctr=0;            
-                  {% for hour in hourcounter %}
-                    data.push([ctr,{{hour.count}}]);
-                    ticks.push([ctr++,"{{hour.time}}"]);
-                  {% endfor %}
-                    $.plot($("#legraph"), dataset, options);
-                    $("#legraph").UseTooltip();
-                  });
-                </script> -->
-                <p>DEBUG</p>
+<!--                <p>DEBUG</p>
                 <p>DAY COUNTER</p>
                 {% for day in daycounter %}
                   <p>{{day.date}} - {{day.count}}</p>
@@ -126,6 +112,7 @@
                 {% for month in monthcounter %}
                   <p>{{month.time}} - {{month.count}}</p>
                 {% endfor %}
+                -->
               </div>
               <div class="tab-pane" id="tab2">
                 <form class="form-signin">
