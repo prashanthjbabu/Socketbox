@@ -45,9 +45,12 @@
                   options.xaxis.axisLabel="Time in Hours";
                   options.yaxis.axisLabel="Number Of Messages";
                   var ctr=0;            
+                  data = [];
+                  ticks = [];
                   {% for hour in hourcounter %}
                     data.push([ctr,{{hour.count}}]);
                     ticks.push([ctr++,"{{hour.time}}"]);
+                  dataset[0].data=data;
                   {% endfor %}
                     $.plot($("#legraph"), dataset, options);
                     $("#legraph").UseTooltip();   
@@ -65,7 +68,7 @@
                     data.push([ctr,{{day.count}}]);
                     ticks.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
-                  dataset.data=data;
+                  dataset[0].data=data;
                     $.plot($("#legraph"), dataset, options);
                     $("#legraph").UseTooltip();   
 
@@ -82,7 +85,7 @@
                     data.push([ctr,{{month.count}}]);
                     ticks.push([ctr++,"{{month.time}}"]);
                   {% endfor %}
-                  dataset.data=data;
+                  dataset[0].data=data;
                     $.plot($("#legraph"), dataset, options);
                     $("#legraph").UseTooltip();   
 
