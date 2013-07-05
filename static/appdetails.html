@@ -33,13 +33,15 @@
                 <p class ="lead" align="justify">App Statistics to come here!</p>
                 <div id="mygraph" style="display:None;width:500px;height:300px"></div>
                 <div id="legraph" style="width:99%;height:300px"></div>
+                <div id="le2graph" style="width:99%;height:300px"></div>
+                <div id="le3graph" style="width:99%;height:300px"></div>
                 <!--<div id="daygraph" style="width:500px;height:300px"></div>
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <button class="btn btn-large btn-danger" type="button" onclick="showhour()">Hourly Stats</button>
                 <button class="btn btn-large btn-danger" type="button" onclick="showday()">Daily Stats</button>
                 <button class="btn btn-large btn-danger" type="button" onclick="showmonth()">Monthly Stats</button>
                 <script type="text/javascript">
-                function showhour()
+                //function showhour()
                 {
                  dataset[0].label="Messages Sent On an Hourly Basis";
                   options.xaxis.axisLabel="Time in Hours";
@@ -58,7 +60,7 @@
                     $("#legraph").UseTooltip();   
 
                 }
-                function showday()
+                //function showday()
                 {
                  dataset[0].label="Messages Sent On a Daily Basis";
                   options.xaxis.axisLabel="Time in Days";
@@ -72,11 +74,11 @@
                   {% endfor %}
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
-                    $.plot($("#legraph"), dataset, options);
-                    $("#legraph").UseTooltip();   
+                    $.plot($("#le2graph"), dataset, options);
+                    $("#le2graph").UseTooltip();   
 
                 }
-                function showmonth()
+                //function showmonth()
                 {
                  dataset[0].label="Messages Sent On a Monthly Basis";
                   options.xaxis.axisLabel="Time in Months";
@@ -90,8 +92,8 @@
                   {% endfor %}
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
-                    $.plot($("#legraph"), dataset, options);
-                    $("#legraph").UseTooltip();   
+                    $.plot($("#le3graph"), dataset, options);
+                    $("#le3graph").UseTooltip();   
 
                 }
                 </script>
