@@ -2,8 +2,8 @@
         //var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
         var data= []
         var ticks = []
-        var dataset = [{ label: "", data: data, color: "#5482FF" }];        
-        console.log("PLOTGRAPHLOADED");
+        var dataset = [{ label: "GRAPH LABEL", data: data, color: "#5482FF" }];        
+        //console.log("PLOTGRAPHLOADED");
         var options = {
             series: {
                 bars: {
@@ -15,7 +15,7 @@
                 barWidth: 0.5
             },
             xaxis: {
-                axisLabel: "Socketbox Apps",
+                axisLabel: "X AXIS LABEL",
                 axisLabelUseCanvas: true,
                 axisLabelFontSizePixels: 12,
                 axisLabelFontFamily: 'Verdana, Arial',
@@ -23,7 +23,7 @@
                 ticks: ticks
             },
             yaxis: {
-                axisLabel: "Number Of Messages",
+                axisLabel: "Y AXIS LABEL",
                 axisLabelUseCanvas: true,
                 axisLabelFontSizePixels: 12,
                 axisLabelFontFamily: 'Verdana, Arial',
