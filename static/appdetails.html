@@ -75,7 +75,9 @@
                  dataset[0].label="Messages Sent On a Monthly Basis";
                   options.xaxis.axisLabel="Time in Months";
                   options.yaxis.axisLabel="Number Of Messages";
-                  var ctr=0;            
+                  var ctr=0;   
+                  data =  [];
+                  ticks = [];         
                   {% for month in monthcounter %}
                     data.push([ctr,{{month.count}}]);
                     ticks.push([ctr++,"{{month.time}}"]);
