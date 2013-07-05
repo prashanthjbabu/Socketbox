@@ -60,37 +60,31 @@
           {% else %}
           <p class ="lead" align="justify">You have no apps to show stats for!</p>
           {% endif %}
+
+
+          <!--<p>DEBUG</p>
+
+          {% for app in applog %}
+          <h5>{{app.name}}-{{app.count}}</h5>
+          {% endfor %}
+          -->
+          <div id="mygraph" style="width:400px;height:300px"></div>
+          <script type="text/javascript">
+            dataset[0].label="Socketbox App Statistics";
+            options.xaxis.axisLabel="Name Of Socketbox App";
+            options.yaxis.axisLabel="Number Of Messages";
+            var ctr=0;            
+            {% for app in applog %}
+              data.push([ctr,{{app.count}}]);
+              ticks.push([ctr++,"{{app.name}}"]);
+            {% endfor %}
+          </script>
           <p>TIME DEBUG</p>
               {% load tz %}
               {% localtime on %} 
               <p>{{currtime}}</p>
               {% endlocaltime %}
 
-
-          <p>DEBUG</p>
-
-          {% for app in applog %}
-          <h5>{{app.name}}-{{app.count}}</h5>
-          {% endfor %}
-
-          <div id="mygraph" style="width:400px;height:300px"></div>
-          <script type="text/javascript">
-            dataset[0].label="Socketbox App Statistics";
-            var ctr=0;            
-            {% for app in applog %}
-            //<h5>{{app.name}}-{{app.count}}</h5>
-            data.push([ctr,{{app.count}}]);
-            ticks.push([ctr++,"{{app.name}}"]);
-            {% endfor %}
-
-            /*for(var ctr=0;ctr<=1;ctr++)
-              data.push([ctr,ctr+5]);
-
-            ticks.push([0,"blah"])
-            ticks.push([1,"blahblah"])*/
-            options.xaxis.axisLabel="Name Of Socketbox App";
-            options.yaxis.axisLabel="Number Of Messages";
-          </script>
         </div>
       </div>
     </div>
