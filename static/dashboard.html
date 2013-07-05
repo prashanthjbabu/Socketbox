@@ -121,9 +121,13 @@
  </tr>
  </tbody>
 </table> 
+<div id="chart"></div>
 <script type="text/javascript">
  $(function(){
- $('table').visualize();
+  $('table')
+   .visualize()
+   .appendTo('#chart')
+   .trigger('visualizeRefresh');
  });
 </script>
 
