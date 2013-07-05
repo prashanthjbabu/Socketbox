@@ -64,7 +64,6 @@
                     data.push([ctr,{{day.count}}]);
                     ticks.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
-                  options.xaxis.ticks=ticks;
                     $.plot($("#daygraph"), dataset, options);
                     $("#daygraph").UseTooltip();
                   });
