@@ -68,7 +68,7 @@
                   ticks = [];
                   {% for day in daycounter %}
                     data.push([ctr,{{day.count}}]);
-                    ticks.push([ctr++,"{{day.time}}"]);
+                    ticks.push([ctr++,"{{day.date}}"]);
                   {% endfor %}
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
