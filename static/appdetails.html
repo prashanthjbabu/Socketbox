@@ -49,11 +49,7 @@
                   {% endfor %}
                     $.plot($("#hourgraph"), dataset, options);
                     $("#hourgraph").UseTooltip();
-                  });
-                </script>
-                <script type="text/javascript">
-                  
-                  $(document).ready(function () {
+
                     dataset[0].label="Messages Sent On an Daily Basis";
                   options.xaxis.axisLabel="Time";
                   options.yaxis.axisLabel="Number Of Messages";
