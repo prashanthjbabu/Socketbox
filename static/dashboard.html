@@ -73,7 +73,7 @@
           <h5>{{app.name}}-{{app.count}}</h5>
           {% endfor %}
 
-          <table>
+          <table id="mytable">
  <caption>Visits from August 16 to August 21</caption>
  <thead>
  <tr>
@@ -124,7 +124,7 @@
 <div id="chart"></div>
 <script type="text/javascript">
  $(function(){
-  $('table')
+  $('#mytable')
    .visualize()
    .appendTo('#chart')
    .trigger('visualizeRefresh');
