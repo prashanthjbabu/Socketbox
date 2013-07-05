@@ -48,7 +48,7 @@
                     ticks.push([ctr++,"{{hour.time}}"]);
                   {% endfor %}
                     $.plot($("#hourgraph"), dataset, options);
-                    $("hourgraph").UseTooltip();
+                    $("#hourgraph").UseTooltip();
                   });
                 </script>
                 <script type="text/javascript">
@@ -65,7 +65,7 @@
                     ticks.push([ctr++,"{{day.time}}"]);
                   {% endfor %}
                     $.plot($("#daygraph"), dataset, options);
-                    $("daygraph").UseTooltip();
+                    $("#daygraph").UseTooltip();
                   });
                 </script>
                 <p>DEBUG</p>
