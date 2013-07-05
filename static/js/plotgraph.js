@@ -92,3 +92,7 @@
                 opacity: 0.9
             }).appendTo("body").fadeIn(200);
         }
+        $(document).ready(function () {
+            $.plot($("#mygraph"), dataset, options);
+            $("#mygraph").UseTooltip();
+        });
