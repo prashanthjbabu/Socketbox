@@ -536,7 +536,7 @@ def show_app(request,appid) :
 				else:
 					day_count = 0
 				data = {
-					'date' : str(upper_thresh.date()),
+					'date' : upper_thresh.date(),
 					'count' : day_count,
 				}
 				daylog.append(data)
