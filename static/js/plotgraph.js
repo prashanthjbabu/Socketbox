@@ -2,7 +2,7 @@
         //var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
         var data= []
         var ticks = []
-        var dataset = [{ label: "Socketbox App Statistics", data: data, color: "#5482FF" }];        
+        var dataset = [{ label: "", data: data, color: "#5482FF" }];        
         console.log("PLOTGRAPHLOADED");
         var options = {
             series: {
