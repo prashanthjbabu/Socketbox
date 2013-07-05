@@ -31,7 +31,7 @@
             <div class="tab-content">
               <div class="tab-pane active" id="tab1">
                 <p class ="lead" align="justify">App Statistics to come here!</p>
-                <div id="mygraphs" style="width:99%;height:300px"></div>
+                <div id="mygraph" style="width:99%;height:300px"></div>
                 <!--<div id="daygraph" style="width:500px;height:300px"></div>
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <script type="text/javascript">
@@ -44,8 +44,8 @@
                     ticks.push([ctr++,"{{hour.time}}"]);
                   {% endfor %}
                   $(document).ready(function () {
-                    $.plot($("#mygraphs"), dataset, options);
-                    $("#mygraphs").UseTooltip();
+                    $.plot($("#mygraph"), dataset, options);
+                    $("#mygraph").UseTooltip();
                   });
                 </script>
                 <p>DEBUG</p>
