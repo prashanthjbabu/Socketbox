@@ -41,7 +41,7 @@
                   var ctr=0;            
                   {% for hour in hourcounter %}
                     data.push([ctr,{{hour.count}}]);
-                    ticks.push([ctr++,"{{hour.name}}"]);
+                    ticks.push([ctr++,"{{hour.time}}"]);
                   {% endfor %}
                   $(document).ready(function () {
                     $.plot($("#mygraph"), dataset, options);
