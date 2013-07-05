@@ -74,7 +74,15 @@
           {% endfor %}
 
           <div id="mygraph" style="width:400px;height:300px"></div>
-          
+          <script type="text/javascript">
+            var data= []
+            for(var ctr=0;ctr<=1;ctr++)
+              data.push([ctr,ctr+5]);
+            var dataset = [{ label: "Socketbox App Statistics", data: data, color: "#5482FF" }];
+            var ticks = []
+            ticks.push([0,"blah"])
+            ticks.push([1,"blahblah"])
+          </script>
         </div>
       </div>
     </div>
