@@ -68,7 +68,7 @@
                         showTooltip(item.pageX,
                         item.pageY,
                         color,
-                        item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong>");
+                        "<p class =\"lead\" align=\"justify\">"+item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong></p>");
                     }
                 } else {
                     $("#tooltip").remove();
