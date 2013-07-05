@@ -33,6 +33,7 @@
                 <p class ="lead" align="justify">App Statistics to come here!</p>
                 <div id="mygraph" style="display:None;width:500px;height:300px"></div>
                 <div id="hourgraph" style="width:99%;height:300px"></div>
+                <div id="daygraph" style="width:99%;height:300px"></div>
                 <!--<div id="daygraph" style="width:500px;height:300px"></div>
                 <div id="monthgraph" style="width:500px;height:300px"></div> -->
                 <script type="text/javascript">
@@ -47,6 +48,20 @@
                   $(document).ready(function () {
                     $.plot($("#hourgraph"), dataset, options);
                     $("hourgraph").UseTooltip();
+                  });
+                </script>
+                <script type="text/javascript">
+                  dataset[0].label="Messages Sent On an Daily Basis";
+                  options.xaxis.axisLabel="Time";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  {% for day in daycounter %}
+                    data.push([ctr,{{day.count}}]);
+                    ticks.push([ctr++,"{{day.time}}"]);
+                  {% endfor %}
+                  $(document).ready(function () {
+                    $.plot($("#daygraph"), dataset, options);
+                    $("daygraph").UseTooltip();
                   });
                 </script>
                 <p>DEBUG</p>

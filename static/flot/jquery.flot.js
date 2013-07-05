@@ -37,8 +37,8 @@
         //   [ series1, series2 ... ]
         // where series is either just the data as [ [x1, y1], [x2, y2], ... ]
         // or { data: [ [x1, y1], [x2, y2], ... ], label: "some label", ... }
-        console.log("PLACEHOLDER = "+placeholder.value);
-        console.log("PLACEHOLDER width ="+placeholder.width()+" height = "+placeholder.height());
+        //console.log("PLACEHOLDER = "+placeholder.value);
+        //console.log("PLACEHOLDER width ="+placeholder.width()+" height = "+placeholder.height());
         var series = [],
             options = {
                 // the color theme used for graphs
