@@ -26,7 +26,7 @@ function createapp()
 		return;
 	}
 
-	$.post("/socketbox/create/app/",{appname : appname },function(result){
+	$.post("/create/app/",{appname : appname },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
@@ -34,7 +34,7 @@ function createapp()
 		console.log("app created successfully");
 		createappalert.success("Congratulations! Your App has been created successfully!");	
 		$("#appname").val("");
-		window.location.href='/socketbox/dashboard/'
+		window.location.href='/dashboard/'
 	}
 	else if(result.status=="appnameexists")
 	{

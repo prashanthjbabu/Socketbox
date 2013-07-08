@@ -39,12 +39,12 @@
   <body>
     <div class="container">
       {% include 'hero.html' %}   
-       <form class="form-signin" method="POST" action="/socketbox/user/login/">
+       <form class="form-signin" method="POST" action="/user/login/">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="email" class="input-block-level" name="navemail" id="navemail" value="{{email}}"placeholder="Email address">
         <input type="password" class="input-block-level" name="navpass" id="navpass" placeholder="Password">
         <button class="btn btn-large btn-primary" type="submit" onclick="encryptnavpass()">Sign in</button>
-        <button type="button" onclick="window.location.href='/socketbox/forgot/password/'" class="btn btn-link">Forgot Password?</button>   
+        <button type="button" onclick="window.location.href='/forgot/password/'" class="btn btn-link">Forgot Password?</button>   
         {% if message %}
             <div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><span>{{message}}</span></div>
         {% endif %}

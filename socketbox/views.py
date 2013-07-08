@@ -182,7 +182,7 @@ def reset_password(request):
 			else :
 				#userexists
 				resetcode=random_generator(10)
-				link="http://socketbox.pesseacm.org/socketbox/account/reset/"+email+"/"+resetcode+"/"
+				link="http://socketbox.pesseacm.org/account/reset/"+email+"/"+resetcode+"/"
 				name=user[0].name
 				socketbox_send_forgot_mail(email,name,link);
 				user.update(resetcode=resetcode)
@@ -333,7 +333,7 @@ def add_user(request):
 			password=request.POST['password']
 			#password=hashlib.md5(password).hexdigest()
 			actcode=random_generator(10)
-			link="http://socketbox.pesseacm.org/socketbox/account/activate/"+email+"/"+actcode+"/"
+			link="http://socketbox.pesseacm.org/account/activate/"+email+"/"+actcode+"/"
 			user=users.objects.filter(email=email)
 
 			if len(user) == 0: #user doesnt exist already
@@ -379,7 +379,7 @@ def login_user(request):
 				request.session['email'] = user[0].email
 				request.session['password'] = user[0].password				
 				request.session['user_name'] = user[0].name
-				return HttpResponseRedirect('/socketbox/dashboard')
+				return HttpResponseRedirect('/dashboard')
  			else :
 				return render_to_response('login.html',{'email' : email , 'message' : "Invalid Password!Please Try Again"})
 
@@ -595,9 +595,9 @@ def show_app(request,appid) :
 
 			return render_to_response('appdetails.html',{ 'monthcounter' : monthlog , 'hourcounter' : hourlog , 'daycounter' : daylog , 'myapp' : myapp_json }, context_instance=RequestContext(request))	
 		else :
-			return HttpResponseRedirect('/socketbox/dashboard')	
+			return HttpResponseRedirect('/dashboard')	
 	else :
-		return HttpResponseRedirect('/socketbox/dashboard')	
+		return HttpResponseRedirect('/dashboard')	
 
 
 @csrf_exempt

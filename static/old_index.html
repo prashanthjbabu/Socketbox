@@ -17,7 +17,7 @@ $("#useradd").click(function(){
   var email =document.getElementById("email").value;
   var password =document.getElementById("password").value;
   //write validation code here
-  $.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
+  $.post("/user/add/",{name : name,email : email,password : password },function(result){
 	console.log(result);	
   //write response handle code here
   });
@@ -27,11 +27,11 @@ $("#userlogin").click(function(){
   var email =document.getElementById("username").value;
   var password =document.getElementById("pass").value;
   //write validation code here
-  $.post("/socketbox/user/login/",{email : email,password : password },function(result){
+  $.post("/user/login/",{email : email,password : password },function(result){
   console.log(result);  
   //write response handle code here
   });
-  $.post("/socketbox/show/apps/",{email : email,password : password },function(result){
+  $.post("/show/apps/",{email : email,password : password },function(result){
   console.log(result);  
   result=JSON.parse(result);
   console.log(result.length)
@@ -46,7 +46,7 @@ $("#createapp").click(function(){
   var appname=document.getElementById("appname").value;
   alert("email="+email+"password="+password+"appname="+appname);
   //write validation code here
-  $.post("/socketbox/create/app/",{email : email,password : password , appname : appname},function(result){
+  $.post("/create/app/",{email : email,password : password , appname : appname},function(result){
   console.log(result);  
   //write response handle code here
   });
@@ -58,7 +58,7 @@ $("#deleteapp").click(function(){
   var appname=document.getElementById("appname").value;
   alert("email="+email+"password="+password+"appname="+appname);
   //write validation code here
-  $.post("/socketbox/delete/app/",{email : email,password : password , appname : appname},function(result){
+  $.post("/delete/app/",{email : email,password : password , appname : appname},function(result){
   console.log(result);  
   //write response handle code here
   });
@@ -72,7 +72,7 @@ $("#renameapp").click(function(){
 
   alert("email="+email+"password="+password+"appname="+oldappname);
   //write validation code here
-  $.post("/socketbox/rename/app/",{email : email,password : password , oldappname : oldappname,newappname : newappname},function(result){
+  $.post("/rename/app/",{email : email,password : password , oldappname : oldappname,newappname : newappname},function(result){
   console.log(result);  
   //write response handle code here
   });
@@ -81,7 +81,7 @@ $("#renameapp").click(function(){
 $("#sendmsg").click(function(){
   var apikey="BU4IBO0JTE";
   //write validation code here
-  $.post("/socketbox/app/secret/",{apikey : apikey},function(result){
+  $.post("/app/secret/",{apikey : apikey},function(result){
   console.log(result);  
   //write response handle code here
   });

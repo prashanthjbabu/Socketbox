@@ -26,7 +26,7 @@ function resetapp()
 		return;
 	}
 
-	$.post("/socketbox/reset/app/",{toresetappname : toresetappname },function(result){
+	$.post("/reset/app/",{toresetappname : toresetappname },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
@@ -34,7 +34,7 @@ function resetapp()
 		console.log("app resetted successfully");
 		resetappalert.success("Congratulations! Your App credentials have been resetted successfully!");	
 		$("#appname").val("");
-		window.location.href='/socketbox/dashboard/'
+		window.location.href='/dashboard/'
 	}
 	else 
 		{

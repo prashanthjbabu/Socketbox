@@ -69,7 +69,7 @@ function validateregister()
 		return;	
 	} 
 	password=$.md5(password);
-	$.post("/socketbox/user/add/",{name : name,email : email,password : password },function(result){
+	$.post("/user/add/",{name : name,email : email,password : password },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")

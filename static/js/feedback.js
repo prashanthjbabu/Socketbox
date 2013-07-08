@@ -53,7 +53,7 @@ function feedbacksubmit()
 		return;
  	}	
 
- 	$.post("/socketbox/feedback/",{name : name,email : email,subject : subject,message : message },function(result){
+ 	$.post("/feedback/",{name : name,email : email,subject : subject,message : message },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")

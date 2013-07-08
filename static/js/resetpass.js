@@ -49,7 +49,7 @@ function resetpasstoserv()
 		return;	
 	}
 	password=$.md5(password);
-	$.post("/socketbox/new/password/",{email : email,pass : password , resetcode : resetcode },function(result){
+	$.post("/new/password/",{email : email,pass : password , resetcode : resetcode },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
@@ -101,7 +101,7 @@ function resetpass()
     	$("#email").focus();
     	return;
  	}	
- 	$.post("/socketbox/reset/password/",{email : email},function(result){
+ 	$.post("/reset/password/",{email : email},function(result){
 		console.log(result);
 		result=JSON.parse(result);
 		if(result.status=="success")

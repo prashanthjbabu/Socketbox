@@ -27,7 +27,7 @@ function renameapp()
 		return;
 	}
 	console.log("newappname="+newappname+" oldappname="+oldappname);
-	$.post("/socketbox/rename/app/",{newappname : newappname , oldappname : oldappname },function(result){
+	$.post("/rename/app/",{newappname : newappname , oldappname : oldappname },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
@@ -35,7 +35,7 @@ function renameapp()
 		console.log("App renamed successfully");
 		renameappalert.success("Congratulations! Your App has been rename successfully!");	
 		$("#newappname").val("");
-		window.location.href='/socketbox/dashboard/'
+		window.location.href='/dashboard/'
 	}
 	else if(result.status=="appnameexists")
 	{

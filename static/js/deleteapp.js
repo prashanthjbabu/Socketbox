@@ -25,7 +25,7 @@ function deleteapp()
 		return;
 	}
 
-	$.post("/socketbox/delete/app/",{todeleteappname : todeleteappname },function(result){
+	$.post("/delete/app/",{todeleteappname : todeleteappname },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")
@@ -33,7 +33,7 @@ function deleteapp()
 		console.log("App deleted successfully");
 		deleteappalert.success("Congratulations! Your App has been deleted successfully!");	
 		$("#todeleteappname").val("");
-		window.location.href='/socketbox/dashboard/'
+		window.location.href='/dashboard/'
 	}
 	else if(result.status=="invalidappname")
 	{

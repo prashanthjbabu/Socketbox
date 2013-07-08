@@ -7,7 +7,7 @@ function userlogin()
 
  	if (!emailfilter.test(navemail) || !passfilter.test(navpass)) 
     {
-    	window.location.href='/socketbox/login/';
+    	window.location.href='/login/';
 	}
 
 }
