@@ -7,7 +7,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
 	#url(r'^send/$','sock_test'),
 #    url(r'^socketbox/',include('socketbox.urls')),
-    url(r'^/',include('socketbox.urls')),
+    url(r'/',include('socketbox.urls')),
 	url(r'^$', 'sockserv.views.index', {}, name='home_url_name'),
     url(r'^features/$', 'sockserv.views.features', {}, name='home_url_name'),
     url(r'^tutorials/$', 'sockserv.views.tutorials', {}, name='home_url_name'),
