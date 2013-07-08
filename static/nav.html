@@ -33,7 +33,6 @@
             </ul>
             {% if request.session.user_id %}
               <form class="navbar-form pull-right" method="POST" action="/user/logout/">
-                   <i class="icon-signal"></i>
                    <p class="navbar-text"><button type="button" onclick="window.location.href='/account/'" class="btn btn-link">{{request.session.user_name}}</button>                    
                    <button type="button" class="btn btn-warning" onclick="window.location.href='/dashboard/'"id="dashboard">Dashboard</button>
                    <button type="submit" class="btn btn-success" id="logout">Logout</button>
