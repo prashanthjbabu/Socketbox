@@ -10,89 +10,91 @@
     <div class="container">
       {% include 'hero.html' %}   
       <div class="row">
-        <div class="span6">
-          <h3 class="text-info">Your apps! 
-            <a href="#newapp" class="btn btn-inverse" data-toggle="modal"><i class="icon icon-plus-sign"></i> New App</a>
-          </h3>
-<!--          <p class ="lead" align="justify">This is the main area.</p> -->
-          <table class="table table-bordered">
-            <tr>
-              <th>App Name</th>
-              <th>API Key</th>
-              <th>Secret Key</th>    
-            </tr>
-            {% for app in myapps %}
-            <tr>
-              <td><button class="btn btn-link" type="button" onclick="window.location.href='/show/app/{{app.id}}'"><h3>{{app.appname}}</h3></button></td>
-              <td><span class="text-success"><h4>{{app.apikey}}</h4></span></td>
-              <td><span class="text-error"><h4>{{app.secret}}</h4></span></td>    
-            </tr>  
-            {% endfor %}
-          </table>
-        </div>
-
-        <div class="span6">
-          <h3 class="text-info">Account Statistics!</h3>
+        <div class="span12">
+          <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-bar-chart"></i> Your Apps</a></li>
+              <li><a href="#tab2" data-toggle="tab"><i class="icon-pencil"></i> Account Stats</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                <h3 class="text-info">Your apps! 
+                  <a href="#newapp" class="btn btn-inverse" data-toggle="modal"><i class="icon icon-plus-sign"></i> New App</a>
+                </h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>App Name</th>
+                    <th>API Key</th>
+                    <th>Secret Key</th>    
+                  </tr>
+                  {% for app in myapps %}
+                  <tr>
+                    <td><button class="btn btn-link" type="button" onclick="window.location.href='/show/app/{{app.id}}'"><h3>{{app.appname}}</h3></button></td>
+                    <td><span class="text-success"><h4>{{app.apikey}}</h4></span></td>
+                    <td><span class="text-error"><h4>{{app.secret}}</h4></span></td>    
+                  </tr>  
+                  {% endfor %}
+                </table> 
+              </div>
+              <div class="tab-pane active" id="tab2">
+                <h3 class="text-info">Account Statistics!</h3>
                    
-        <!--  <p class ="lead" align="justify">Statistics Feature Coming Soon!</p> -->
-          {% if activeappstatus == "valid" %}
-          <table class="table table-bordered">
-            <tr>
-              <td class="text-error">Total Apps Count</td>
-              <td class="text-success">{{appscount}}</td>
-            </tr>
-            <tr>
-              <td class="text-error">Most Active App</td>
-              <td class="text-success">{{activeapp}}</td>
-            </tr>
-            <tr>
-              <td class="text-error">Total Message Count</td>
-              <td class="text-success">{{msgcount}}</td>
-            </tr>
-            <tr>
-              <td class="text-error">Last Message Sent</td>
-              {% load tz %}
-              {% localtime on %} 
-              <td class="text-success">{{lastupdatetime}}</td>
-             {% endlocaltime %} 
-            </tr>
-          </table>  
-          {% else %}
-          <p class ="lead" align="justify">You have no apps to show stats for!</p>
-          {% endif %}
+        
+                {% if activeappstatus == "valid" %}
+                <table class="table table-bordered">
+                  <tr>
+                    <td class="text-error">Total Apps Count</td>
+                    <td class="text-success">{{appscount}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-error">Most Active App</td>
+                    <td class="text-success">{{activeapp}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-error">Total Message Count</td>
+                    <td class="text-success">{{msgcount}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-error">Last Message Sent</td>
+                    {% load tz %}
+                    {% localtime on %} 
+                    <td class="text-success">{{lastupdatetime}}</td>
+                   {% endlocaltime %} 
+                  </tr>
+                </table>  
+                {% else %}
+                <p class ="lead" align="justify">You have no apps to show stats for!</p>
+                {% endif %}
 
 
-          <!--<p>DEBUG</p>
+                <div id="mygraph" style="display:None;width:500px;height:300px"></div>
+                <p class ="lead" align="justify"><i class="icon-bar-chart"></i>SocketBox App Statistics</p>
+                <div id="mygraph2" style="width:500px;height:300px"></div>
+                <script type="text/javascript">
+                  //dataset[0].label="Socketbox App Statistics";
+                  options.xaxis.axisLabel="Name Of Socketbox App";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  {% for app in applog %}
+                    data.push([ctr,{{app.count}}]);
+                    ticks.push([ctr++,"{{app.name}}"]);
+                  {% endfor %}
+                  $(document).ready(function () {
+                    $.plot($("#mygraph2"), dataset, options);
+                    $("#mygraph2").UseTooltip();
+                  });
+                </script>
+                <p>TIME DEBUG</p>
+                    {% load tz %}
+                    {% localtime on %} 
+                    <p>{{currtime}}</p>
+                    {% endlocaltime %}
 
-          {% for app in applog %}
-          <h5>{{app.name}}-{{app.count}}</h5>
-          {% endfor %}
-          -->
-          <div id="mygraph" style="display:None;width:500px;height:300px"></div>
-          <p class ="lead" align="justify"><i class="icon-bar-chart"></i>SocketBox App Statistics</p>
-          <div id="mygraph2" style="width:500px;height:300px"></div>
-          <script type="text/javascript">
-            //dataset[0].label="Socketbox App Statistics";
-            options.xaxis.axisLabel="Name Of Socketbox App";
-            options.yaxis.axisLabel="Number Of Messages";
-            var ctr=0;            
-            {% for app in applog %}
-              data.push([ctr,{{app.count}}]);
-              ticks.push([ctr++,"{{app.name}}"]);
-            {% endfor %}
-            $(document).ready(function () {
-              $.plot($("#mygraph2"), dataset, options);
-              $("#mygraph2").UseTooltip();
-            });
-          </script>
-          <p>TIME DEBUG</p>
-              {% load tz %}
-              {% localtime on %} 
-              <p>{{currtime}}</p>
-              {% endlocaltime %}
-
+                </div>
+            </div>
         </div>
       </div>
+  </div>
     </div>
 
     <div id="newapp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
