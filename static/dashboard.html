@@ -68,6 +68,22 @@
 
 
                 <div id="mygraph" style="display:None;width:500px;height:300px"></div>
+                <p class ="lead" align="justify"><i class="icon-bar-chart"></i> App Statistics</p>
+                <div id="mygraph2" style="width:500px;height:300px"></div>
+                <script type="text/javascript">
+                  //dataset[0].label="Socketbox App Statistics";
+                  options.xaxis.axisLabel="Name Of Socketbox App";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  {% for app in applog %}
+                    data.push([ctr,{{app.count}}]);
+                    ticks.push([ctr++,"{{app.name}}"]);
+                  {% endfor %}
+                  $(document).ready(function () {
+                    $.plot($("#mygraph2"), dataset, options);
+                    $("#mygraph2").UseTooltip();
+                  });
+                </script>
                 <p class ="lead" align="justify">Messages Sent On An Hourly Basis!</p>
                 <div id="hourgraph" style="width:95%;height:300px"></div>
                 <p class ="lead" align="justify">Messages Sent On A Daily Basis!</p>
@@ -132,22 +148,6 @@
                     $("#monthgraph").UseTooltip();   
 
                 }
-                </script>
-                <p class ="lead" align="justify"><i class="icon-bar-chart"></i> App Statistics</p>
-                <div id="mygraph2" style="width:500px;height:300px"></div>
-                <script type="text/javascript">
-                  //dataset[0].label="Socketbox App Statistics";
-                  options.xaxis.axisLabel="Name Of Socketbox App";
-                  options.yaxis.axisLabel="Number Of Messages";
-                  var ctr=0;            
-                  {% for app in applog %}
-                    data.push([ctr,{{app.count}}]);
-                    ticks.push([ctr++,"{{app.name}}"]);
-                  {% endfor %}
-                  $(document).ready(function () {
-                    $.plot($("#mygraph2"), dataset, options);
-                    $("#mygraph2").UseTooltip();
-                  });
                 </script>
                 <p>TIME DEBUG</p>
                     {% load tz %}
