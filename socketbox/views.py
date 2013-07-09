@@ -315,14 +315,14 @@ def get_app_secret(request):
 
 def socketbox_send_activate_mail(email,name,link):
 	content="Dear "+name+",\nWelcome to SocketBox .Kindly Activate your SocketBox account by clicking on the following link "+link+"\nWith Regards,\nThe SocketBox Team"
-	send_mail('Activate Your SocketBox Account',content,'prashpesse@gmail.com',[email])
+	send_mail('Activate Your SocketBox Account',content,'no-reply@socketbox.in',[email])
 
 def socketbox_send_forgot_mail(email,name,link):
 	content="Dear "+name+",\nKindly click on the following link to reset your password "+link+"\nWith Regards,\nThe SocketBox Team"
-	send_mail('Reset Your SocketBox Account',content,'prashpesse@gmail.com',[email])
+	send_mail('Reset Your SocketBox Account',content,'no-reply@socketbox.in',[email])
 
 def socketbox_send_feedback_mail(data):
-	send_mail('New Socketbox Feedback Message',data,'prashpesse@gmail.com',['prashanthjbabu@gmail.com'])
+	send_mail('New Socketbox Feedback Message',data,'no-reply@socketbox.in',['prashanthjbabu@gmail.com'])
 
 @csrf_exempt
 def add_user(request):
