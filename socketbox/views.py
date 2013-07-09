@@ -319,7 +319,7 @@ def socketbox_send_activate_mail(email,name,link):
 
 def socketbox_send_forgot_mail(email,name,link):
 	content="Dear "+name+",\nKindly click on the following link to reset your password "+link+"\nWith Regards,\nThe SocketBox Team"
-	send_mail('Reset Your SocketBox Account',content,'no-reply@socketbox.in',[email])
+	send_mail('Reset Your SocketBox Account',content,'no-reply@socketbox.in',[email],fail_silently=True)
 
 def socketbox_send_feedback_mail(data):
 	send_mail('New Socketbox Feedback Message',data,'no-reply@socketbox.in',['prashanthjbabu@gmail.com'])
