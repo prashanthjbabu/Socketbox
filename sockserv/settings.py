@@ -21,17 +21,18 @@ DATABASES = {
     }
 }
 #email settings
-EMAIL_HOST="smtp.gmail.com"
-EMAIL_HOST_USER="prashpesse@gmail.com"
-EMAIL_HOST_PASSWORD="prashbabu123"
-EMAIL_PORT=587;
 
-#EMAIL_HOST='smtp.socketbox.in'
-#EMAIL_HOST_USER='no-reply@socketbox.in'
-#EMAIL_HOST_PASSWORD='Harshit123'
-#EMAIL_PORT=25;
+#EMAIL_HOST="smtp.gmail.com"
+#EMAIL_HOST_USER="prashpesse@gmail.com"
+#EMAIL_HOST_PASSWORD="prashbabu123"
+#EMAIL_PORT=587;
 
-EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.socketbox.in'
+EMAIL_HOST_USER='no-reply@socketbox.in'
+EMAIL_HOST_PASSWORD='Harshit123'
+EMAIL_PORT=25;
+
+#EMAIL_USE_TLS=True
 
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
