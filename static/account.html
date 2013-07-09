@@ -33,6 +33,62 @@
         <div class="span8">
           <h3 class="text-info">Account Usage!</h3>
           <p class ="lead" align="justify">Statistics Feature Coming Soon!</p>
+           <!--  <p class ="lead" align="justify">Statistics Feature Coming Soon!</p> -->
+          {% if activeappstatus == "valid" %}
+          <table class="table table-bordered">
+            <tr>
+              <td class="text-error">Total Apps Count</td>
+              <td class="text-success">{{appscount}}</td>
+            </tr>
+            <tr>
+              <td class="text-error">Most Active App</td>
+              <td class="text-success">{{activeapp}}</td>
+            </tr>
+            <tr>
+              <td class="text-error">Total Message Count</td>
+              <td class="text-success">{{msgcount}}</td>
+            </tr>
+            <tr>
+              <td class="text-error">Last Message Sent</td>
+              {% load tz %}
+              {% localtime on %} 
+              <td class="text-success">{{lastupdatetime}}</td>
+             {% endlocaltime %} 
+            </tr>
+          </table>  
+          {% else %}
+          <p class ="lead" align="justify">You have no apps to show stats for!</p>
+          {% endif %}
+
+
+          <!--<p>DEBUG</p>
+
+          {% for app in applog %}
+          <h5>{{app.name}}-{{app.count}}</h5>
+          {% endfor %}
+          -->
+          <div id="mygraph" style="display:None;width:500px;height:300px"></div>
+          <p class ="lead" align="justify"><i class="icon-bar-chart"></i>SocketBox App Statistics</p>
+          <div id="mygraph2" style="width:500px;height:300px"></div>
+          <script type="text/javascript">
+            //dataset[0].label="Socketbox App Statistics";
+            options.xaxis.axisLabel="Name Of Socketbox App";
+            options.yaxis.axisLabel="Number Of Messages";
+            var ctr=0;            
+            {% for app in applog %}
+              data.push([ctr,{{app.count}}]);
+              ticks.push([ctr++,"{{app.name}}"]);
+            {% endfor %}
+            $(document).ready(function () {
+              $.plot($("#mygraph2"), dataset, options);
+              $("#mygraph2").UseTooltip();
+            });
+          </script>
+          <p>TIME DEBUG</p>
+              {% load tz %}
+              {% localtime on %} 
+              <p>{{currtime}}</p>
+              {% endlocaltime %}
         </div>
 
       </div>
