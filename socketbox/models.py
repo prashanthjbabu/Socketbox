@@ -9,6 +9,8 @@ class users(models.Model):
     activationcode = models.CharField(max_length=10)
     resetcode = models.CharField(max_length=10,null=True)
     activated = models.IntegerField(max_length=1)
+    accountcreation = models.DateTimeField(auto_now_add = True)
+    lastlogin = models.DateTimeField(auto_now_add = True)
     def __unicode__(self):
         return "%s %s %s %d" % (self.name, self.email, self.password ,self.activated)
 

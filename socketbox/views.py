@@ -415,6 +415,8 @@ def login_user(request):
  			
  			elif return_text == "success" :
 				user=users.objects.filter(email=email,activated=1)
+				now=datetime.datetime.now()
+				user.update(lastlogin=now)
 				request.session['user_id'] = user[0].id
 				request.session['email'] = user[0].email
 				request.session['password'] = user[0].password				
