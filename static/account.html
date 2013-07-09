@@ -55,6 +55,20 @@
               <td class="text-success">{{lastupdatetime}}</td>
              {% endlocaltime %} 
             </tr>
+            <tr>
+              <td class="text-error">Last Logged in at</td>
+              {% load tz %}
+              {% localtime on %} 
+              <td class="text-success">{{lastlogin}}</td>
+             {% endlocaltime %} 
+            </tr>
+            <tr>
+              <td class="text-error">Account Creation Date</td>
+              {% load tz %}
+              {% localtime on %} 
+              <td class="text-success">{{accountcreation}}</td>
+             {% endlocaltime %} 
+            </tr>
           </table>  
           {% else %}
           <p class ="lead" align="justify">You have no apps to show stats for!</p>

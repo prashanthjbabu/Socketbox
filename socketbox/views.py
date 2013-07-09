@@ -62,6 +62,8 @@ def account(request):
 		userid=request.session['user_id']
 		myapps=apps.objects.filter(userid=userid)
 		mydetails=users.objects.filter(id=userid)
+		lastlogin=mydetails[0].lastlogin
+		accountcreation=mydetails[0].accountcreation
 		#taken from dashboard start
 		numberofapps=len(myapps)
 		count=0
@@ -102,7 +104,7 @@ def account(request):
 		#print "last update time is "+str(lastupdatetime)
 
 		#taken from dashboard end
-		return render_to_response('account.html',{'currtime' : currtime , 'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount , 'mydetails' : mydetails}, context_instance=RequestContext(request))	
+		return render_to_response('account.html',{'lastlogin' : lastlogin , 'accountcreation': accountcreation , 'currtime' : currtime , 'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount , 'mydetails' : mydetails}, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
