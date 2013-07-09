@@ -62,7 +62,47 @@ def account(request):
 		userid=request.session['user_id']
 		myapps=apps.objects.filter(userid=userid)
 		mydetails=users.objects.filter(id=userid)
-		return render_to_response('account.html',{ 'myapps' : myapps , 'mydetails' : mydetails }, context_instance=RequestContext(request))	
+		#taken from dashboard start
+		numberofapps=len(myapps)
+		count=0
+		totalmsgcount=0
+		applog = []
+		timelog = []
+		appscount=myapps.count()
+		popularappdata = {
+					'status' : 'invalid',
+				}
+		for app in myapps :
+			myappmsgcount=stats.objects.filter(appid=app.id).count()
+			myapplastupdate=stats.objects.filter(appid=app.id).order_by('-time')[:1]
+			apptimelog = {}
+			apptimelog['time']=myapplastupdate[0].time
+			timelog.append(apptimelog)
+			totalmsgcount+=myappmsgcount
+			appdata = {
+				'name' : app.appname,
+				'count' : myappmsgcount
+			}
+			applog.append(appdata)
+			if myappmsgcount > count :
+				count=myappmsgcount
+				popularappdata = {
+					'status' : 'valid',
+					'app' : app.appname,
+					'count' : myappmsgcount
+				}
+				
+
+		#popularappdata = simplejson.dumps(popularappdata)
+
+		applogs=stats.objects.filter()
+		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
+		lastupdatetime=timelog[0]['time']
+		currtime=datetime.datetime.now()
+		#print "last update time is "+str(lastupdatetime)
+
+		#taken from dashboard end
+		return render_to_response('account.html',{'currtime' : currtime , 'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount , 'mydetails' : mydetails}, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
