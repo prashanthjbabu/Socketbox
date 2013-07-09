@@ -565,7 +565,7 @@ def dashboard(request) :
 
 		#show some cool stats end
 
-		return render_to_response('dashboard.html',{'currtime' : currtime , 'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
+		return render_to_response('dashboard.html',{'monthcounter' : monthlog , 'hourcounter' : hourlog , 'daycounter' : daylog ,'currtime' : currtime , 'lastupdatetime' : lastupdatetime , 'appscount' : appscount, 'myapps' : myapps,'applog' : applog ,'activeappstatus' : popularappdata['status'],'activeapp' : popularappdata['app'],'activeappcount' : popularappdata['count'], 'msgcount' : totalmsgcount }, context_instance=RequestContext(request))	
 	else :
 		#session does not exist for user redirect to login screen
 		return render_to_response('login.html', context_instance=RequestContext(request))	
