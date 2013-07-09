@@ -98,6 +98,7 @@ function resetpass()
 		//$("#register-error-content").text("Please enter a valid email");
 		console.log("invalid email");
 		forgotpassservalert.warning("Please enter a valid email!");
+    	loading.stop();
     	$("#email").focus();
     	return;
  	}	
