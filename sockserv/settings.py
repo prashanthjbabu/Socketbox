@@ -28,7 +28,7 @@ DATABASES = {
 #EMAIL_PORT=587;
 
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='no-reply@socketbox.in'
+EMAIL_HOST_USER='support@socketbox.in'
 EMAIL_HOST_PASSWORD='Harshit123'
 EMAIL_PORT=587;
 
