@@ -68,6 +68,71 @@
 
 
                 <div id="mygraph" style="display:None;width:500px;height:300px"></div>
+                <p class ="lead" align="justify">Messages Sent On An Hourly Basis!</p>
+                <div id="hourgraph" style="width:95%;height:300px"></div>
+                <p class ="lead" align="justify">Messages Sent On A Daily Basis!</p>
+                <div id="daygraph" style="width:95%;height:300px"></div>
+                <p class ="lead" align="justify">Messages Sent On A Monthly Basis!</p>
+                <div id="monthgraph" style="width:95%;height:300px"></div><br>
+                <!--<div id="daygraph" style="width:500px;height:300px"></div>
+                <div id="monthgraph" style="width:500px;height:300px"></div> -->
+                <script type="text/javascript">
+                //function showhour()
+                {
+                 //dataset[0].label="Messages Sent On an Hourly Basis";
+                  options.xaxis.axisLabel="Time in Hours";
+                  options.yaxis.axisLabel="Number Of Messages";
+
+                  var ctr=0;            
+                  data = [];
+                  ticks = [];
+                  {% for hour in hourcounter %}
+                    data.push([ctr,{{hour.count}}]);
+                    ticks.push([ctr++,"{{hour.time}}"]);
+                  dataset[0].data=data;
+                  options.xaxis.ticks=ticks;
+                  {% endfor %}
+                    $.plot($("#hourgraph"), dataset, options);
+                    $("#hourgraph").UseTooltip();   
+
+                }
+                //function showday()
+                {
+                 //dataset[0].label="Messages Sent On a Daily Basis";
+                  options.xaxis.axisLabel="Time in Days";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;            
+                  data =  [];
+                  ticks = [];
+                  {% for day in daycounter %}
+                    data.push([ctr,{{day.count}}]);
+                    ticks.push([ctr++,"{{day.date}}"]);
+                  {% endfor %}
+                  dataset[0].data=data;
+                  options.xaxis.ticks=ticks;
+                    $.plot($("#daygraph"), dataset, options);
+                    $("#daygraph").UseTooltip();   
+
+                }
+                //function showmonth()
+                {
+                 //dataset[0].label="Messages Sent On a Monthly Basis";
+                  options.xaxis.axisLabel="Time in Months";
+                  options.yaxis.axisLabel="Number Of Messages";
+                  var ctr=0;   
+                  data =  [];
+                  ticks = [];         
+                  {% for month in monthcounter %}
+                    data.push([ctr,{{month.count}}]);
+                    ticks.push([ctr++,"{{month.time}}"]);
+                  {% endfor %}
+                  dataset[0].data=data;
+                  options.xaxis.ticks=ticks;
+                    $.plot($("#monthgraph"), dataset, options);
+                    $("#monthgraph").UseTooltip();   
+
+                }
+                </script>
                 <p class ="lead" align="justify"><i class="icon-bar-chart"></i> App Statistics</p>
                 <div id="mygraph2" style="width:500px;height:300px"></div>
                 <script type="text/javascript">
