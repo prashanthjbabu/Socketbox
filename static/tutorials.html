@@ -22,7 +22,7 @@
           <p class ="lead" align="justify">SocketBox supports javascript in the client end . Once you have your API key and secret key , the following steps help setup the client : </p>
           <p class="lead" align="justify"><b>Step 1 :</b> Include the socketbox.js library file in your client HTML page .</p>
           <pre class="prettyprint">
-            &lt;script src="http://socketbox.in/js/socketbox-1.0.js"&gt;&lt;/script&gt;
+            &lt;script src="http://socketbox.in/js/socketbox.js"&gt;&lt;/script&gt;
           </pre>
           <p class="lead" align="justify"><b>Step 2 :</b> Open a connection to pusher. Use the API key you generated earlier over here .</p>
           <pre class="prettyprint">
@@ -41,7 +41,7 @@
           <p class="lead" align="justify"><b>NOTE:</b>This is a callback function which returns data which is the data that is sent from the server in JSON format.</p>
           <p class="lead" align="justify"><b>Complete Code :</b></p>
           <pre class="prettyprint">
-            &lt;script src="http://socketbox.in/js/socketbox-1.0.js"&gt;&lt;/script&gt;
+            &lt;script src="http://socketbox.in/js/socketbox.js"&gt;&lt;/script&gt;
             var socket = new SocketBox('API_KEY');
             socket.subscribe('CHANNEL_NAME');
             socket.bind('EVENT_NAME', function(data) {
