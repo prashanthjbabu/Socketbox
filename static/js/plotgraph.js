@@ -15,7 +15,7 @@
                 barWidth: 0.5
             },
             xaxis: {
-                axisLabel: "X AXIS LABEL",
+                axisLabel: " ",
                 axisLabelUseCanvas: true,
                 axisLabelFontSizePixels: 12,
                 axisLabelFontFamily: 'Verdana, Arial',
@@ -23,7 +23,7 @@
                 ticks: ticks
             },
             yaxis: {
-                axisLabel: "Y AXIS LABEL",
+                axisLabel: " ",
                 axisLabelUseCanvas: true,
                 axisLabelFontSizePixels: 12,
                 axisLabelFontFamily: 'Verdana, Arial',
