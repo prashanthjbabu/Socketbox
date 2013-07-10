@@ -27,4 +27,4 @@ def about(request):
 
 @csrf_exempt
 def js(request):
-	return render_to_response('js/socketbox-1.0.js', context_instance=RequestContext(request))
+	return render_to_response('js/socketbox.js', context_instance=RequestContext(request))
