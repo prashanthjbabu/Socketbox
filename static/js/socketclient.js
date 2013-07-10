@@ -42,12 +42,16 @@ function startclient()
     socket.bind(eventname, function(data) {
         console.log(data);
     });
-    $("channelname").blur();
-	$("eventname").blur();
+    //$("channelname").blur();
+	//$("eventname").blur();
+	$("#channelname").attr("disabled", "disabled");
+	$("#eventname").attr("disabled", "disabled");
 }
 function stopclient()
 {
 	socket.removelisteners();
-	$("eventname").focus();
-    $("channelname").focus();
+	//$("eventname").focus();
+    //$("channelname").focus();
+    $("#channelname").removeAttr("disabled");
+    $("#eventname").removeAttr("disabled");
 }
