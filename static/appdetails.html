@@ -142,6 +142,7 @@
                 <h1>Client Side : </h1>
                 <form class="form-signin">
                   <h2 class="form-signin-heading">Enter client details : </h2>
+                  <input type="hidden" id="apikey" name="apikey" value="{{myapp.apikey}}">
                   <input type="text" size="5" class="input-block-level" name="channelname" id="channelname" placeholder="Enter Channel Name">
                   <input type="text" size="5" class="input-block-level" name="evemtname" id="eventname" placeholder="Enter Event Name">
                   <button class="btn btn-large btn-danger" type="button" onclick="startclient()">Start</button>

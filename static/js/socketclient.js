@@ -36,7 +36,8 @@ function startclient()
 		loading.stop();
 		return;
 	}
-    socket = new SocketBox('{{myapp.apikey}}');
+	var apikey=document.getElementById("apikey").value
+    socket = new SocketBox(apikey);
     socket.subscribe(channelname);
     socket.bind(eventname, function(data) {
         console.log(data);
