@@ -21,6 +21,7 @@
                 <h3 class="text-info">Your apps! 
                   <a href="#newapp" class="btn btn-inverse" data-toggle="modal"><i class="icon icon-plus-sign"></i> New App</a>
                 </h3>
+                {% if activeappstatus == "valid" %}
                 <table class="table table-bordered">
                   <tr>
                     <th>App Name</th>
@@ -35,6 +36,9 @@
                   </tr>  
                   {% endfor %}
                 </table> 
+                {% else %}
+                  <p class ="lead" align="justify">You have no apps to show stats for!</p>
+                {% endif %}
               </div>
               <div class="tab-pane" id="tab2">
                 <h3 class="text-info">Account Statistics!</h3>
