@@ -49,10 +49,11 @@ function sendmessage()
 	}
 	
 	else 
-		{
-			console.log("something went wrong");	
-			socketserveralert.warning("We're sorry , something went wrong . Please try again later!");
-		}
+	{
+		console.log("something went wrong");	
+		socketserveralert.warning("We're sorry , something went wrong . Please try again later!");
+	}
   	//write response handle code here
   	loading.stop();
+	});
 }
