@@ -52,7 +52,7 @@ function startclient()
 function updatetable(channel_name,event_name,data)
 {
 	to_append="<tr><td>"+channel_name+"</td><td>"+event_name+"</td><td>"+data+"</td></tr>"
-	$("#tablebody").html(to_append+$("#tablebody").html());
+	$("#tablebody").html($("#tablebody").html()+to_append);
 }
 function stopclient()
 {
