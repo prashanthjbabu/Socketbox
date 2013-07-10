@@ -973,7 +973,7 @@ def send_message(request):
 			secret=request.POST['secret']
 			channel = request.POST['channelname']
 			data = {
-				'message' : request.POST['data'],
+				'message' : request.POST['message'],
 			}
 			socket_data = {
 				'event' : event,
