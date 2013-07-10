@@ -43,21 +43,16 @@ function sendmessage()
 	result=JSON.parse(result);
 	if(result.status=="success")
 	{
-		console.log("app created successfully");
-		createappalert.success("Congratulations! Your App has been created successfully!");	
-		$("#appname").val("");
-		window.location.href='/dashboard/'
+		console.log("msg sent successfully");
+		socketserveralert.success("Message has been sent successfully!");	
+		$("#message").val("");
+		
 	}
-	else if(result.status=="appnameexists")
-	{
-		console.log("app name already exists");
-		createappalert.warning("This app name already exists , please try using another app name");	
-		$("#appname").val("");
-	}
+	
 	else 
 		{
 			console.log("something went wrong");	
-			createappalert.warning("We're sorry , something went wrong . Please try again later!");
+			socketserveralert.warning("We're sorry , something went wrong . Please try again later!");
 		}
   	//write response handle code here
   	loading.stop();
