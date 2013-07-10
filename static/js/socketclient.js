@@ -42,9 +42,12 @@ function startclient()
     socket.bind(eventname, function(data) {
         console.log(data);
     });
-
+    $("channelname").blur();
+	$("eventname").blur();
 }
 function stopclient()
 {
 	socket.removelisteners();
+	$("eventname").focus();
+    $("channelname").focus();
 }
