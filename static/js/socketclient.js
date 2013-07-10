@@ -41,11 +41,18 @@ function startclient()
     socket.subscribe(channelname);
     socket.bind(eventname, function(data) {
         console.log(data);
+        updatetable(channelname,eventname,data)
     });
+    socketclientalert.success("SocketBox Client is running");
     //$("channelname").blur();
 	//$("eventname").blur();
 	$("#channelname").attr("disabled", "disabled");
 	$("#eventname").attr("disabled", "disabled");
+}
+function updatetable(channel_name,event_name,data)
+{
+	to_append="<tr><td>"+channel_name+"</td><td>"+event_name+"</td><td>"+data+"</td></tr>"
+	$("#tablebody").html(to_append+$("#tablebody").html());
 }
 function stopclient()
 {
@@ -54,4 +61,6 @@ function stopclient()
     //$("channelname").focus();
     $("#channelname").removeAttr("disabled");
     $("#eventname").removeAttr("disabled");
+    socketclientalert.warning("SocketBox Client has stopped");
+
 }
