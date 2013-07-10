@@ -469,7 +469,7 @@ def dashboard(request) :
 				'count' : myappmsgcount
 			}
 			applog.append(appdata)
-			if myappmsgcount > count :
+			if myappmsgcount >= count :
 				count=myappmsgcount
 				popularappdata = {
 					'status' : 'valid',
