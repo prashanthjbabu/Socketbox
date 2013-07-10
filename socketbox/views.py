@@ -73,12 +73,17 @@ def account(request):
 		appscount=myapps.count()
 		popularappdata = {
 					'status' : 'invalid',
+					'app' : 'NA',
+					'count' : 'NA'
 				}
 		for app in myapps :
 			myappmsgcount=stats.objects.filter(appid=app.id).count()
 			myapplastupdate=stats.objects.filter(appid=app.id).order_by('-time')[:1]
 			apptimelog = {}
-			apptimelog['time']=myapplastupdate[0].time
+			if len(myapplastupdate) > 0 :
+				apptimelog['time']=myapplastupdate[0].time
+			else :
+				apptimelog['time']="NA"
 			timelog.append(apptimelog)
 			totalmsgcount+=myappmsgcount
 			appdata = {
@@ -86,7 +91,7 @@ def account(request):
 				'count' : myappmsgcount
 			}
 			applog.append(appdata)
-			if myappmsgcount > count :
+			if myappmsgcount >= count :
 				count=myappmsgcount
 				popularappdata = {
 					'status' : 'valid',
@@ -99,7 +104,10 @@ def account(request):
 
 		applogs=stats.objects.filter()
 		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
-		lastupdatetime=timelog[0]['time']
+		if len(timelog) > 0 :
+			lastupdatetime=timelog[0]['time']
+		else :
+			lastupdatetime = "NA"
 		currtime=datetime.datetime.now()
 		#print "last update time is "+str(lastupdatetime)
 
