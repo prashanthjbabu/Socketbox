@@ -26,7 +26,7 @@ function createapp()
 		return;
 	}
 
-	$.post("/create/app/",{appname : appname },function(result){
+	$.post("/sendmessage/",{appname : appname },function(result){
 	console.log(result);
 	result=JSON.parse(result);
 	if(result.status=="success")

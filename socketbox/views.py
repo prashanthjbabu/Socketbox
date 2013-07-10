@@ -963,3 +963,41 @@ def sock_test(request):
 	except Exception:
 		content = "FAIL"
 	return HttpResponse(content)
+
+def send_message(request):
+	if request.method == "POST" :
+		if 'eventname' in request.POST and 'apikey' in request.POST and 'secret' in request.POST and 'channelname' in request.POST and 'data' in request.POST :
+			event = request.POST['eventname']
+			apikey=request.POST['apikey']
+			secret=request.POST['secret']
+			channel = request.POST['channelname']
+			data = {
+				'message' : request.POST['data'],
+			}
+			socket_data = {
+				'event' : event,
+				'channel' : channel,
+				'data' : simplejson.dumps(data),
+				'apikey' : apikey,
+				'secret' : secret,
+			}
+
+			host = 'http://server.socketbox.in:8000';
+			try:
+				result = urllib2.urlopen(host + '/post/', urllib.urlencode(socket_data))
+				content = result.read()
+			except Exception:
+				content = {
+					'status' : 'FAIL',
+				}
+			return HttpResponse(content)
+		else :
+			content = {
+				'status' : 'FAIL',
+			}
+			return HttpResponse(content)
+	else :
+		content = {
+			'status' : 'FAIL',
+		}
+		return HttpResponse(content)
