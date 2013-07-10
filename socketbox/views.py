@@ -995,13 +995,13 @@ def send_message(request):
 			return HttpResponse(content)
 		else :
 			content = {
-				'status' : 'FAIL',
+				'status' : 'invalidpostrequest',
 			}
 			content = simplejson.dumps(content)
 			return HttpResponse(content)
 	else :
 		content = {
-			'status' : 'FAIL',
+			'status' : 'notapostrequest',
 		}
 		content = simplejson.dumps(content)
 		return HttpResponse(content)
