@@ -991,14 +991,17 @@ def send_message(request):
 				content = {
 					'status' : 'FAIL',
 				}
+			content = simplejson.dumps(content)
 			return HttpResponse(content)
 		else :
 			content = {
 				'status' : 'FAIL',
 			}
+			content = simplejson.dumps(content)
 			return HttpResponse(content)
 	else :
 		content = {
 			'status' : 'FAIL',
 		}
+		content = simplejson.dumps(content)
 		return HttpResponse(content)

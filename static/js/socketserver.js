@@ -48,7 +48,6 @@ function sendmessage()
 		$("#message").val("");
 		
 	}
-	
 	else 
 	{
 		console.log("something went wrong");	
