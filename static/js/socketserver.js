@@ -1,4 +1,3 @@
-var socket;
 function sendmessage()
 {
 	loading = function() {}
