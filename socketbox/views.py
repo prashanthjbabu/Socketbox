@@ -556,7 +556,7 @@ def dashboard(request) :
 					month_count=count
 				else:
 					month_count = 0
-			totalcount+=month_count
+				totalcount+=month_count
 			data = {
 				'time' : low_thresh.strftime("%B %Y"),
 				'count' : totalcount,
