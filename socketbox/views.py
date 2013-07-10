@@ -458,7 +458,10 @@ def dashboard(request) :
 			myappmsgcount=stats.objects.filter(appid=app.id).count()
 			myapplastupdate=stats.objects.filter(appid=app.id).order_by('-time')[:1]
 			apptimelog = {}
-			apptimelog['time']=myapplastupdate[0].time
+			if len(myapplastupdate) > 0 :
+				apptimelog['time']=myapplastupdate[0].time
+			else :
+				apptimelog['time']="NA"
 			timelog.append(apptimelog)
 			totalmsgcount+=myappmsgcount
 			appdata = {
