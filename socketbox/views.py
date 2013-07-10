@@ -451,6 +451,8 @@ def dashboard(request) :
 		appscount=myapps.count()
 		popularappdata = {
 					'status' : 'invalid',
+					'app' : 'NA',
+					'count' : 'NA'
 				}
 		for app in myapps :
 			myappmsgcount=stats.objects.filter(appid=app.id).count()
