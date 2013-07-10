@@ -967,7 +967,7 @@ def sock_test(request):
 @csrf_exempt
 def send_message(request):
 	if request.method == "POST" :
-		if 'eventname' in request.POST and 'apikey' in request.POST and 'secret' in request.POST and 'channelname' in request.POST and 'data' in request.POST :
+		if 'eventname' in request.POST and 'apikey' in request.POST and 'secret' in request.POST and 'channelname' in request.POST and 'message' in request.POST :
 			event = request.POST['eventname']
 			apikey=request.POST['apikey']
 			secret=request.POST['secret']
