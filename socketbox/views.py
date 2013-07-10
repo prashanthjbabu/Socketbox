@@ -476,8 +476,9 @@ def dashboard(request) :
 		#popularappdata = simplejson.dumps(popularappdata)
 
 		applogs=stats.objects.filter()
-		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
-		lastupdatetime=timelog[0]['time']
+		if len(timelog) > 0 :
+			timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
+			lastupdatetime=timelog[0]['time']
 		currtime=datetime.datetime.now()
 		#print "last update time is "+str(lastupdatetime)
 		
