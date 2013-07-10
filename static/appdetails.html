@@ -27,7 +27,7 @@
               <li><a href="#tab2" data-toggle="tab"><i class="icon-pencil"></i> Rename App</a></li>
               <li><a href="#tab3" data-toggle="tab"><i class="icon-trash"></i> Delete App</a></li>
               <li><a href="#tab4" data-toggle="tab"><i class="icon-file-text-alt"></i> View Tutorials App</a></li>
-              <li><a href="#tab5" data-toggle="tab"><i class="icon-file-text-alt"></i> Debug Console</a></li>
+              <li><a href="#tab5" data-toggle="tab"><i class="icon-cogs"></i> Debug Console</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab1">
@@ -139,25 +139,25 @@
                 {% include 'tutorials-modal.html' %}
               </div>
               <div class="tab-pane" id="tab5">
-                <h1>Server Side :</h1>
+                <h1 class="text-info">Server Side :</h1>
                 <form class="form-signin">
                   <h2 class="form-signin-heading">Enter server details : </h2>
                   <input type="hidden" id="secret" name="secret" value="{{myapp.secret}}">
                   <input type="text" size="5" class="input-block-level" name="serverchannelname" id="serverchannelname" placeholder="Enter Channel Name">
                   <input type="text" size="5" class="input-block-level" name="servereventname" id="servereventname" placeholder="Enter Event Name">
                   <input type="text" size="5" class="input-block-level" name="message" id="message" placeholder="Enter Message">
-                  <button class="btn btn-large btn-danger" type="button" onclick="sendmessage()">Send Message</button>
+                  <button class="btn btn-large btn-success" type="button" onclick="sendmessage()">Send Message</button>
                   <div id="loading"></div>
                   <div id="server-content"></div>
                 </form>
 
-                <h1>Client Side : </h1>
+                <h1 class="text-info">Client Side : </h1>
                 <form class="form-signin">
                   <h2 class="form-signin-heading">Enter client details : </h2>
                   <input type="hidden" id="apikey" name="apikey" value="{{myapp.apikey}}">
                   <input type="text" size="5" class="input-block-level" name="channelname" id="channelname" placeholder="Enter Channel Name">
                   <input type="text" size="5" class="input-block-level" name="evemtname" id="eventname" placeholder="Enter Event Name">
-                  <button class="btn btn-large btn-danger" type="button" onclick="startclient()">Start</button>
+                  <button class="btn btn-large btn-success" type="button" onclick="startclient()">Start</button>
                   <button class="btn btn-large btn-danger" type="button" onclick="stopclient()">Stop</button>
                   <div id="loading"></div>
                   <div id="client-content"></div>
