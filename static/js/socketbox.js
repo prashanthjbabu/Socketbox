@@ -58,6 +58,10 @@
 			this.channel=this.apikey+"-"+this.channel;
 			console.log("CHANNEL="+this.channel);
 		},
+		
+		removelisteners: function(channel_name) {
+			this.socket.removeAllListeners(channel_name);			
+		},
 
 		trigger: function(event_name, data) {
 			SocketBox.log("Trigger yet to be added");
