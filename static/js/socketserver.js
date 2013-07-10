@@ -37,6 +37,7 @@ function sendmessage()
 	}
 	var apikey=document.getElementById("apikey").value;
     var message=document.getElementById("message").value;
+    var secret=document.getElementById("secret").value;
 	$.post("/sendmessage/",{eventname : eventname , apikey : apikey , secret : secret , channelname : channelname ,message : message },function(result){
 	console.log(result);
 	result=JSON.parse(result);
