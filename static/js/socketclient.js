@@ -46,5 +46,5 @@ function startclient()
 }
 function stopclient()
 {
-	socket.removelisteners(document.getElementById("channelname").value);
+	socket.removelisteners();
 }

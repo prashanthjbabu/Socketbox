@@ -59,8 +59,8 @@
 			console.log("CHANNEL="+this.channel);
 		},
 		
-		removelisteners: function(channel_name) {
-			this.socket.removeAllListeners(channel_name);			
+		removelisteners: function() {
+			this.socket.removeAllListeners();			
 		},
 
 		trigger: function(event_name, data) {
