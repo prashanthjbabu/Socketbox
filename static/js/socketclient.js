@@ -38,7 +38,7 @@ function startclient()
 	}
     socket = new SocketBox('{{myapp.apikey}}');
     socket.subscribe(channelname);
-    socket.bind(evetname, function(data) {
+    socket.bind(eventname, function(data) {
         console.log(data);
     });
 
