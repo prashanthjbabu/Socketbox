@@ -236,9 +236,10 @@
       </div>
       <div class="modal-body">
         <form class="form-signin">
-          <h2 class="form-signin-heading">Reset App</h2>
+          <h2 class="form-signin-heading">Are you sure you want to reset credentials of this app?</h2>
           <input type="hidden" id="toresetappname" name="toresetappname" value="{{myapp.appname}}">
-          <button class="btn btn-large btn-danger" type="button" onclick="resetapp()">Submit</button>
+          <button class="btn btn-large btn-danger" type="button" onclick="resetapp()">Yes</button>
+          <button class="btn btn-large btn-primary" type="button" data-dismiss="modal">No</button>          
           <div id="loading"></div>
           <div id="resetapp-error-content"></div>
         </form>
