@@ -716,7 +716,7 @@ def show_app(request,appid) :
 				else:
 					hour_count = 0
 				data = {
-					'time' : low_thresh,
+					'time' : jquery_time_convert(low_thresh),
 					'count' : hour_count,
 				}
 				hourlog.append(data)

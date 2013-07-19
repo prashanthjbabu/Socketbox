@@ -54,7 +54,7 @@
                   ticks = [];
                   {% for hour in hourcounter %}
                     data.push([ctr,{{hour.count}}]);
-                    ticks.push([ctr++,"{{hour.time}}"]);
+                    ticks.push([ctr++,"{{<span data-localtime-format=\"MMM dd , yyyy , hh:mm a\">hour.time}}</span>"]);
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
                   {% endfor %}
