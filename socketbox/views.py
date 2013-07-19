@@ -530,7 +530,7 @@ def dashboard(request) :
 					day_count = 0
 				totalcount+=day_count
 			data = {
-				'date' : jquery_time_convert(upper_thresh.date()),
+				'date' : upper_thresh.date(),
 				'count' : totalcount,
 				}
 			daylog.append(data)
