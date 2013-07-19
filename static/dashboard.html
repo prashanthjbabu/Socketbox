@@ -86,7 +86,7 @@
                   });
                 </script> -->
                 <p class ="lead" align="justify">Messages Sent On An Hourly Basis!</p>
-                <div id="hourgraph" style="width:500px;height:300px"></div><br><br>
+                <div id="hourgraph" style="width:500px;height:300px"></div><br><br><br>
                 <p class ="lead" align="justify">Messages Sent On A Daily Basis!</p>
                 <div id="daygraph" style="width:500px;height:300px"></div><br><br>
                 <p class ="lead" align="justify">Messages Sent On A Monthly Basis!</p>
@@ -105,7 +105,7 @@
                   ticks = [];
                   {% for hour in hourcounter %}
                     data.push([ctr,{{hour.count}}]);
-                    ticks.push([ctr++,"<span data-localtime-format=\"MMM dd, yyyy, hh:mma\">{{hour.time}}</span>"]);
+                    ticks.push([ctr++,"<span data-localtime-format=\"MMM dd, yyyy, hh:mm a\">{{hour.time}}</span>"]);
                   dataset[0].data=data;
                   options.xaxis.ticks=ticks;
                   {% endfor %}
