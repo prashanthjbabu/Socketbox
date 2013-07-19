@@ -18,6 +18,9 @@ import string,random,datetime
 import json,calendar,pytz
 from django.utils import timezone
 
+from dateutil import tz
+
+
 from pytz import timezone, utc
 from django.conf import settings
 
@@ -26,7 +29,7 @@ from django.conf import settings
 
 def jquery_time_convert(dt) :
 	TZ = timezone(settings.TIME_ZONE)
-	return TZ.localize(dt.replace(microsecond=0)).astimezone(utc).isoformat() + 'Z'
+	return TZ.localize(dt.replace(microsecond=0)).astimezone(utc).replace(tzinfo=None).isoformat() + 'Z'
 
 def random_generator(size=10, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
