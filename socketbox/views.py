@@ -73,7 +73,8 @@ def account(request):
 		myapps=apps.objects.filter(userid=userid)
 		mydetails=users.objects.filter(id=userid)
 		lastlogin=mydetails[0].lastlogin
-		accountcreation=mydetails[0].accountcreation
+		lastlogin=jquery_time_convert(lastlogin)
+		accountcreation=jquery_time_convert(mydetails[0].accountcreation)
 		#taken from dashboard start
 		numberofapps=len(myapps)
 		count=0
@@ -116,6 +117,7 @@ def account(request):
 		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 		if len(timelog) > 0 :
 			lastupdatetime=timelog[0]['time']
+			lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
 			lastupdatetime = "NA"
 		currtime=datetime.datetime.now()

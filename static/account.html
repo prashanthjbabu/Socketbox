@@ -52,22 +52,16 @@
               <td class="text-error">Last Message Sent</td>
               {% load tz %}
               {% localtime on %} 
-              <td class="text-success">{{lastupdatetime}}</td>
+              <td class="text-success"><span data-localtime-format="MMM dd , yyyy , hh:mm a">{{lastupdatetime}}</span></td>
              {% endlocaltime %} 
             </tr>
             <tr>
               <td class="text-error">Last Logged in at</td>
-              {% load tz %}
-              {% localtime on %} 
-              <td class="text-success">{{lastlogin}}</td>
-             {% endlocaltime %} 
+              <td class="text-success"><span data-localtime-format="MMM dd , yyyy , hh:mm a">{{lastlogin}}</span></td>
             </tr>
             <tr>
               <td class="text-error">Account Creation Date</td>
-              {% load tz %}
-              {% localtime on %} 
-              <td class="text-success">{{accountcreation}}</td>
-             {% endlocaltime %} 
+              <td class="text-success"><span data-localtime-format="MMM dd , yyyy , hh:mm a">{{accountcreation}}</span></td>
             </tr>
           </table>  
           {% else %}
