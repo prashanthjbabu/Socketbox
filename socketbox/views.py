@@ -69,8 +69,8 @@ def account(request):
 		userid=request.session['user_id']
 		myapps=apps.objects.filter(userid=userid)
 		mydetails=users.objects.filter(id=userid)
-		lastlogin=mydetails[0].lastlogin
-		accountcreation=mydetails[0].accountcreation
+		lastlogin=jquery_time_convert(mydetails[0].lastlogin)
+		accountcreation=jquery_time_convert(mydetails[0].accountcreation)
 		#taken from dashboard start
 		numberofapps=len(myapps)
 		count=0
@@ -113,9 +113,11 @@ def account(request):
 		timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 		if len(timelog) > 0 :
 			lastupdatetime=timelog[0]['time']
+			lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
 			lastupdatetime = "NA"
 		currtime=datetime.datetime.now()
+		currtime=jquery_time_convert(currtime)
 		#print "last update time is "+str(lastupdatetime)
 
 		#taken from dashboard end
@@ -499,9 +501,11 @@ def dashboard(request) :
 		if len(timelog) > 0 :
 			timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 			lastupdatetime=timelog[0]['time']
+			lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
 			lastupdatetime="Not Applicable"
 		currtime=datetime.datetime.now()
+		currtime=jquery_time_convert(currtime)
 		#print "last update time is "+str(lastupdatetime)
 		
 		#show some cool stats start
