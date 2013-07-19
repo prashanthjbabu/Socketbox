@@ -499,6 +499,7 @@ def dashboard(request) :
 		if len(timelog) > 0 :
 			timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 			lastupdatetime=timelog[0]['time']
+			lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
 			lastupdatetime="Not Applicable"
 		currtime=datetime.datetime.now()
