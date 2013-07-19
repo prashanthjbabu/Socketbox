@@ -502,10 +502,11 @@ def dashboard(request) :
 		if len(timelog) > 0 :
 			timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 			lastupdatetime=timelog[0]['time']
-			lastupdatetime=jquery_time_convert(lastupdatetime)
+			lastupdatetime=lastupdatetime
 		else :
 			lastupdatetime="Not Applicable"
 		currtime=datetime.datetime.now()
+		currtime=jquery_time_convert(currtime)
 		#print "last update time is "+str(lastupdatetime)
 		
 		#show some cool stats start
