@@ -242,7 +242,7 @@ def reset_password(request):
 			else :
 				#userexists
 				resetcode=random_generator(10)
-				link="http://socketbox.in/account/reset/"+email+"/"+resetcode+"/"
+				link="https://socketbox.in/account/reset/"+email+"/"+resetcode+"/"
 				name=user[0].name
 				socketbox_send_forgot_mail(email,name,link);
 				user.update(resetcode=resetcode)
@@ -393,7 +393,7 @@ def add_user(request):
 			password=request.POST['password']
 			#password=hashlib.md5(password).hexdigest()
 			actcode=random_generator(10)
-			link="http://socketbox.in/account/activate/"+email+"/"+actcode+"/"
+			link="https://socketbox.in/account/activate/"+email+"/"+actcode+"/"
 			user=users.objects.filter(email=email)
 
 			if len(user) == 0: #user doesnt exist already
