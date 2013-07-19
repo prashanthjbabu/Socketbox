@@ -62,7 +62,7 @@
                     <td class="text-error">Last Message Sent</td>
                     {% load tz %}
                     {% localtime on %} 
-                    <td class="text-success">{{lastupdatetime}}</td>
+                    <td class="text-success"><span data-localtime-format="MMM dd , yyyy , hh:mm a">{{lastupdatetime}}</span></td>
                    {% endlocaltime %} 
                   </tr>
                 </table>  
@@ -156,7 +156,7 @@
                 <p>TIME DEBUG</p>
                     {% load tz %}
                     {% localtime on %} 
-                    <p>{{currtime}}</p>
+                    <p><span data-localtime-format="MMM dd , yyyy , hh:mm a">{{currtime}}</span></p>
                     {% endlocaltime %}
 
                 </div>
