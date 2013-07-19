@@ -60,10 +60,7 @@
                   </tr>
                   <tr>
                     <td class="text-error">Last Message Sent</td>
-                    {% load tz %}
-                    {% localtime on %} 
-                    <td class="text-success">{{lastupdatetime}}</td>
-                   {% endlocaltime %} 
+                    <td class="text-success"><span data-localtime-format="MMM dd , yyyy , hh:mm a">{{lastupdatetime}}</span></td>
                   </tr>
                 </table>  
                 {% else %}
