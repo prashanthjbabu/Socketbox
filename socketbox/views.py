@@ -480,9 +480,9 @@ def dashboard(request) :
 			apptimelog = {}
 			if len(myapplastupdate) > 0 :
 				apptimelog['time']=myapplastupdate[0].time
-			else :
-				apptimelog['time']="NA"
-			timelog.append(apptimelog)
+			#else :
+			#	apptimelog['time']="NA"
+				timelog.append(apptimelog)
 			totalmsgcount+=myappmsgcount
 			appdata = {
 				'name' : app.appname,
@@ -504,8 +504,8 @@ def dashboard(request) :
 		if len(timelog) > 0 :
 			timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 			lastupdatetime=timelog[0]['time']
-			if str(lastupdatetime) != "NA" :
-				lastupdatetime=jquery_time_convert(lastupdatetime)
+			#if str(lastupdatetime) != "NA" :
+			lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
 			lastupdatetime="Not Applicable"
 		currtime=datetime.datetime.now()
