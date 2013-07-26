@@ -93,9 +93,9 @@ def account(request):
 			apptimelog = {}
 			if len(myapplastupdate) > 0 :
 				apptimelog['time']=myapplastupdate[0].time
-			else :
-				apptimelog['time']="NA"
-			timelog.append(apptimelog)
+			#else :
+			#	apptimelog['time']="NA"
+				timelog.append(apptimelog)
 			totalmsgcount+=myappmsgcount
 			appdata = {
 				'name' : app.appname,
@@ -119,7 +119,7 @@ def account(request):
 			lastupdatetime=timelog[0]['time']
 			lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
-			lastupdatetime = "NA"
+			lastupdatetime = "Not Applicable"
 		currtime=datetime.datetime.now()
 		#print "last update time is "+str(lastupdatetime)
 
