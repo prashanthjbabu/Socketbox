@@ -504,7 +504,7 @@ def dashboard(request) :
 		if len(timelog) > 0 :
 			timelog=sorted(timelog,key=lambda x:x['time'],reverse=True)
 			lastupdatetime=timelog[0]['time']
-			if lastupdatetime != "NA" :
+			if str(lastupdatetime) != "NA" :
 				lastupdatetime=jquery_time_convert(lastupdatetime)
 		else :
 			lastupdatetime="Not Applicable"
